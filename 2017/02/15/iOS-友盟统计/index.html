@@ -96,28 +96,22 @@
 
 <meta name="description" content="这次记录下1 获取appkey (统计和分享是一个)
 
-2 使用 Cocoapods 安装 SDK
-3 基本功能集成
-12345678910111213#import &amp;quot;UMMobClick/MobClick.h&amp;quot;...- (BOOL])application:(UIApplication] *)application didFinishLaunchingWithOptions">
+2 使用 Cocoapods 安装 SDK">
 <meta property="og:type" content="article">
 <meta property="og:title" content="友盟统计">
 <meta property="og:url" content="http://yoursite.com/2017/02/15/iOS-友盟统计/index.html">
 <meta property="og:site_name" content="Song">
 <meta property="og:description" content="这次记录下1 获取appkey (统计和分享是一个)
 
-2 使用 Cocoapods 安装 SDK
-3 基本功能集成
-12345678910111213#import &amp;quot;UMMobClick/MobClick.h&amp;quot;...- (BOOL])application:(UIApplication] *)application didFinishLaunchingWithOptions">
+2 使用 Cocoapods 安装 SDK">
 <meta property="og:image" content="http://upload-images.jianshu.io/upload_images/1636852-c3f7f91968d763c7.png?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240">
 <meta property="og:image" content="http://upload-images.jianshu.io/upload_images/1636852-bf722817169714c0.png?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240">
-<meta property="og:updated_time" content="2017-07-24T15:33:40.000Z">
+<meta property="og:updated_time" content="2017-08-25T16:32:26.000Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="友盟统计">
 <meta name="twitter:description" content="这次记录下1 获取appkey (统计和分享是一个)
 
-2 使用 Cocoapods 安装 SDK
-3 基本功能集成
-12345678910111213#import &amp;quot;UMMobClick/MobClick.h&amp;quot;...- (BOOL])application:(UIApplication] *)application didFinishLaunchingWithOptions">
+2 使用 Cocoapods 安装 SDK">
 <meta name="twitter:image" content="http://upload-images.jianshu.io/upload_images/1636852-c3f7f91968d763c7.png?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240">
 
 
@@ -356,6 +350,7 @@
         <p>这次记录下<br>1 获取appkey (统计和分享是一个)</p>
 <p><img src="http://upload-images.jianshu.io/upload_images/1636852-c3f7f91968d763c7.png?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240" alt="Appkey.png"></p>
 <p>2 使用 Cocoapods 安装 SDK<br><img src="http://upload-images.jianshu.io/upload_images/1636852-bf722817169714c0.png?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240" alt="pod.png"></p>
+<a id="more"></a>
 <p>3 基本功能集成</p>
 <figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div></pre></td><td class="code"><pre><div class="line">#import &quot;UMMobClick/MobClick.h&quot;</div><div class="line"></div><div class="line">...</div><div class="line">- (BOOL])application:(UIApplication] *)application didFinishLaunchingWithOptions:(NSDictionary *)launchOptions</div><div class="line">&#123;</div><div class="line">    UMConfigInstance.appKey = @&quot;xxxxxxxxxxxxxx...&quot;;</div><div class="line">    UMConfigInstance.ChannelId = @&quot;App Store&quot;;</div><div class="line">    UMConfigInstance.eSType = E_UM_GAME; //仅适用于游戏场景，应用统计不用设置</div><div class="line">    …</div><div class="line">    NSString *version = [[[NSBundle mainBundle] infoDictionary] objectForKey:@&quot;CFBundleShortVersionString&quot;];</div><div class="line">    [MobClick setAppVersion:version];</div><div class="line">    [MobClick startWithConfigure:UMConfigInstance];//配置以上参数后调用此方法初始化SDK！</div><div class="line">&#125;</div></pre></td></tr></table></figure>
 <p>4 基本功能集成</p>
@@ -389,8 +384,8 @@
         <div class="post-nav">
           <div class="post-nav-next post-nav-item">
             
-              <a href="/2017/01/22/所有的布局方法/" rel="next" title="所有的布局方法总结">
-                <i class="fa fa-chevron-left"></i> 所有的布局方法总结
+              <a href="/2017/01/22/iOS-Xcode8改动/" rel="next" title="iOS-Xcode8改动">
+                <i class="fa fa-chevron-left"></i> iOS-Xcode8改动
               </a>
             
           </div>

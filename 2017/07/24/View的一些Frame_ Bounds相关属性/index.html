@@ -111,7 +111,7 @@
 <meta property="og:image" content="http://oop93frdr.bkt.clouddn.com/2017-08-25-010.jpg">
 <meta property="og:image" content="http://oop93frdr.bkt.clouddn.com/2017-08-25-009.jpg">
 <meta property="og:image" content="http://oop93frdr.bkt.clouddn.com/2017-08-25-011.png">
-<meta property="og:updated_time" content="2017-08-25T16:12:04.000Z">
+<meta property="og:updated_time" content="2017-08-25T16:34:00.000Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="View的一些Frame_ Bounds相关属性">
 <meta name="twitter:description" content="link
@@ -359,6 +359,7 @@
 <p>首先列一下公认的资料：<br>先看到下面的代码你肯定就明白了一些：</p>
 </blockquote>
 <figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div></pre></td><td class="code"><pre><div class="line">-(CGRect)frame&#123;</div><div class="line">    return CGRectMake(self.frame.origin.x,self.frame.origin.y,self.frame.size.width,self.frame.size.height);</div><div class="line">&#125;</div><div class="line">-(CGRect)bounds&#123;</div><div class="line">    return CGRectMake(0,0,self.frame.size.width,self.frame.size.height);</div><div class="line">&#125;</div></pre></td></tr></table></figure>
+<a id="more"></a>
 <blockquote>
 <p>很明显，bounds的原点是(0,0)点（就是view本身的坐标系统，默认永远都是0，0点，除非认为setbounds），而frame的原点却是任意的（相对于父视图中的坐标位置）。</p>
 </blockquote>

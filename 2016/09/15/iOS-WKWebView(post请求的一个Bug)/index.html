@@ -103,7 +103,7 @@
 <meta property="og:image" content="http://upload-images.jianshu.io/upload_images/1636852-8524caf6dbdbfd62.png?imageMogr2/auto-orient/strip%7CimageView2/2/w/600">
 <meta property="og:image" content="http://upload-images.jianshu.io/upload_images/1636852-16880bd8e6e98fcc.png?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240">
 <meta property="og:image" content="http://upload-images.jianshu.io/upload_images/1636852-dc3fe0cf364ec36a.png?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240">
-<meta property="og:updated_time" content="2017-03-19T07:57:02.000Z">
+<meta property="og:updated_time" content="2017-08-25T16:32:45.000Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="WKWebView(post请求的一个Bug)">
 <meta name="twitter:description" content="WKWebView新特性12341 在性能、稳定性、功能方面有很大提升（最直观的体现就是加载网页是占用的内存，模拟器加载百度与开源中国网站时，WKWebView占用23M，而UIWebView占用85M）2 和 Safari 相同的 JavaScript 引擎，允许JavaScript的Nitro库加载并使用（UIWebView中限制）；3 支持了更多的HTML5特性；4 自诩拥有 60fps 滚">
@@ -343,6 +343,7 @@
 
       
         <h1 id="WKWebView新特性"><a href="#WKWebView新特性" class="headerlink" title="WKWebView新特性"></a>WKWebView新特性</h1><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div></pre></td><td class="code"><pre><div class="line">1 在性能、稳定性、功能方面有很大提升（最直观的体现就是加载网页是占用的内存，模拟器加载百度与开源中国网站时，WKWebView占用23M，而UIWebView占用85M）</div><div class="line">2 和 Safari 相同的 JavaScript 引擎，允许JavaScript的Nitro库加载并使用（UIWebView中限制）；</div><div class="line">3 支持了更多的HTML5特性；</div><div class="line">4 自诩拥有 60fps 滚动刷新率、内置手势、高效的 app 和 web 信息交换通道</div></pre></td></tr></table></figure>
+<a id="more"></a>
 <h1 id="WKWebView使用"><a href="#WKWebView使用" class="headerlink" title="WKWebView使用"></a>WKWebView使用</h1><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div></pre></td><td class="code"><pre><div class="line">// 创建webview</div><div class="line">WKWebView *webView = [[WKWebView alloc] initWithFrame:self.view.bounds];</div><div class="line">// 创建请求</div><div class="line">NSURLRequest *request =[NSURLRequest requestWithURL:[NSURL URLWithString:@&quot;http://www.baidu.com&quot;]];</div><div class="line">// 加载网页</div><div class="line">[webView loadRequest:request];</div><div class="line">// 将webView添加到界面</div><div class="line">[self.view addSubview:webView];</div></pre></td></tr></table></figure>
 <h1 id="WKWebView操作JS"><a href="#WKWebView操作JS" class="headerlink" title="WKWebView操作JS"></a>WKWebView操作JS</h1><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div></pre></td><td class="code"><pre><div class="line">//JS文件路径</div><div class="line">NSString *jsPath = [[NSBundle mainBundle] pathForResource:@&quot;demo&quot; ofType:@&quot;js&quot;];</div><div class="line">//读取JS文件内容</div><div class="line">NSString *jsContent = [NSString stringWithContentsOfFile:jsPath encoding:NSUTF8StringEncoding error:nil];</div><div class="line">//创建用户脚本对象，</div><div class="line">//WKUserScriptInjectionTimeAtDocumentStart :HTML文档创建后，完成加载前注入，类似于&lt;head&gt;中</div><div class="line">//WKUserScriptInjectionTimeAtDocumentEnd :HTML文件完成加载后注入,类似于&lt;body&gt;中</div><div class="line">WKUserScript *script = [[WKUserScript alloc] initWithSource:jsContent injectionTime:WKUserScriptInjectionTimeAtDocumentStart forMainFrameOnly:YES];</div><div class="line">//添加用户脚本</div><div class="line">[webView.configuration.userContentController addUserScript:script];</div></pre></td></tr></table></figure>
 <h3 id="WKWebView执行JS方法"><a href="#WKWebView执行JS方法" class="headerlink" title="WKWebView执行JS方法"></a>WKWebView执行JS方法</h3><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div></pre></td><td class="code"><pre><div class="line">//执行JS方法</div><div class="line">[webView evaluateJavaScript:@&quot;test()&quot; completionHandler:^(id _Nullable result, NSError * _Nullable error) &#123;</div><div class="line">    //result为执行js方法的返回值</div><div class="line">    if(error)&#123;</div><div class="line">        NSLog(@&quot;Success&quot;);</div><div class="line">    &#125;else&#123;</div><div class="line">        NSLog(@&quot;Fail&quot;);</div><div class="line">    &#125;</div><div class="line">&#125;];</div></pre></td></tr></table></figure>
@@ -399,18 +400,14 @@
         <div class="post-nav">
           <div class="post-nav-next post-nav-item">
             
-              <a href="/2016/09/15/对象消息运行时/" rel="next" title="对象 消息 运行时">
-                <i class="fa fa-chevron-left"></i> 对象 消息 运行时
-              </a>
-            
           </div>
 
           <span class="post-nav-divider"></span>
 
           <div class="post-nav-prev post-nav-item">
             
-              <a href="/2017/01/10/数据缓存的优化/" rel="prev" title="数据缓存的优化">
-                数据缓存的优化 <i class="fa fa-chevron-right"></i>
+              <a href="/2016/09/15/对象消息运行时/" rel="prev" title="对象 消息 运行时">
+                对象 消息 运行时 <i class="fa fa-chevron-right"></i>
               </a>
             
           </div>

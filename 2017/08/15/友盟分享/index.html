@@ -94,16 +94,43 @@
 
 
 
-<meta name="description" content="@synchronized 结构所做的事情跟锁lock类似：它防止不同的线程同时执行同一段代码。但在某些情况下，相比于使用 NSLock创建锁对象、加锁和解锁来说，@synchronized用着更方便，可读性更高。">
+<meta name="description" content="针对一般的分享 (QQ 微信 微博)
+
+//友盟分享
+#import &amp;lt;UMSocialCore/UMSocialCore.h&amp;gt;
+
+    /* 打开调试日志 */
+[[UMSocialManager defaultManager] openLog:YES];
+
+/* 设置友盟appkey */
+[[UMSocialManager defaultManager] setUmSocia">
 <meta property="og:type" content="article">
-<meta property="og:title" content="synchronized的简单实用">
-<meta property="og:url" content="http://yoursite.com/2017/03/13/@synchronized的简单实用/index.html">
+<meta property="og:title" content="最新友盟分享">
+<meta property="og:url" content="http://yoursite.com/2017/08/15/友盟分享/index.html">
 <meta property="og:site_name" content="Song">
-<meta property="og:description" content="@synchronized 结构所做的事情跟锁lock类似：它防止不同的线程同时执行同一段代码。但在某些情况下，相比于使用 NSLock创建锁对象、加锁和解锁来说，@synchronized用着更方便，可读性更高。">
-<meta property="og:updated_time" content="2017-08-25T16:24:53.000Z">
+<meta property="og:description" content="针对一般的分享 (QQ 微信 微博)
+
+//友盟分享
+#import &amp;lt;UMSocialCore/UMSocialCore.h&amp;gt;
+
+    /* 打开调试日志 */
+[[UMSocialManager defaultManager] openLog:YES];
+
+/* 设置友盟appkey */
+[[UMSocialManager defaultManager] setUmSocia">
+<meta property="og:updated_time" content="2017-08-25T16:33:19.000Z">
 <meta name="twitter:card" content="summary">
-<meta name="twitter:title" content="synchronized的简单实用">
-<meta name="twitter:description" content="@synchronized 结构所做的事情跟锁lock类似：它防止不同的线程同时执行同一段代码。但在某些情况下，相比于使用 NSLock创建锁对象、加锁和解锁来说，@synchronized用着更方便，可读性更高。">
+<meta name="twitter:title" content="最新友盟分享">
+<meta name="twitter:description" content="针对一般的分享 (QQ 微信 微博)
+
+//友盟分享
+#import &amp;lt;UMSocialCore/UMSocialCore.h&amp;gt;
+
+    /* 打开调试日志 */
+[[UMSocialManager defaultManager] openLog:YES];
+
+/* 设置友盟appkey */
+[[UMSocialManager defaultManager] setUmSocia">
 
 
 
@@ -133,13 +160,13 @@
 
 
 
-  <link rel="canonical" href="http://yoursite.com/2017/03/13/@synchronized的简单实用/"/>
+  <link rel="canonical" href="http://yoursite.com/2017/08/15/友盟分享/"/>
 
 
 
 
 
-  <title>synchronized的简单实用 | Song</title>
+  <title>最新友盟分享 | Song</title>
   
 
 
@@ -266,7 +293,7 @@
   
   
   <div class="post-block">
-    <link itemprop="mainEntityOfPage" href="http://yoursite.com/2017/03/13/@synchronized的简单实用/">
+    <link itemprop="mainEntityOfPage" href="http://yoursite.com/2017/08/15/友盟分享/">
 
     <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
       <meta itemprop="name" content="SongWei">
@@ -283,7 +310,7 @@
 
         
         
-          <h1 class="post-title" itemprop="name headline">synchronized的简单实用</h1>
+          <h1 class="post-title" itemprop="name headline">最新友盟分享</h1>
         
 
         <div class="post-meta">
@@ -295,8 +322,8 @@
               
                 <span class="post-meta-item-text">发表于</span>
               
-              <time title="创建于" itemprop="dateCreated datePublished" datetime="2017-03-13T14:52:12+08:00">
-                2017-03-13
+              <time title="创建于" itemprop="dateCreated datePublished" datetime="2017-08-15T15:55:04+08:00">
+                2017-08-15
               </time>
             
 
@@ -338,17 +365,32 @@
       
 
       
-        <p><code>@synchronized</code> 结构所做的事情跟锁<code>lock</code>类似：它防止不同的线程同时执行同一段代码。但在某些情况下，相比于使用 <code>NSLock</code>创建锁对象、加锁和解锁来说，<code>@synchronized</code>用着更方便，可读性更高。</p>
-<a id="more"></a>
-<p><code>@synchronized</code> 的例子</p>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div><div class="line">17</div><div class="line">18</div><div class="line">19</div><div class="line">20</div><div class="line">21</div></pre></td><td class="code"><pre><div class="line">@implementation ThreadSafeQueue</div><div class="line">&#123;</div><div class="line">    NSMutableArray *_elements;</div><div class="line">    NSLock *_lock;</div><div class="line">&#125;</div><div class="line">- (instancetype)init</div><div class="line">&#123;</div><div class="line">    self = [super init];</div><div class="line">    if (self) &#123;</div><div class="line">        _elements = [NSMutableArray array];</div><div class="line">        _lock = [[NSLock alloc] init];</div><div class="line">    &#125;</div><div class="line">    return self;</div><div class="line">&#125;</div><div class="line">- (void)push:(id)element</div><div class="line">&#123;</div><div class="line">    [_lock lock];</div><div class="line">    [_elements addObject:element];</div><div class="line">    [_lock unlock];</div><div class="line">&#125;</div><div class="line">@end</div></pre></td></tr></table></figure>
-<p>i<br>上面的 <code>ThreadSafeQueue</code>类有个<code>init</code>方法，它初始化了一个 <code>_elements</code>数组和一个 <code>NSLock</code>实例。<br>这个类还有个 <code>push:</code>方法，它先获取锁、然后向数组中插入元素、最终释放锁。可能会有许多线程同时调用 <code>push:</code>方法，但是<code>[_elements addObject:element]</code>这行代码在任何时候将只会在一个线程上运行。步骤如下：<br>1 线程 A 调用 <code>push:</code>方法<br>2 线程 B 调用 <code>push:</code>方法<br>3 线程 B 调用 <code>[_lock lock]</code>- 因为当前没有其他线程持有锁，线程 B 获得了锁<br>4 线程 A 调用 <code>[_lock lock]</code>，但是锁已经被线程 B 占了所以方法调用并没有返回-这会暂停线程 A 的执行<br>5 线程 B 向 <code>_elements</code>添加元素后调用 <code>[_lock unlock]</code>。当这些发生时，线程 A 的<code>[_lock lock]</code>方法返回，并继续将自己的元素插入 <code>_elements</code>。</p>
-<p>我们可以用 @synchronized结构更简要地实现这些：<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div><div class="line">17</div><div class="line">18</div><div class="line">19</div></pre></td><td class="code"><pre><div class="line">@implementation ThreadSafeQueue</div><div class="line">&#123;</div><div class="line">    NSMutableArray *_elements;</div><div class="line">&#125;</div><div class="line">- (instancetype)init</div><div class="line">&#123;</div><div class="line">    self = [super init];</div><div class="line">    if (self) &#123;</div><div class="line">        _elements = [NSMutableArray array];</div><div class="line">    &#125;</div><div class="line">    return self;</div><div class="line">&#125;</div><div class="line">- (void)increment</div><div class="line">&#123;</div><div class="line">    @synchronized (self) &#123;</div><div class="line">        [_elements addObject:element];</div><div class="line">    &#125;</div><div class="line">&#125;</div><div class="line">@end</div></pre></td></tr></table></figure></p>
-<p>在前面的例子中，<code>”synchronized block”</code>与 <code>[_lock lock]</code>和 <code>[_lock unlock]</code>效果相同。你可以把它当成是锁住 <code>self</code>，仿佛 self就是个 <code>NSLock</code>。<br><code>锁在左括号 {后面的任何代码运行之前被获取到，在右括号 }</code><br>后面的任何代码运行之前被释放掉。这爽就爽在妈妈再也不用担心我忘记调用 <code>unlock</code>了！<br>你可以给任何 <code>Objective-C</code> 对象上加个 <code>@synchronized</code>。那么我们也可以在上面的例子中用 <code>@synchronized(_elements)</code>来替代 <code>@synchronized(self)</code>，效果是相同的。</p>
-<blockquote>
-<p>转自<a href="http://www.cocoachina.com/ios/20151103/14007.html" target="_blank" rel="external">cocoa</a></p>
-<p>@synchronized<a href="https://developer.apple.com/library/content/documentation/Cocoa/Conceptual/Multithreading/ThreadSafety/ThreadSafety.html#//apple_ref/doc/uid/10000057i-CH8-SW3" target="_blank" rel="external">官方文档</a></p>
+        <blockquote>
+<p>针对一般的分享 (QQ 微信 微博)</p>
 </blockquote>
+<pre><code>//友盟分享
+#import &lt;UMSocialCore/UMSocialCore.h&gt;
+
+    /* 打开调试日志 */
+[[UMSocialManager defaultManager] openLog:YES];
+
+/* 设置友盟appkey */
+[[UMSocialManager defaultManager] setUmSocialAppkey:UMenKey];
+
+[self configUSharePlatforms];
+</code></pre><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div><div class="line">17</div><div class="line">18</div><div class="line">19</div><div class="line">20</div><div class="line">21</div><div class="line">22</div><div class="line">23</div><div class="line">24</div><div class="line">25</div><div class="line">26</div><div class="line">27</div><div class="line">28</div><div class="line">29</div><div class="line">30</div><div class="line">31</div></pre></td><td class="code"><pre><div class="line"></div><div class="line">&lt;!-- more --&gt;</div><div class="line">- (void)configUSharePlatforms</div><div class="line">&#123;</div><div class="line"></div><div class="line">    /*</div><div class="line">     设置微信的appKey和appSecret</div><div class="line">     [微信平台从U-Share 4/5升级说明]http://dev.umeng.com/social/ios/%E8%BF%9B%E9%98%B6%E6%96%87%E6%A1%A3#1_1</div><div class="line">     */</div><div class="line">//    [[UMSocialManager defaultManager] setPlaform:UMSocialPlatformType_WechatSession appKey:@&quot;*********&quot; appSecret:@&quot;********&quot; redirectURL:nil];</div><div class="line">    /*</div><div class="line">     * 移除相应平台的分享，如微信收藏</div><div class="line">     */</div><div class="line">    //[[UMSocialManager defaultManager] removePlatformProviderWithPlatformTypes:@[@(UMSocialPlatformType_WechatFavorite)]];</div><div class="line">    </div><div class="line">    /* 设置分享到QQ互联的appID</div><div class="line">     * U-Share SDK为了兼容大部分平台命名，统一用appKey和appSecret进行参数设置，而QQ平台仅需将appID作为U-Share的appKey参数传进即可。</div><div class="line"></div><div class="line">     [QQ/QZone平台集成说明]http://dev.umeng.com/social/ios/%E8%BF%9B%E9%98%B6%E6%96%87%E6%A1%A3#1_3</div><div class="line">     */</div><div class="line">    [[UMSocialManager defaultManager] setPlaform:UMSocialPlatformType_QQ appKey:@&quot;********&quot;/*设置QQ平台的appID*/  appSecret:nil redirectURL:@&quot;https://www.xxxxx.com&quot;];</div><div class="line">    </div><div class="line">    /*</div><div class="line">     设置新浪的appKey和appSecret</div><div class="line">     [新浪微博集成说明]http://dev.umeng.com/social/ios/%E8%BF%9B%E9%98%B6%E6%96%87%E6%A1%A3#1_2</div><div class="line">     */</div><div class="line">    </div><div class="line">    [[UMSocialManager defaultManager] setPlaform:UMSocialPlatformType_Sina appKey:@&quot;*******&quot;  appSecret:@&quot;*********&quot; redirectURL:@&quot;http://sns.whalecloud.com/********/callback&quot;];</div><div class="line">    </div><div class="line">    </div><div class="line">&#125;</div></pre></td></tr></table></figure>
+<blockquote>
+<p>自定义事件的调用</p>
+</blockquote>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div></pre></td><td class="code"><pre><div class="line">BOOL hadInstalledWeixin = [[UIApplication sharedApplication] canOpenURL:[NSURL URLWithString:@&quot;weixin://&quot;]];</div><div class="line">BOOL hadInstalledQQ = [[UIApplication sharedApplication] canOpenURL:[NSURL URLWithString:@&quot;mqq://&quot;]];</div></pre></td></tr></table></figure>
+<blockquote>
+<p>QQ 微信</p>
+</blockquote>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div><div class="line">17</div><div class="line">18</div><div class="line">19</div><div class="line">20</div><div class="line">21</div><div class="line">22</div><div class="line">23</div><div class="line">24</div><div class="line">25</div><div class="line">26</div><div class="line">27</div><div class="line">28</div></pre></td><td class="code"><pre><div class="line">  //创建分享消息对象</div><div class="line">  UMSocialMessageObject *messageObject = [UMSocialMessageObject messageObject];</div><div class="line">  messageObject.text = @&quot;用于文本类的......&quot;;</div><div class="line">  </div><div class="line"> </div><div class="line">  //创建网页内容对象</div><div class="line">  UMShareWebpageObject *shareObject = [UMShareWebpageObject shareObjectWithTitle:@&quot;标题&quot; descr:@&quot;描述&quot; thumImage:[UIImage imageNamed:@&quot;image&quot;]];</div><div class="line">  //设置网页地址</div><div class="line">  shareObject.webpageUrl =@&quot;http://www.baidu.com&quot;;</div><div class="line">  </div><div class="line">  //分享消息对象设置分享内容对象</div><div class="line">  messageObject.shareObject = shareObject;</div><div class="line">  /**</div><div class="line">*  设置分享平台</div><div class="line">*</div><div class="line">*  @param platformType  平台类型 @see UMSocialPlatformType</div><div class="line">*  @param messageObject  分享的content @see UMSocialMessageObject</div><div class="line">*  @param currentViewController 用于弹出类似邮件分享、短信分享等这样的系统页面</div><div class="line">*  @param completion   回调</div><div class="line">*  @discuss currentViewController 只正对sms,email等平台需要传入viewcontroller的平台，其他不需要的平台可以传入nil</div><div class="line">*/</div><div class="line">  [[UMSocialManager defaultManager] shareToPlatform:UMSocialPlatformType messageObject:messageObject currentViewController:self.vc completion:^(id data, NSError *error) &#123;</div><div class="line">              if (error) &#123;</div><div class="line">                  NSLog(@&quot;************Share fail with error %@*********&quot;,error);</div><div class="line">              &#125;else&#123;</div><div class="line">                  NSLog(@&quot;response data is %@&quot;,data);</div><div class="line">              &#125;</div><div class="line">          &#125;];</div></pre></td></tr></table></figure>
+<blockquote>
+<p>微博</p>
+</blockquote>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div><div class="line">17</div><div class="line">18</div><div class="line">19</div><div class="line">20</div></pre></td><td class="code"><pre><div class="line">//创建分享消息对象</div><div class="line">UMSocialMessageObject *messageObject = [UMSocialMessageObject messageObject];</div><div class="line">//设置文本</div><div class="line">messageObject.text = [NSString stringWithFormat:@&quot;描述%@&quot;,URL];</div><div class="line"></div><div class="line">//创建图片内容对象</div><div class="line">UMShareImageObject *shareObject = [[UMShareImageObject alloc] init];</div><div class="line">//如果有缩略图，则设置缩略图</div><div class="line">[shareObject setShareImage:[UIImage imageNamed:@&quot;image&quot;]];</div><div class="line">//分享消息对象设置分享内容对象</div><div class="line">messageObject.shareObject = shareObject;</div><div class="line"></div><div class="line">//调用分享接口</div><div class="line">[[UMSocialManager defaultManager] shareToPlatform:UMSocialPlatformType_Sina messageObject:messageObject currentViewController:self.vc completion:^(id data, NSError *error) &#123;</div><div class="line">    if (error) &#123;</div><div class="line">        NSLog(@&quot;************Share fail with error %@*********&quot;,error);</div><div class="line">    &#125;else&#123;</div><div class="line">        NSLog(@&quot;response data is %@&quot;,data);</div><div class="line">    &#125;</div><div class="line">&#125;];</div></pre></td></tr></table></figure>
 
       
     </div>
@@ -373,8 +415,8 @@
         <div class="post-nav">
           <div class="post-nav-next post-nav-item">
             
-              <a href="/2017/03/13/jpush/" rel="next" title="JPush">
-                <i class="fa fa-chevron-left"></i> JPush
+              <a href="/2017/08/11/正则表达式详解/" rel="next" title="正则表达式详解">
+                <i class="fa fa-chevron-left"></i> 正则表达式详解
               </a>
             
           </div>
@@ -383,8 +425,8 @@
 
           <div class="post-nav-prev post-nav-item">
             
-              <a href="/2017/04/06/LLDB/" rel="prev" title="LLDB 的调试使用">
-                LLDB 的调试使用 <i class="fa fa-chevron-right"></i>
+              <a href="/2017/08/20/fastlane 的使用/" rel="prev" title="fastlane 的使用">
+                fastlane 的使用 <i class="fa fa-chevron-right"></i>
               </a>
             
           </div>
