@@ -1,0 +1,796 @@
+<!DOCTYPE html>
+
+
+
+  
+
+
+<html class="theme-next gemini use-motion" lang="zh-Hans">
+<head>
+  <meta charset="UTF-8"/>
+<meta http-equiv="X-UA-Compatible" content="IE=edge" />
+<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1"/>
+<meta name="theme-color" content="#222">
+
+
+
+
+
+
+
+
+
+<meta http-equiv="Cache-Control" content="no-transform" />
+<meta http-equiv="Cache-Control" content="no-siteapp" />
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+  
+  
+  <link href="/lib/fancybox/source/jquery.fancybox.css?v=2.1.5" rel="stylesheet" type="text/css" />
+
+
+
+
+  
+  
+  
+  
+
+  
+    
+    
+  
+
+  
+
+  
+
+  
+
+  
+
+  
+    
+    
+    <link href="//fonts.googleapis.com/css?family=Lato:300,300italic,400,400italic,700,700italic&subset=latin,latin-ext" rel="stylesheet" type="text/css">
+  
+
+
+
+
+
+
+<link href="/lib/font-awesome/css/font-awesome.min.css?v=4.6.2" rel="stylesheet" type="text/css" />
+
+<link href="/css/main.css?v=5.1.2" rel="stylesheet" type="text/css" />
+
+
+  <meta name="keywords" content="iSong" />
+
+
+
+
+
+
+
+
+  <link rel="shortcut icon" type="image/x-icon" href="/favicon.ico?v=5.1.2" />
+
+
+
+
+
+
+<meta name="description" content="先是证书的的上传,按照官网的来(3.0.0)
+导入SDK(忽略)添加头文件
+请将以下代码添加到 AppDelegate.m 引用头文件的位置。
+引入JPush功能所需头文件
+
+1234567#import &amp;quot;JPUSHService.h&amp;quot;// iOS10注册APNs所需头文件#ifdef NSFoundationVersionNumber_iOS_9_x_Max#import">
+<meta property="og:type" content="article">
+<meta property="og:title" content="JPush">
+<meta property="og:url" content="http://yoursite.com/2017/03/13/jpush/index.html">
+<meta property="og:site_name" content="Song">
+<meta property="og:description" content="先是证书的的上传,按照官网的来(3.0.0)
+导入SDK(忽略)添加头文件
+请将以下代码添加到 AppDelegate.m 引用头文件的位置。
+引入JPush功能所需头文件
+
+1234567#import &amp;quot;JPUSHService.h&amp;quot;// iOS10注册APNs所需头文件#ifdef NSFoundationVersionNumber_iOS_9_x_Max#import">
+<meta property="og:updated_time" content="2017-03-13T06:39:12.000Z">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:title" content="JPush">
+<meta name="twitter:description" content="先是证书的的上传,按照官网的来(3.0.0)
+导入SDK(忽略)添加头文件
+请将以下代码添加到 AppDelegate.m 引用头文件的位置。
+引入JPush功能所需头文件
+
+1234567#import &amp;quot;JPUSHService.h&amp;quot;// iOS10注册APNs所需头文件#ifdef NSFoundationVersionNumber_iOS_9_x_Max#import">
+
+
+
+<script type="text/javascript" id="hexo.configurations">
+  var NexT = window.NexT || {};
+  var CONFIG = {
+    root: '/',
+    scheme: 'Gemini',
+    version: '5.1.2',
+    sidebar: {"position":"left","display":"post","offset":12,"offset_float":12,"b2t":false,"scrollpercent":true,"onmobile":false},
+    fancybox: true,
+    tabs: true,
+    motion: true,
+    duoshuo: {
+      userId: '0',
+      author: '博主'
+    },
+    algolia: {
+      applicationID: '',
+      apiKey: '',
+      indexName: '',
+      hits: {"per_page":10},
+      labels: {"input_placeholder":"Search for Posts","hits_empty":"We didn't find any results for the search: ${query}","hits_stats":"${hits} results found in ${time} ms"}
+    }
+  };
+</script>
+
+
+
+  <link rel="canonical" href="http://yoursite.com/2017/03/13/jpush/"/>
+
+
+
+
+
+  <title>JPush | Song</title>
+  
+
+
+
+
+
+
+
+
+</head>
+
+<body itemscope itemtype="http://schema.org/WebPage" lang="zh-Hans">
+
+  
+  
+    
+  
+
+  <div class="container sidebar-position-left page-post-detail ">
+    <div class="headband"></div>
+
+    <header id="header" class="header" itemscope itemtype="http://schema.org/WPHeader">
+      <div class="header-inner"><div class="site-brand-wrapper">
+  <div class="site-meta ">
+    
+
+    <div class="custom-logo-site-title">
+      <a href="/"  class="brand" rel="start">
+        <span class="logo-line-before"><i></i></span>
+        <span class="site-title">Song</span>
+        <span class="logo-line-after"><i></i></span>
+      </a>
+    </div>
+      
+        <p class="site-subtitle"></p>
+      
+  </div>
+
+  <div class="site-nav-toggle">
+    <button>
+      <span class="btn-bar"></span>
+      <span class="btn-bar"></span>
+      <span class="btn-bar"></span>
+    </button>
+  </div>
+</div>
+
+<nav class="site-nav">
+  
+
+  
+    <ul id="menu" class="menu">
+      
+        
+        <li class="menu-item menu-item-home">
+          <a href="/" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-home"></i> <br />
+            
+            首页
+          </a>
+        </li>
+      
+        
+        <li class="menu-item menu-item-about">
+          <a href="/about/" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-user"></i> <br />
+            
+            关于
+          </a>
+        </li>
+      
+        
+        <li class="menu-item menu-item-archives">
+          <a href="/archives/" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-archive"></i> <br />
+            
+            归档
+          </a>
+        </li>
+      
+        
+        <li class="menu-item menu-item-tags">
+          <a href="/tags/" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-tags"></i> <br />
+            
+            标签
+          </a>
+        </li>
+      
+
+      
+    </ul>
+  
+
+  
+</nav>
+
+
+
+ </div>
+    </header>
+
+    <main id="main" class="main">
+      <div class="main-inner">
+        <div class="content-wrap">
+          <div id="content" class="content">
+            
+
+  <div id="posts" class="posts-expand">
+    
+
+  
+
+  
+  
+  
+
+  <article class="post post-type-normal" itemscope itemtype="http://schema.org/Article">
+  
+  
+  
+  <div class="post-block">
+    <link itemprop="mainEntityOfPage" href="http://yoursite.com/2017/03/13/jpush/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="name" content="SongWei">
+      <meta itemprop="description" content="">
+      <meta itemprop="image" content="/images/avatar.gif">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="Song">
+    </span>
+
+    
+      <header class="post-header">
+
+        
+        
+          <h1 class="post-title" itemprop="name headline">JPush</h1>
+        
+
+        <div class="post-meta">
+          <span class="post-time">
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-calendar-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">发表于</span>
+              
+              <time title="创建于" itemprop="dateCreated datePublished" datetime="2017-03-13T14:37:43+08:00">
+                2017-03-13
+              </time>
+            
+
+            
+
+            
+          </span>
+
+          
+
+          
+            
+          
+
+          
+          
+
+          
+            <span class="post-meta-divider">|</span>
+            <span class="page-pv">本文总阅读量
+            <span class="busuanzi-value" id="busuanzi_value_page_pv" ></span>次
+            </span>
+          
+
+          
+
+          
+
+        </div>
+      </header>
+    
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+
+      
+      
+
+      
+        <p>先是证书的的上传,按照官网的来(3.0.0)</p>
+<h4 id="导入SDK-忽略"><a href="#导入SDK-忽略" class="headerlink" title="导入SDK(忽略)"></a>导入SDK(忽略)</h4><h4 id="添加头文件"><a href="#添加头文件" class="headerlink" title="添加头文件"></a>添加头文件</h4><blockquote>
+<p>请将以下代码添加到 AppDelegate.m 引用头文件的位置。</p>
+<p>引入JPush功能所需头文件</p>
+</blockquote>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div></pre></td><td class="code"><pre><div class="line">#import &quot;JPUSHService.h&quot;</div><div class="line">// iOS10注册APNs所需头文件</div><div class="line">#ifdef NSFoundationVersionNumber_iOS_9_x_Max</div><div class="line">#import &lt;UserNotifications/UserNotifications.h&gt;</div><div class="line">#endif</div><div class="line">// 如果需要使用idfa功能所需要引入的头文件（可选）</div><div class="line">#import &lt;AdSupport/AdSupport.h&gt;</div></pre></td></tr></table></figure>
+<h4 id="添加Delegate"><a href="#添加Delegate" class="headerlink" title="添加Delegate"></a>添加Delegate</h4><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div></pre></td><td class="code"><pre><div class="line">//为AppDelegate添加Delegate。</div><div class="line">//参考代码：</div><div class="line">@interface AppDelegate ()&lt;JPUSHRegisterDelegate&gt;</div><div class="line"></div><div class="line">@end</div></pre></td></tr></table></figure>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div><div class="line">17</div><div class="line">18</div><div class="line">19</div><div class="line">20</div><div class="line">21</div><div class="line">22</div><div class="line">23</div><div class="line">24</div><div class="line">25</div><div class="line">26</div><div class="line">27</div><div class="line">28</div><div class="line">29</div><div class="line">30</div><div class="line">31</div><div class="line">32</div><div class="line">33</div><div class="line">34</div><div class="line">35</div><div class="line">36</div><div class="line">37</div><div class="line">38</div><div class="line">39</div><div class="line">40</div><div class="line">41</div><div class="line">42</div><div class="line">43</div></pre></td><td class="code"><pre><div class="line">#pragma mark - ===============JPUSH===============</div><div class="line">-(void)JPUSHWith:(NSDictionary *)launchOptions&#123;</div><div class="line">    if ([[UIDevice currentDevice].systemVersion floatValue] &gt;= 10.0) &#123;</div><div class="line">        JPUSHRegisterEntity * entity = [[JPUSHRegisterEntity alloc] init];</div><div class="line">        entity.types = UNAuthorizationOptionAlert|UNAuthorizationOptionBadge|UNAuthorizationOptionSound;</div><div class="line">        [JPUSHService registerForRemoteNotificationConfig:entity delegate:self];</div><div class="line">    &#125;</div><div class="line">    else if ([[UIDevice currentDevice].systemVersion floatValue] &gt;= 8.0) &#123;</div><div class="line">        //可以添加自定义categories</div><div class="line">        [JPUSHService registerForRemoteNotificationTypes:(UIUserNotificationTypeBadge |</div><div class="line">                                                          UIUserNotificationTypeSound |</div><div class="line">                                                          UIUserNotificationTypeAlert)</div><div class="line">                                              categories:nil];</div><div class="line">    &#125;</div><div class="line">    else &#123;</div><div class="line">        //categories 必须为nil</div><div class="line">        [JPUSHService registerForRemoteNotificationTypes:(UIRemoteNotificationTypeBadge |</div><div class="line">                                                          UIRemoteNotificationTypeSound |</div><div class="line">                                                          UIRemoteNotificationTypeAlert) categories:nil];</div><div class="line">    &#125;</div><div class="line">    </div><div class="line">    </div><div class="line">    /*</div><div class="line">    //Required</div><div class="line">    //notice: 3.0.0及以后版本注册可以这样写，也可以继续用之前的注册方式</div><div class="line">    JPUSHRegisterEntity * entity = [[JPUSHRegisterEntity alloc] init];</div><div class="line">    entity.types = JPAuthorizationOptionAlert|JPAuthorizationOptionBadge|JPAuthorizationOptionSound;</div><div class="line">    if ([[UIDevice currentDevice].systemVersion floatValue] &gt;= 8.0) &#123;</div><div class="line">        // 可以添加自定义categories</div><div class="line">        // NSSet&lt;UNNotificationCategory *&gt; *categories for iOS10 or later</div><div class="line">        // NSSet&lt;UIUserNotificationCategory *&gt; *categories for iOS8 and iOS9</div><div class="line">    &#125;</div><div class="line">    [JPUSHService registerForRemoteNotificationConfig:entity delegate:self];</div><div class="line">    */</div><div class="line"></div><div class="line">    </div><div class="line">    </div><div class="line">    // Required</div><div class="line">    [JPUSHService setupWithOption:launchOptions appKey:@&quot;key&quot;</div><div class="line">                          channel:@&quot;appstore&quot;</div><div class="line">                 apsForProduction:0//0 (默认值)表示采用的是开发证书，1 表示采用生产证书发布应用</div><div class="line">            advertisingIdentifier:nil];</div><div class="line">&#125;</div></pre></td></tr></table></figure>
+<hr>
+<h5 id="注册APNs成功并上报DeviceToken"><a href="#注册APNs成功并上报DeviceToken" class="headerlink" title="注册APNs成功并上报DeviceToken"></a>注册APNs成功并上报DeviceToken</h5><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div></pre></td><td class="code"><pre><div class="line">//请在AppDelegate.m实现该回调方法并添加回调方法中的代码</div><div class="line">- (void)application:(UIApplication *)application </div><div class="line">didRegisterForRemoteNotificationsWithDeviceToken:(NSData *)deviceToken &#123;</div><div class="line"></div><div class="line">  /// Required - 注册 DeviceToken</div><div class="line">  [JPUSHService registerDeviceToken:deviceToken];</div><div class="line">&#125;</div></pre></td></tr></table></figure>
+<h5 id="实现注册APNs失败接口（可选）"><a href="#实现注册APNs失败接口（可选）" class="headerlink" title="实现注册APNs失败接口（可选）"></a>实现注册APNs失败接口（可选）</h5><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div></pre></td><td class="code"><pre><div class="line">- (void)application:(UIApplication *)application didFailToRegisterForRemoteNotificationsWithError:(NSError *)error &#123;</div><div class="line">  //Optional</div><div class="line">  NSLog(@&quot;did Fail To Register For Remote Notifications With Error: %@&quot;, error);</div><div class="line">&#125;</div></pre></td></tr></table></figure>
+<h5 id="添加处理APNs通知回调方法"><a href="#添加处理APNs通知回调方法" class="headerlink" title="添加处理APNs通知回调方法"></a>添加处理APNs通知回调方法</h5><blockquote>
+<p>请在AppDelegate.m实现该回调方法并添加回调方法中的代码</p>
+</blockquote>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div><div class="line">17</div><div class="line">18</div><div class="line">19</div><div class="line">20</div><div class="line">21</div><div class="line">22</div><div class="line">23</div><div class="line">24</div><div class="line">25</div><div class="line">26</div><div class="line">27</div><div class="line">28</div><div class="line">29</div><div class="line">30</div><div class="line">31</div><div class="line">32</div><div class="line">33</div><div class="line">34</div></pre></td><td class="code"><pre><div class="line">//#pragma mark- JPUSHRegisterDelegate</div><div class="line">// iOS 10 Support</div><div class="line">- (void)jpushNotificationCenter:(UNUserNotificationCenter *)center willPresentNotification:(UNNotification *)notification withCompletionHandler:(void (^)(NSInteger))completionHandler &#123;</div><div class="line">  // Required</div><div class="line">  NSDictionary * userInfo = notification.request.content.userInfo;</div><div class="line">  if([notification.request.trigger isKindOfClass:[UNPushNotificationTrigger class]]) &#123;</div><div class="line">    [JPUSHService handleRemoteNotification:userInfo];</div><div class="line">  &#125;</div><div class="line">  completionHandler(UNNotificationPresentationOptionAlert); // 需要执行这个方法，选择是否提醒用户，有Badge、Sound、Alert三种类型可以选择设置</div><div class="line">  ////以最后为准 </div><div class="line">&#125;</div><div class="line"></div><div class="line">// iOS 10 Support</div><div class="line">- (void)jpushNotificationCenter:(UNUserNotificationCenter *)center didReceiveNotificationResponse:(UNNotificationResponse *)response withCompletionHandler:(void (^)())completionHandler &#123;</div><div class="line">  // Required</div><div class="line">  NSDictionary * userInfo = response.notification.request.content.userInfo;</div><div class="line">  if([response.notification.request.trigger isKindOfClass:[UNPushNotificationTrigger class]]) &#123;</div><div class="line">    [JPUSHService handleRemoteNotification:userInfo];</div><div class="line">  &#125;</div><div class="line">  completionHandler();  // 系统要求执行这个方法</div><div class="line">&#125;</div><div class="line"></div><div class="line">- (void)application:(UIApplication *)application didReceiveRemoteNotification:(NSDictionary *)userInfo fetchCompletionHandler:(void (^)(UIBackgroundFetchResult))completionHandler &#123;</div><div class="line"></div><div class="line">  // Required, iOS 7 Support</div><div class="line">  [JPUSHService handleRemoteNotification:userInfo];</div><div class="line">  completionHandler(UIBackgroundFetchResultNewData);</div><div class="line">&#125;</div><div class="line"></div><div class="line">- (void)application:(UIApplication *)application didReceiveRemoteNotification:(NSDictionary *)userInfo &#123;</div><div class="line"></div><div class="line">  // Required,For systems with less than or equal to iOS6</div><div class="line">  [JPUSHService handleRemoteNotification:userInfo];</div><div class="line">&#125;</div></pre></td></tr></table></figure>
+<p>通知的点击</p>
+<blockquote>
+<p>前台</p>
+</blockquote>
+<p>10之前不用考虑, 之后能显示</p>
+<p>点击执行</p>
+<blockquote>
+<p>后台</p>
+</blockquote>
+<p>一样</p>
+<p>点击执行</p>
+<blockquote>
+<p>杀死</p>
+</blockquote>
+<p>肯定就是相当于点击图标  只不过有传的消息</p>
+<p>点击执行</p>
+
+      
+    </div>
+    
+    
+    
+
+    
+
+    
+
+    
+
+    <footer class="post-footer">
+      
+
+      
+      
+      
+
+      
+        <div class="post-nav">
+          <div class="post-nav-next post-nav-item">
+            
+              <a href="/2017/03/10/Operation Queues/" rel="next" title="Operation Queues">
+                <i class="fa fa-chevron-left"></i> Operation Queues
+              </a>
+            
+          </div>
+
+          <span class="post-nav-divider"></span>
+
+          <div class="post-nav-prev post-nav-item">
+            
+              <a href="/2017/03/13/@synchronized的简单实用/" rel="prev" title="synchronized的简单实用">
+                synchronized的简单实用 <i class="fa fa-chevron-right"></i>
+              </a>
+            
+          </div>
+        </div>
+      
+
+      
+      
+    </footer>
+  </div>
+  
+  
+  
+  </article>
+
+
+
+    <div class="post-spread">
+      
+    </div>
+  </div>
+
+
+          </div>
+          
+
+
+          
+  <div class="comments" id="comments">
+    
+  </div>
+
+
+        </div>
+        
+          
+  
+  <div class="sidebar-toggle">
+    <div class="sidebar-toggle-line-wrap">
+      <span class="sidebar-toggle-line sidebar-toggle-line-first"></span>
+      <span class="sidebar-toggle-line sidebar-toggle-line-middle"></span>
+      <span class="sidebar-toggle-line sidebar-toggle-line-last"></span>
+    </div>
+  </div>
+
+  <aside id="sidebar" class="sidebar">
+    
+    <div class="sidebar-inner">
+
+      
+
+      
+        <ul class="sidebar-nav motion-element">
+          <li class="sidebar-nav-toc sidebar-nav-active" data-target="post-toc-wrap" >
+            文章目录
+          </li>
+          <li class="sidebar-nav-overview" data-target="site-overview">
+            站点概览
+          </li>
+        </ul>
+      
+
+      <section class="site-overview sidebar-panel">
+        <div class="site-author motion-element" itemprop="author" itemscope itemtype="http://schema.org/Person">
+          <img class="site-author-image" itemprop="image"
+               src="/images/avatar.gif"
+               alt="SongWei" />
+          <p class="site-author-name" itemprop="name">SongWei</p>
+           
+              <p class="site-description motion-element" itemprop="description">先拆轮子,在造轮子!</p>
+          
+        </div>
+        <nav class="site-state motion-element">
+
+          
+            <div class="site-state-item site-state-posts">
+            
+              <a href="/archives/">
+            
+                <span class="site-state-item-count">23</span>
+                <span class="site-state-item-name">日志</span>
+              </a>
+            </div>
+          
+
+          
+
+          
+            
+            
+            <div class="site-state-item site-state-tags">
+              <a href="/tags/index.html">
+                <span class="site-state-item-count">2</span>
+                <span class="site-state-item-name">标签</span>
+              </a>
+            </div>
+          
+
+        </nav>
+
+        
+
+        <div class="links-of-author motion-element">
+          
+            
+              <span class="links-of-author-item">
+                <a href="https://github.com/" target="_blank" title="GitHub">
+                  
+                    <i class="fa fa-fw fa-github"></i>
+                  
+                    
+                      GitHub
+                    
+                </a>
+              </span>
+            
+              <span class="links-of-author-item">
+                <a href="http://weibo.com/" target="_blank" title="Weibo">
+                  
+                    <i class="fa fa-fw fa-weibo"></i>
+                  
+                    
+                      Weibo
+                    
+                </a>
+              </span>
+            
+              <span class="links-of-author-item">
+                <a href="http://www.baidu.com" target="_blank" title="百度">
+                  
+                    <i class="fa fa-fw fa-globe"></i>
+                  
+                    
+                      百度
+                    
+                </a>
+              </span>
+            
+          
+        </div>
+
+        
+        
+
+        
+        
+
+        
+
+
+      </section>
+
+      
+      <!--noindex-->
+        <section class="post-toc-wrap motion-element sidebar-panel sidebar-panel-active">
+          <div class="post-toc">
+
+            
+              
+            
+
+            
+              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-4"><a class="nav-link" href="#导入SDK-忽略"><span class="nav-number">1.</span> <span class="nav-text">导入SDK(忽略)</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#添加头文件"><span class="nav-number">2.</span> <span class="nav-text">添加头文件</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#添加Delegate"><span class="nav-number">3.</span> <span class="nav-text">添加Delegate</span></a><ol class="nav-child"><li class="nav-item nav-level-5"><a class="nav-link" href="#注册APNs成功并上报DeviceToken"><span class="nav-number">3.1.</span> <span class="nav-text">注册APNs成功并上报DeviceToken</span></a></li><li class="nav-item nav-level-5"><a class="nav-link" href="#实现注册APNs失败接口（可选）"><span class="nav-number">3.2.</span> <span class="nav-text">实现注册APNs失败接口（可选）</span></a></li><li class="nav-item nav-level-5"><a class="nav-link" href="#添加处理APNs通知回调方法"><span class="nav-number">3.3.</span> <span class="nav-text">添加处理APNs通知回调方法</span></a></li></ol></li></ol></div>
+            
+
+          </div>
+        </section>
+      <!--/noindex-->
+      
+
+      
+
+    </div>
+  </aside>
+
+
+        
+      </div>
+    </main>
+
+    <footer id="footer" class="footer">
+      <div class="footer-inner">
+        <div class="copyright" >
+  
+  &copy; 
+  <span itemprop="copyrightYear">2017</span>
+  <span class="with-love">
+    <i class="fa fa-heart"></i>
+  </span>
+  <span class="author" itemprop="copyrightHolder">SongWei</span>
+
+  
+</div>
+
+
+  <div class="powered-by">由 <a class="theme-link" href="https://hexo.io">Hexo</a> 强力驱动</div>
+
+  <span class="post-meta-divider">|</span>
+
+  <div class="theme-info">主题 &mdash; <a class="theme-link" href="https://github.com/iissnan/hexo-theme-next">NexT.Gemini</a> v5.1.2</div>
+
+
+        
+<div class="busuanzi-count">
+  <script async src="https://dn-lbstatics.qbox.me/busuanzi/2.3/busuanzi.pure.mini.js"></script>
+
+  
+    <span class="site-uv">
+      本站访客数
+      <span class="busuanzi-value" id="busuanzi_value_site_uv"></span>
+      人次
+    </span>
+  
+
+  
+    <span class="site-pv">
+      本站总访问量
+      <span class="busuanzi-value" id="busuanzi_value_site_pv"></span>
+      次
+    </span>
+  
+</div>
+
+
+
+
+
+
+
+
+        
+      </div>
+    </footer>
+
+    
+      <div class="back-to-top">
+        <i class="fa fa-arrow-up"></i>
+        
+          <span id="scrollpercent"><span>0</span>%</span>
+        
+      </div>
+    
+
+  </div>
+
+  
+
+<script type="text/javascript">
+  if (Object.prototype.toString.call(window.Promise) !== '[object Function]') {
+    window.Promise = null;
+  }
+</script>
+
+
+
+
+
+
+
+
+
+  
+
+
+
+
+
+
+
+
+
+
+
+
+  
+  <script type="text/javascript" src="/lib/jquery/index.js?v=2.1.3"></script>
+
+  
+  <script type="text/javascript" src="/lib/fastclick/lib/fastclick.min.js?v=1.0.6"></script>
+
+  
+  <script type="text/javascript" src="/lib/jquery_lazyload/jquery.lazyload.js?v=1.9.7"></script>
+
+  
+  <script type="text/javascript" src="/lib/velocity/velocity.min.js?v=1.2.1"></script>
+
+  
+  <script type="text/javascript" src="/lib/velocity/velocity.ui.min.js?v=1.2.1"></script>
+
+  
+  <script type="text/javascript" src="/lib/fancybox/source/jquery.fancybox.pack.js?v=2.1.5"></script>
+
+
+  
+
+
+  <script type="text/javascript" src="/js/src/utils.js?v=5.1.2"></script>
+
+  <script type="text/javascript" src="/js/src/motion.js?v=5.1.2"></script>
+
+
+
+  
+  
+
+
+  <script type="text/javascript" src="/js/src/affix.js?v=5.1.2"></script>
+
+  <script type="text/javascript" src="/js/src/schemes/pisces.js?v=5.1.2"></script>
+
+
+
+  
+  <script type="text/javascript" src="/js/src/scrollspy.js?v=5.1.2"></script>
+<script type="text/javascript" src="/js/src/post-details.js?v=5.1.2"></script>
+
+
+
+  
+
+
+  <script type="text/javascript" src="/js/src/bootstrap.js?v=5.1.2"></script>
+
+
+
+  
+
+
+  
+
+
+
+
+	
+
+
+
+
+
+  
+
+
+
+
+
+  
+
+
+
+
+
+
+
+
+  
+
+
+
+
+
+  
+
+  
+
+  
+
+  
+
+  
+
+  
+
+</body>
+</html>

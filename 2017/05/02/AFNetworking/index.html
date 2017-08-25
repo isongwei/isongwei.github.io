@@ -1,0 +1,759 @@
+<!DOCTYPE html>
+
+
+
+  
+
+
+<html class="theme-next gemini use-motion" lang="zh-Hans">
+<head>
+  <meta charset="UTF-8"/>
+<meta http-equiv="X-UA-Compatible" content="IE=edge" />
+<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1"/>
+<meta name="theme-color" content="#222">
+
+
+
+
+
+
+
+
+
+<meta http-equiv="Cache-Control" content="no-transform" />
+<meta http-equiv="Cache-Control" content="no-siteapp" />
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+  
+  
+  <link href="/lib/fancybox/source/jquery.fancybox.css?v=2.1.5" rel="stylesheet" type="text/css" />
+
+
+
+
+  
+  
+  
+  
+
+  
+    
+    
+  
+
+  
+
+  
+
+  
+
+  
+
+  
+    
+    
+    <link href="//fonts.googleapis.com/css?family=Lato:300,300italic,400,400italic,700,700italic&subset=latin,latin-ext" rel="stylesheet" type="text/css">
+  
+
+
+
+
+
+
+<link href="/lib/font-awesome/css/font-awesome.min.css?v=4.6.2" rel="stylesheet" type="text/css" />
+
+<link href="/css/main.css?v=5.1.2" rel="stylesheet" type="text/css" />
+
+
+  <meta name="keywords" content="iSong" />
+
+
+
+
+
+
+
+
+  <link rel="shortcut icon" type="image/x-icon" href="/favicon.ico?v=5.1.2" />
+
+
+
+
+
+
+<meta name="description" content="AFNetworkReachabilityManager###开始
+1234567891011121314151617181920212223242526272829303132333435363738394041424344454647484950515253545556575859606162636465666768697071727374757677787980818283848586878">
+<meta property="og:type" content="article">
+<meta property="og:title" content="AFNetworking">
+<meta property="og:url" content="http://yoursite.com/2017/05/02/AFNetworking/index.html">
+<meta property="og:site_name" content="Song">
+<meta property="og:description" content="AFNetworkReachabilityManager###开始
+1234567891011121314151617181920212223242526272829303132333435363738394041424344454647484950515253545556575859606162636465666768697071727374757677787980818283848586878">
+<meta property="og:updated_time" content="2017-07-24T15:31:28.000Z">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:title" content="AFNetworking">
+<meta name="twitter:description" content="AFNetworkReachabilityManager###开始
+1234567891011121314151617181920212223242526272829303132333435363738394041424344454647484950515253545556575859606162636465666768697071727374757677787980818283848586878">
+
+
+
+<script type="text/javascript" id="hexo.configurations">
+  var NexT = window.NexT || {};
+  var CONFIG = {
+    root: '/',
+    scheme: 'Gemini',
+    version: '5.1.2',
+    sidebar: {"position":"left","display":"post","offset":12,"offset_float":12,"b2t":false,"scrollpercent":true,"onmobile":false},
+    fancybox: true,
+    tabs: true,
+    motion: true,
+    duoshuo: {
+      userId: '0',
+      author: '博主'
+    },
+    algolia: {
+      applicationID: '',
+      apiKey: '',
+      indexName: '',
+      hits: {"per_page":10},
+      labels: {"input_placeholder":"Search for Posts","hits_empty":"We didn't find any results for the search: ${query}","hits_stats":"${hits} results found in ${time} ms"}
+    }
+  };
+</script>
+
+
+
+  <link rel="canonical" href="http://yoursite.com/2017/05/02/AFNetworking/"/>
+
+
+
+
+
+  <title>AFNetworking | Song</title>
+  
+
+
+
+
+
+
+
+
+</head>
+
+<body itemscope itemtype="http://schema.org/WebPage" lang="zh-Hans">
+
+  
+  
+    
+  
+
+  <div class="container sidebar-position-left page-post-detail ">
+    <div class="headband"></div>
+
+    <header id="header" class="header" itemscope itemtype="http://schema.org/WPHeader">
+      <div class="header-inner"><div class="site-brand-wrapper">
+  <div class="site-meta ">
+    
+
+    <div class="custom-logo-site-title">
+      <a href="/"  class="brand" rel="start">
+        <span class="logo-line-before"><i></i></span>
+        <span class="site-title">Song</span>
+        <span class="logo-line-after"><i></i></span>
+      </a>
+    </div>
+      
+        <p class="site-subtitle"></p>
+      
+  </div>
+
+  <div class="site-nav-toggle">
+    <button>
+      <span class="btn-bar"></span>
+      <span class="btn-bar"></span>
+      <span class="btn-bar"></span>
+    </button>
+  </div>
+</div>
+
+<nav class="site-nav">
+  
+
+  
+    <ul id="menu" class="menu">
+      
+        
+        <li class="menu-item menu-item-home">
+          <a href="/" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-home"></i> <br />
+            
+            首页
+          </a>
+        </li>
+      
+        
+        <li class="menu-item menu-item-about">
+          <a href="/about/" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-user"></i> <br />
+            
+            关于
+          </a>
+        </li>
+      
+        
+        <li class="menu-item menu-item-archives">
+          <a href="/archives/" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-archive"></i> <br />
+            
+            归档
+          </a>
+        </li>
+      
+        
+        <li class="menu-item menu-item-tags">
+          <a href="/tags/" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-tags"></i> <br />
+            
+            标签
+          </a>
+        </li>
+      
+
+      
+    </ul>
+  
+
+  
+</nav>
+
+
+
+ </div>
+    </header>
+
+    <main id="main" class="main">
+      <div class="main-inner">
+        <div class="content-wrap">
+          <div id="content" class="content">
+            
+
+  <div id="posts" class="posts-expand">
+    
+
+  
+
+  
+  
+  
+
+  <article class="post post-type-normal" itemscope itemtype="http://schema.org/Article">
+  
+  
+  
+  <div class="post-block">
+    <link itemprop="mainEntityOfPage" href="http://yoursite.com/2017/05/02/AFNetworking/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="name" content="SongWei">
+      <meta itemprop="description" content="">
+      <meta itemprop="image" content="/images/avatar.gif">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="Song">
+    </span>
+
+    
+      <header class="post-header">
+
+        
+        
+          <h1 class="post-title" itemprop="name headline">AFNetworking</h1>
+        
+
+        <div class="post-meta">
+          <span class="post-time">
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-calendar-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">发表于</span>
+              
+              <time title="创建于" itemprop="dateCreated datePublished" datetime="2017-05-02T10:57:23+08:00">
+                2017-05-02
+              </time>
+            
+
+            
+
+            
+          </span>
+
+          
+
+          
+            
+          
+
+          
+          
+
+          
+            <span class="post-meta-divider">|</span>
+            <span class="page-pv">本文总阅读量
+            <span class="busuanzi-value" id="busuanzi_value_page_pv" ></span>次
+            </span>
+          
+
+          
+
+          
+
+        </div>
+      </header>
+    
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+
+      
+      
+
+      
+        <h2 id="AFNetworkReachabilityManager"><a href="#AFNetworkReachabilityManager" class="headerlink" title="AFNetworkReachabilityManager"></a>AFNetworkReachabilityManager</h2><p>###开始</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div><div class="line">17</div><div class="line">18</div><div class="line">19</div><div class="line">20</div><div class="line">21</div><div class="line">22</div><div class="line">23</div><div class="line">24</div><div class="line">25</div><div class="line">26</div><div class="line">27</div><div class="line">28</div><div class="line">29</div><div class="line">30</div><div class="line">31</div><div class="line">32</div><div class="line">33</div><div class="line">34</div><div class="line">35</div><div class="line">36</div><div class="line">37</div><div class="line">38</div><div class="line">39</div><div class="line">40</div><div class="line">41</div><div class="line">42</div><div class="line">43</div><div class="line">44</div><div class="line">45</div><div class="line">46</div><div class="line">47</div><div class="line">48</div><div class="line">49</div><div class="line">50</div><div class="line">51</div><div class="line">52</div><div class="line">53</div><div class="line">54</div><div class="line">55</div><div class="line">56</div><div class="line">57</div><div class="line">58</div><div class="line">59</div><div class="line">60</div><div class="line">61</div><div class="line">62</div><div class="line">63</div><div class="line">64</div><div class="line">65</div><div class="line">66</div><div class="line">67</div><div class="line">68</div><div class="line">69</div><div class="line">70</div><div class="line">71</div><div class="line">72</div><div class="line">73</div><div class="line">74</div><div class="line">75</div><div class="line">76</div><div class="line">77</div><div class="line">78</div><div class="line">79</div><div class="line">80</div><div class="line">81</div><div class="line">82</div><div class="line">83</div><div class="line">84</div><div class="line">85</div><div class="line">86</div><div class="line">87</div><div class="line">88</div><div class="line">89</div><div class="line">90</div><div class="line">91</div><div class="line">92</div><div class="line">93</div><div class="line">94</div><div class="line">95</div><div class="line">96</div><div class="line">97</div><div class="line">98</div><div class="line">99</div><div class="line">100</div><div class="line">101</div><div class="line">102</div><div class="line">103</div><div class="line">104</div><div class="line">105</div><div class="line">106</div><div class="line">107</div><div class="line">108</div><div class="line">109</div><div class="line">110</div><div class="line">111</div><div class="line">112</div><div class="line">113</div><div class="line">114</div><div class="line">115</div><div class="line">116</div><div class="line">117</div><div class="line">118</div><div class="line">119</div><div class="line">120</div><div class="line">121</div></pre></td><td class="code"><pre><div class="line"></div><div class="line">#import &lt;Foundation/Foundation.h&gt;</div><div class="line"></div><div class="line">#if !TARGET_OS_WATCH</div><div class="line">#import &lt;SystemConfiguration/SystemConfiguration.h&gt;</div><div class="line"></div><div class="line">typedef NS_ENUM(NSInteger, AFNetworkReachabilityStatus) &#123;</div><div class="line">    AFNetworkReachabilityStatusUnknown          = -1,</div><div class="line">    AFNetworkReachabilityStatusNotReachable     = 0,</div><div class="line">    AFNetworkReachabilityStatusReachableViaWWAN = 1,</div><div class="line">    AFNetworkReachabilityStatusReachableViaWiFi = 2,</div><div class="line">&#125;;</div><div class="line"></div><div class="line">NS_ASSUME_NONNULL_BEGIN</div><div class="line"></div><div class="line"></div><div class="line"></div><div class="line"></div><div class="line">/**</div><div class="line"></div><div class="line"> See Apple&apos;s Reachability Sample Code ( https://developer.apple.com/library/ios/samplecode/reachability/ )</div><div class="line"> 警告使用之前必须</div><div class="line"> @warning Instances of `AFNetworkReachabilityManager` must be started with `-startMonitoring` before reachability status can be determined.</div><div class="line"> */</div><div class="line">@interface AFNetworkReachabilityManager : NSObject</div><div class="line"></div><div class="line">/**</div><div class="line"> 当前网络状态</div><div class="line"> */</div><div class="line">@property (readonly, nonatomic, assign) AFNetworkReachabilityStatus networkReachabilityStatus;</div><div class="line"></div><div class="line">/**</div><div class="line"> 当前网络状态是否可用</div><div class="line"> */</div><div class="line">@property (readonly, nonatomic, assign, getter = isReachable) BOOL reachable;</div><div class="line"></div><div class="line">/**</div><div class="line"> 判断当前网络状态</div><div class="line"> */</div><div class="line">@property (readonly, nonatomic, assign, getter = isReachableViaWWAN) BOOL reachableViaWWAN;</div><div class="line">@property (readonly, nonatomic, assign, getter = isReachableViaWiFi) BOOL reachableViaWiFi;</div><div class="line"></div><div class="line">///---------------------</div><div class="line">/// @name Initialization</div><div class="line">///---------------------</div><div class="line"></div><div class="line">/**</div><div class="line"> 单例对象</div><div class="line"> */</div><div class="line">+ (instancetype)sharedManager;</div><div class="line"></div><div class="line">/**</div><div class="line">创建并返回 the default socket address.</div><div class="line"> */</div><div class="line">+ (instancetype)manager;</div><div class="line"></div><div class="line">/**</div><div class="line"> 为特殊域名创建并返回</div><div class="line"> */</div><div class="line">+ (instancetype)managerForDomain:(NSString *)domain;</div><div class="line"></div><div class="line">/**</div><div class="line"> 创建并返回for the socket address.</div><div class="line"> */</div><div class="line">+ (instancetype)managerForAddress:(const void *)address;</div><div class="line"></div><div class="line">/**</div><div class="line"> 初始化实例(用来保存创建测试连接返回的引用)</div><div class="line"> */</div><div class="line">- (instancetype)initWithReachability:(SCNetworkReachabilityRef)reachability NS_DESIGNATED_INITIALIZER;</div><div class="line"></div><div class="line">///--------------------------------------------------</div><div class="line">/// @name Starting &amp; Stopping Reachability Monitoring</div><div class="line">///--------------------------------------------------</div><div class="line"></div><div class="line">/**</div><div class="line"> 开始监控</div><div class="line"> */</div><div class="line">- (void)startMonitoring;</div><div class="line">/**</div><div class="line"> 停止监控</div><div class="line"> */</div><div class="line">- (void)stopMonitoring;</div><div class="line"></div><div class="line">///-------------------------------------------------</div><div class="line">/// @name Getting Localized Reachability Description</div><div class="line">///-------------------------------------------------</div><div class="line"></div><div class="line">/**</div><div class="line"> 返回本地化的状态</div><div class="line"> */</div><div class="line">- (NSString *)localizedNetworkReachabilityStatusString;</div><div class="line"></div><div class="line">///---------------------------------------------------</div><div class="line">/// @name Setting Network Reachability Change Callback</div><div class="line">///---------------------------------------------------</div><div class="line"></div><div class="line">/**</div><div class="line"> 当`baseURL` host changes就会执行</div><div class="line"> */</div><div class="line">- (void)setReachabilityStatusChangeBlock:(nullable void (^)(AFNetworkReachabilityStatus status))block;</div><div class="line"></div><div class="line">@end</div><div class="line">/*</div><div class="line">网络状态改变时所发的通知</div><div class="line"> @warning In order for network reachability to be monitored, include the `SystemConfiguration` framework in the active target&apos;s &quot;Link Binary With Library&quot; build phase, and add `#import &lt;SystemConfiguration/SystemConfiguration.h&gt;` to the header prefix of the project (`Prefix.pch`).</div><div class="line"> */</div><div class="line">FOUNDATION_EXPORT NSString * const AFNetworkingReachabilityDidChangeNotification;</div><div class="line">FOUNDATION_EXPORT NSString * const AFNetworkingReachabilityNotificationStatusItem;</div><div class="line"></div><div class="line">///--------------------</div><div class="line">/// @name Functions</div><div class="line">///--------------------</div><div class="line"></div><div class="line">/**</div><div class="line"> Returns a localized string representation of an `AFNetworkReachabilityStatus` value.</div><div class="line"> */</div><div class="line">FOUNDATION_EXPORT NSString * AFStringFromNetworkReachabilityStatus(AFNetworkReachabilityStatus status);</div><div class="line"></div><div class="line">NS_ASSUME_NONNULL_END</div><div class="line">#endif</div></pre></td></tr></table></figure>
+<h4 id="实现文件"><a href="#实现文件" class="headerlink" title="实现文件"></a>实现文件</h4><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div><div class="line">17</div><div class="line">18</div><div class="line">19</div><div class="line">20</div><div class="line">21</div><div class="line">22</div><div class="line">23</div><div class="line">24</div><div class="line">25</div><div class="line">26</div><div class="line">27</div><div class="line">28</div><div class="line">29</div><div class="line">30</div><div class="line">31</div><div class="line">32</div><div class="line">33</div><div class="line">34</div><div class="line">35</div><div class="line">36</div><div class="line">37</div><div class="line">38</div><div class="line">39</div><div class="line">40</div><div class="line">41</div><div class="line">42</div><div class="line">43</div><div class="line">44</div><div class="line">45</div><div class="line">46</div><div class="line">47</div><div class="line">48</div><div class="line">49</div><div class="line">50</div><div class="line">51</div><div class="line">52</div><div class="line">53</div><div class="line">54</div><div class="line">55</div><div class="line">56</div><div class="line">57</div><div class="line">58</div><div class="line">59</div><div class="line">60</div><div class="line">61</div><div class="line">62</div><div class="line">63</div><div class="line">64</div><div class="line">65</div><div class="line">66</div><div class="line">67</div><div class="line">68</div><div class="line">69</div><div class="line">70</div><div class="line">71</div><div class="line">72</div><div class="line">73</div><div class="line">74</div><div class="line">75</div><div class="line">76</div><div class="line">77</div><div class="line">78</div><div class="line">79</div><div class="line">80</div><div class="line">81</div><div class="line">82</div><div class="line">83</div><div class="line">84</div><div class="line">85</div><div class="line">86</div><div class="line">87</div><div class="line">88</div><div class="line">89</div><div class="line">90</div><div class="line">91</div><div class="line">92</div><div class="line">93</div><div class="line">94</div><div class="line">95</div><div class="line">96</div><div class="line">97</div><div class="line">98</div><div class="line">99</div><div class="line">100</div><div class="line">101</div><div class="line">102</div><div class="line">103</div><div class="line">104</div><div class="line">105</div><div class="line">106</div><div class="line">107</div><div class="line">108</div><div class="line">109</div><div class="line">110</div><div class="line">111</div><div class="line">112</div><div class="line">113</div><div class="line">114</div><div class="line">115</div><div class="line">116</div><div class="line">117</div><div class="line">118</div><div class="line">119</div><div class="line">120</div><div class="line">121</div><div class="line">122</div><div class="line">123</div><div class="line">124</div><div class="line">125</div><div class="line">126</div><div class="line">127</div><div class="line">128</div><div class="line">129</div><div class="line">130</div><div class="line">131</div><div class="line">132</div><div class="line">133</div><div class="line">134</div><div class="line">135</div><div class="line">136</div><div class="line">137</div><div class="line">138</div><div class="line">139</div><div class="line">140</div><div class="line">141</div><div class="line">142</div><div class="line">143</div><div class="line">144</div><div class="line">145</div><div class="line">146</div><div class="line">147</div><div class="line">148</div><div class="line">149</div><div class="line">150</div><div class="line">151</div><div class="line">152</div><div class="line">153</div><div class="line">154</div><div class="line">155</div><div class="line">156</div><div class="line">157</div><div class="line">158</div><div class="line">159</div><div class="line">160</div><div class="line">161</div><div class="line">162</div><div class="line">163</div><div class="line">164</div><div class="line">165</div><div class="line">166</div><div class="line">167</div><div class="line">168</div><div class="line">169</div><div class="line">170</div><div class="line">171</div><div class="line">172</div><div class="line">173</div><div class="line">174</div><div class="line">175</div><div class="line">176</div><div class="line">177</div><div class="line">178</div><div class="line">179</div><div class="line">180</div><div class="line">181</div><div class="line">182</div><div class="line">183</div><div class="line">184</div><div class="line">185</div><div class="line">186</div><div class="line">187</div><div class="line">188</div><div class="line">189</div><div class="line">190</div><div class="line">191</div><div class="line">192</div><div class="line">193</div><div class="line">194</div><div class="line">195</div><div class="line">196</div><div class="line">197</div><div class="line">198</div><div class="line">199</div><div class="line">200</div><div class="line">201</div><div class="line">202</div><div class="line">203</div><div class="line">204</div><div class="line">205</div><div class="line">206</div><div class="line">207</div><div class="line">208</div><div class="line">209</div><div class="line">210</div><div class="line">211</div><div class="line">212</div><div class="line">213</div><div class="line">214</div><div class="line">215</div><div class="line">216</div><div class="line">217</div><div class="line">218</div><div class="line">219</div><div class="line">220</div><div class="line">221</div><div class="line">222</div><div class="line">223</div><div class="line">224</div><div class="line">225</div><div class="line">226</div><div class="line">227</div><div class="line">228</div><div class="line">229</div><div class="line">230</div><div class="line">231</div><div class="line">232</div><div class="line">233</div><div class="line">234</div><div class="line">235</div><div class="line">236</div><div class="line">237</div><div class="line">238</div><div class="line">239</div><div class="line">240</div><div class="line">241</div><div class="line">242</div><div class="line">243</div><div class="line">244</div><div class="line">245</div><div class="line">246</div></pre></td><td class="code"><pre><div class="line"></div><div class="line">#import &quot;AFNetworkReachabilityManager.h&quot;</div><div class="line">#if !TARGET_OS_WATCH</div><div class="line"></div><div class="line">#import &lt;netinet/in.h&gt;</div><div class="line">#import &lt;netinet6/in6.h&gt;</div><div class="line">#import &lt;arpa/inet.h&gt;</div><div class="line">#import &lt;ifaddrs.h&gt;</div><div class="line">#import &lt;netdb.h&gt;</div><div class="line"></div><div class="line">NSString * const AFNetworkingReachabilityDidChangeNotification = @&quot;com.alamofire.networking.reachability.change&quot;;</div><div class="line">NSString * const AFNetworkingReachabilityNotificationStatusItem = @&quot;AFNetworkingReachabilityNotificationStatusItem&quot;;</div><div class="line"></div><div class="line">typedef void (^AFNetworkReachabilityStatusBlock)(AFNetworkReachabilityStatus status);</div><div class="line"></div><div class="line">NSString * AFStringFromNetworkReachabilityStatus(AFNetworkReachabilityStatus status) &#123;</div><div class="line">    switch (status) &#123;</div><div class="line">        case AFNetworkReachabilityStatusNotReachable:</div><div class="line">            return NSLocalizedStringFromTable(@&quot;Not Reachable&quot;, @&quot;AFNetworking&quot;, nil);</div><div class="line">        case AFNetworkReachabilityStatusReachableViaWWAN:</div><div class="line">            return NSLocalizedStringFromTable(@&quot;Reachable via WWAN&quot;, @&quot;AFNetworking&quot;, nil);</div><div class="line">        case AFNetworkReachabilityStatusReachableViaWiFi:</div><div class="line">            return NSLocalizedStringFromTable(@&quot;Reachable via WiFi&quot;, @&quot;AFNetworking&quot;, nil);</div><div class="line">        case AFNetworkReachabilityStatusUnknown:</div><div class="line">        default:</div><div class="line">            return NSLocalizedStringFromTable(@&quot;Unknown&quot;, @&quot;AFNetworking&quot;, nil);</div><div class="line">    &#125;</div><div class="line">&#125;</div><div class="line"></div><div class="line">static AFNetworkReachabilityStatus AFNetworkReachabilityStatusForFlags(SCNetworkReachabilityFlags flags) &#123;</div><div class="line">    BOOL isReachable = ((flags &amp; kSCNetworkReachabilityFlagsReachable) != 0);</div><div class="line">    BOOL needsConnection = ((flags &amp; kSCNetworkReachabilityFlagsConnectionRequired) != 0);</div><div class="line">    BOOL canConnectionAutomatically = (((flags &amp; kSCNetworkReachabilityFlagsConnectionOnDemand ) != 0) || ((flags &amp; kSCNetworkReachabilityFlagsConnectionOnTraffic) != 0));</div><div class="line">    BOOL canConnectWithoutUserInteraction = (canConnectionAutomatically &amp;&amp; (flags &amp; kSCNetworkReachabilityFlagsInterventionRequired) == 0);</div><div class="line">    BOOL isNetworkReachable = (isReachable &amp;&amp; (!needsConnection || canConnectWithoutUserInteraction));</div><div class="line"></div><div class="line">    AFNetworkReachabilityStatus status = AFNetworkReachabilityStatusUnknown;</div><div class="line">    if (isNetworkReachable == NO) &#123;</div><div class="line">        status = AFNetworkReachabilityStatusNotReachable;</div><div class="line">    &#125;</div><div class="line">#if	TARGET_OS_IPHONE</div><div class="line">    else if ((flags &amp; kSCNetworkReachabilityFlagsIsWWAN) != 0) &#123;</div><div class="line">        status = AFNetworkReachabilityStatusReachableViaWWAN;</div><div class="line">    &#125;</div><div class="line">#endif</div><div class="line">    else &#123;</div><div class="line">        status = AFNetworkReachabilityStatusReachableViaWiFi;</div><div class="line">    &#125;</div><div class="line"></div><div class="line">    return status;</div><div class="line">&#125;</div><div class="line"></div><div class="line">/**</div><div class="line"> * Queue a status change notification for the main thread.</div><div class="line"> *</div><div class="line"> * This is done to ensure that the notifications are received in the same order</div><div class="line"> * as they are sent. If notifications are sent directly, it is possible that</div><div class="line"> * a queued notification (for an earlier status condition) is processed after</div><div class="line"> * the later update, resulting in the listener being left in the wrong state.</div><div class="line"> */</div><div class="line">static void AFPostReachabilityStatusChange(SCNetworkReachabilityFlags flags, AFNetworkReachabilityStatusBlock block) &#123;</div><div class="line">    AFNetworkReachabilityStatus status = AFNetworkReachabilityStatusForFlags(flags);</div><div class="line">    dispatch_async(dispatch_get_main_queue(), ^&#123;</div><div class="line">        if (block) &#123;</div><div class="line">            block(status);</div><div class="line">        &#125;</div><div class="line">        NSNotificationCenter *notificationCenter = [NSNotificationCenter defaultCenter];</div><div class="line">        NSDictionary *userInfo = @&#123; AFNetworkingReachabilityNotificationStatusItem: @(status) &#125;;</div><div class="line">        [notificationCenter postNotificationName:AFNetworkingReachabilityDidChangeNotification object:nil userInfo:userInfo];</div><div class="line">    &#125;);</div><div class="line">&#125;</div><div class="line"></div><div class="line">static void AFNetworkReachabilityCallback(SCNetworkReachabilityRef __unused target, SCNetworkReachabilityFlags flags, void *info) &#123;</div><div class="line">    AFPostReachabilityStatusChange(flags, (__bridge AFNetworkReachabilityStatusBlock)info);</div><div class="line">&#125;</div><div class="line"></div><div class="line"></div><div class="line">static const void * AFNetworkReachabilityRetainCallback(const void *info) &#123;</div><div class="line">    return Block_copy(info);</div><div class="line">&#125;</div><div class="line"></div><div class="line">static void AFNetworkReachabilityReleaseCallback(const void *info) &#123;</div><div class="line">    if (info) &#123;</div><div class="line">        Block_release(info);</div><div class="line">    &#125;</div><div class="line">&#125;</div><div class="line"></div><div class="line">@interface AFNetworkReachabilityManager ()</div><div class="line">//用来保存创建测试连接返回的引用</div><div class="line">@property (readonly, nonatomic, assign) SCNetworkReachabilityRef networkReachability;</div><div class="line">//状态</div><div class="line">@property (readwrite, nonatomic, assign) AFNetworkReachabilityStatus networkReachabilityStatus;</div><div class="line">执行回调</div><div class="line">@property (readwrite, nonatomic, copy) AFNetworkReachabilityStatusBlock networkReachabilityStatusBlock;</div><div class="line">@end</div><div class="line"></div><div class="line">@implementation AFNetworkReachabilityManager</div><div class="line">//创建单例对象</div><div class="line">+ (instancetype)sharedManager &#123;</div><div class="line">    static AFNetworkReachabilityManager *_sharedManager = nil;</div><div class="line">    static dispatch_once_t onceToken;</div><div class="line">    dispatch_once(&amp;onceToken, ^&#123;</div><div class="line">        _sharedManager = [self manager];</div><div class="line">    &#125;);</div><div class="line"></div><div class="line">    return _sharedManager;</div><div class="line">&#125;</div><div class="line">//特定域名的对象(默认未知网络)</div><div class="line">+ (instancetype)managerForDomain:(NSString *)domain &#123;</div><div class="line">    SCNetworkReachabilityRef reachability = SCNetworkReachabilityCreateWithName(kCFAllocatorDefault, [domain UTF8String]);</div><div class="line"></div><div class="line">    AFNetworkReachabilityManager *manager = [[self alloc] initWithReachability:reachability];</div><div class="line">    </div><div class="line">    CFRelease(reachability);</div><div class="line"></div><div class="line">    return manager;</div><div class="line">&#125;</div><div class="line">//特定ipv4/ipv6的对象(默认未知网络)</div><div class="line">+ (instancetype)managerForAddress:(const void *)address &#123;</div><div class="line">    SCNetworkReachabilityRef reachability = SCNetworkReachabilityCreateWithAddress(kCFAllocatorDefault, (const struct sockaddr *)address);</div><div class="line">    AFNetworkReachabilityManager *manager = [[self alloc] initWithReachability:reachability];</div><div class="line"></div><div class="line">    CFRelease(reachability);</div><div class="line">    </div><div class="line">    return manager;</div><div class="line">&#125;</div><div class="line">//单例创建的配置</div><div class="line">+ (instancetype)manager</div><div class="line">&#123;</div><div class="line">#if (defined(__IPHONE_OS_VERSION_MIN_REQUIRED) &amp;&amp; __IPHONE_OS_VERSION_MIN_REQUIRED &gt;= 90000) || (defined(__MAC_OS_X_VERSION_MIN_REQUIRED) &amp;&amp; __MAC_OS_X_VERSION_MIN_REQUIRED &gt;= 101100)</div><div class="line">    struct sockaddr_in6 address;</div><div class="line">    bzero(&amp;address, sizeof(address));</div><div class="line">    address.sin6_len = sizeof(address);</div><div class="line">    address.sin6_family = AF_INET6;</div><div class="line">#else</div><div class="line">    struct sockaddr_in address;</div><div class="line">    bzero(&amp;address, sizeof(address));</div><div class="line">    address.sin_len = sizeof(address);</div><div class="line">    address.sin_family = AF_INET;</div><div class="line">#endif</div><div class="line">    return [self managerForAddress:&amp;address];</div><div class="line">&#125;</div><div class="line">//根据系统配置的创建</div><div class="line">- (instancetype)initWithReachability:(SCNetworkReachabilityRef)reachability &#123;</div><div class="line">    self = [super init];</div><div class="line">    if (!self) &#123;</div><div class="line">        return nil;</div><div class="line">    &#125;</div><div class="line"></div><div class="line">    _networkReachability = CFRetain(reachability);</div><div class="line">    self.networkReachabilityStatus = AFNetworkReachabilityStatusUnknown;</div><div class="line"></div><div class="line">    return self;</div><div class="line">&#125;</div><div class="line"></div><div class="line">- (instancetype)init NS_UNAVAILABLE</div><div class="line">&#123;</div><div class="line">    return nil;</div><div class="line">&#125;</div><div class="line">//销毁</div><div class="line">- (void)dealloc &#123;</div><div class="line">    [self stopMonitoring];</div><div class="line">    </div><div class="line">    if (_networkReachability != NULL) &#123;</div><div class="line">        CFRelease(_networkReachability);</div><div class="line">    &#125;</div><div class="line">&#125;</div><div class="line"></div><div class="line">#pragma mark - 返回状态</div><div class="line"></div><div class="line">- (BOOL)isReachable &#123;</div><div class="line">    return [self isReachableViaWWAN] || [self isReachableViaWiFi];</div><div class="line">&#125;</div><div class="line"></div><div class="line">- (BOOL)isReachableViaWWAN &#123;</div><div class="line">    return self.networkReachabilityStatus == AFNetworkReachabilityStatusReachableViaWWAN;</div><div class="line">&#125;</div><div class="line"></div><div class="line">- (BOOL)isReachableViaWiFi &#123;</div><div class="line">    return self.networkReachabilityStatus == AFNetworkReachabilityStatusReachableViaWiFi;</div><div class="line">&#125;</div><div class="line"></div><div class="line">#pragma mark - 开始监控</div><div class="line"></div><div class="line">- (void)startMonitoring &#123;</div><div class="line">    [self stopMonitoring];</div><div class="line"></div><div class="line">    if (!self.networkReachability) &#123;</div><div class="line">        return;</div><div class="line">    &#125;</div><div class="line"></div><div class="line">    __weak __typeof(self)weakSelf = self;</div><div class="line">    AFNetworkReachabilityStatusBlock callback = ^(AFNetworkReachabilityStatus status) &#123;</div><div class="line">        __strong __typeof(weakSelf)strongSelf = weakSelf;</div><div class="line"></div><div class="line">        strongSelf.networkReachabilityStatus = status;</div><div class="line">        if (strongSelf.networkReachabilityStatusBlock) &#123;</div><div class="line">            strongSelf.networkReachabilityStatusBlock(status);</div><div class="line">        &#125;</div><div class="line"></div><div class="line">    &#125;;</div><div class="line"></div><div class="line">    SCNetworkReachabilityContext context = &#123;0, (__bridge void *)callback, AFNetworkReachabilityRetainCallback, AFNetworkReachabilityReleaseCallback, NULL&#125;;</div><div class="line">    SCNetworkReachabilitySetCallback(self.networkReachability, AFNetworkReachabilityCallback, &amp;context);</div><div class="line">    SCNetworkReachabilityScheduleWithRunLoop(self.networkReachability, CFRunLoopGetMain(), kCFRunLoopCommonModes);</div><div class="line"></div><div class="line">    dispatch_async(dispatch_get_global_queue(DISPATCH_QUEUE_PRIORITY_BACKGROUND, 0),^&#123;</div><div class="line">        SCNetworkReachabilityFlags flags;</div><div class="line">        if (SCNetworkReachabilityGetFlags(self.networkReachability, &amp;flags)) &#123;</div><div class="line">            AFPostReachabilityStatusChange(flags, callback);</div><div class="line">        &#125;</div><div class="line">    &#125;);</div><div class="line">&#125;</div><div class="line">#pragma mark - 停止监控</div><div class="line">- (void)stopMonitoring &#123;</div><div class="line">    if (!self.networkReachability) &#123;</div><div class="line">        return;</div><div class="line">    &#125;</div><div class="line"></div><div class="line">    SCNetworkReachabilityUnscheduleFromRunLoop(self.networkReachability, CFRunLoopGetMain(), kCFRunLoopCommonModes);</div><div class="line">&#125;</div><div class="line"></div><div class="line">#pragma mark - 返回国际化的状态</div><div class="line"></div><div class="line">- (NSString *)localizedNetworkReachabilityStatusString &#123;</div><div class="line">    return AFStringFromNetworkReachabilityStatus(self.networkReachabilityStatus);</div><div class="line">&#125;</div><div class="line"></div><div class="line">#pragma mark - 变化的回调执行</div><div class="line"></div><div class="line">- (void)setReachabilityStatusChangeBlock:(void (^)(AFNetworkReachabilityStatus status))block &#123;</div><div class="line">    self.networkReachabilityStatusBlock = block;</div><div class="line">&#125;</div><div class="line"></div><div class="line">#pragma mark - NSKeyValueObserving</div><div class="line"></div><div class="line">+ (NSSet *)keyPathsForValuesAffectingValueForKey:(NSString *)key &#123;</div><div class="line">    if ([key isEqualToString:@&quot;reachable&quot;] || [key isEqualToString:@&quot;reachableViaWWAN&quot;] || [key isEqualToString:@&quot;reachableViaWiFi&quot;]) &#123;</div><div class="line">        return [NSSet setWithObject:@&quot;networkReachabilityStatus&quot;];</div><div class="line">    &#125;</div><div class="line"></div><div class="line">    return [super keyPathsForValuesAffectingValueForKey:key];</div><div class="line">&#125;</div><div class="line"></div><div class="line">@end</div><div class="line">#endif</div></pre></td></tr></table></figure>
+<p>###安全</p>
+<h2 id="AFSecurityPolicy"><a href="#AFSecurityPolicy" class="headerlink" title="AFSecurityPolicy"></a>AFSecurityPolicy</h2><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div><div class="line">17</div><div class="line">18</div><div class="line">19</div><div class="line">20</div><div class="line">21</div><div class="line">22</div><div class="line">23</div><div class="line">24</div><div class="line">25</div><div class="line">26</div><div class="line">27</div><div class="line">28</div><div class="line">29</div><div class="line">30</div><div class="line">31</div><div class="line">32</div><div class="line">33</div><div class="line">34</div><div class="line">35</div><div class="line">36</div><div class="line">37</div><div class="line">38</div><div class="line">39</div><div class="line">40</div><div class="line">41</div><div class="line">42</div><div class="line">43</div><div class="line">44</div><div class="line">45</div><div class="line">46</div><div class="line">47</div><div class="line">48</div><div class="line">49</div><div class="line">50</div><div class="line">51</div><div class="line">52</div><div class="line">53</div><div class="line">54</div><div class="line">55</div><div class="line">56</div><div class="line">57</div><div class="line">58</div><div class="line">59</div><div class="line">60</div><div class="line">61</div><div class="line">62</div><div class="line">63</div><div class="line">64</div><div class="line">65</div><div class="line">66</div><div class="line">67</div><div class="line">68</div><div class="line">69</div><div class="line">70</div><div class="line">71</div><div class="line">72</div><div class="line">73</div><div class="line">74</div><div class="line">75</div><div class="line">76</div><div class="line">77</div><div class="line">78</div><div class="line">79</div><div class="line">80</div><div class="line">81</div><div class="line">82</div><div class="line">83</div><div class="line">84</div><div class="line">85</div><div class="line">86</div><div class="line">87</div><div class="line">88</div><div class="line">89</div><div class="line">90</div><div class="line">91</div><div class="line">92</div><div class="line">93</div><div class="line">94</div><div class="line">95</div><div class="line">96</div><div class="line">97</div><div class="line">98</div><div class="line">99</div><div class="line">100</div><div class="line">101</div><div class="line">102</div><div class="line">103</div><div class="line">104</div><div class="line">105</div><div class="line">106</div><div class="line">107</div><div class="line">108</div><div class="line">109</div><div class="line">110</div><div class="line">111</div><div class="line">112</div></pre></td><td class="code"><pre><div class="line"></div><div class="line">#import &lt;Foundation/Foundation.h&gt;</div><div class="line">#import &lt;Security/Security.h&gt;</div><div class="line"></div><div class="line">//验证模式</div><div class="line">typedef NS_ENUM(NSUInteger, AFSSLPinningMode) &#123;</div><div class="line">    AFSSLPinningModeNone,</div><div class="line">    AFSSLPinningModePublicKey,</div><div class="line">    AFSSLPinningModeCertificate,</div><div class="line">&#125;;</div><div class="line"></div><div class="line">/**</div><div class="line"> `AFSecurityPolicy` evaluates server trust against pinned X.509 certificates and public keys over secure connections.</div><div class="line"></div><div class="line"> Adding pinned SSL certificates to your app helps prevent man-in-the-middle attacks and other vulnerabilities. Applications dealing with sensitive customer data or financial information are strongly encouraged to route all communication over an HTTPS connection with SSL pinning configured and enabled.</div><div class="line"> */</div><div class="line"></div><div class="line">NS_ASSUME_NONNULL_BEGIN</div><div class="line"></div><div class="line">@interface AFSecurityPolicy : NSObject &lt;NSSecureCoding, NSCopying&gt;</div><div class="line"></div><div class="line">/**</div><div class="line">//验证模式</div><div class="line"> The criteria by which server trust should be evaluated against the pinned SSL certificates. Defaults to `AFSSLPinningModeNone`.</div><div class="line"> */</div><div class="line">@property (readonly, nonatomic, assign) AFSSLPinningMode SSLPinningMode;</div><div class="line"></div><div class="line">/**</div><div class="line"> The certificates used to evaluate server trust according to the SSL pinning mode. </div><div class="line"></div><div class="line">  By default, this property is set to any (`.cer`) certificates included in the target compiling AFNetworking. Note that if you are using AFNetworking as embedded framework, no certificates will be pinned by default. Use `certificatesInBundle` to load certificates from your target, and then create a new policy by calling `policyWithPinningMode:withPinnedCertificates`.</div><div class="line"> </div><div class="line"> Note that if pinning is enabled, `evaluateServerTrust:forDomain:` will return true if any pinned certificate matches.</div><div class="line"> */</div><div class="line">@property (nonatomic, strong, nullable) NSSet &lt;NSData *&gt; *pinnedCertificates;</div><div class="line"></div><div class="line">/**</div><div class="line">是否全部允许</div><div class="line"> Whether or not to trust servers with an invalid or expired SSL certificates. Defaults to `NO`.</div><div class="line"> */</div><div class="line">@property (nonatomic, assign) BOOL allowInvalidCertificates;</div><div class="line"></div><div class="line">/**</div><div class="line"> Whether or not to validate the domain name in the certificate&apos;s CN field. Defaults to `YES`.</div><div class="line"> */</div><div class="line">@property (nonatomic, assign) BOOL validatesDomainName;</div><div class="line"></div><div class="line">///-----------------------------------------</div><div class="line">/// @name Getting Certificates from the Bundle</div><div class="line">///-----------------------------------------</div><div class="line"></div><div class="line">/**</div><div class="line"></div><div class="line">    </div><div class="line">返回目录下的data数据</div><div class="line"> Returns any certificates included in the bundle. If you are using AFNetworking as an embedded framework, you must use this method to find the certificates you have included in your app bundle, and use them when creating your security policy by calling `policyWithPinningMode:withPinnedCertificates`.</div><div class="line"></div><div class="line"> @return The certificates included in the given bundle.</div><div class="line"> */</div><div class="line">+ (NSSet &lt;NSData *&gt; *)certificatesInBundle:(NSBundle *)bundle;</div><div class="line"></div><div class="line">///-----------------------------------------</div><div class="line">/// @name Getting Specific Security Policies</div><div class="line">///-----------------------------------------</div><div class="line"></div><div class="line">/**</div><div class="line"> Returns the shared default security policy, which does not allow invalid certificates, validates domain name, and does not validate against pinned certificates or public keys.</div><div class="line"></div><div class="line"> @return The default security policy.</div><div class="line"> */</div><div class="line">+ (instancetype)defaultPolicy;</div><div class="line">///---------------------</div><div class="line">/// @name Initialization</div><div class="line">///---------------------</div><div class="line"></div><div class="line">/**</div><div class="line"> Creates and returns a security policy with the specified pinning mode.</div><div class="line"></div><div class="line"> @param pinningMode The SSL pinning mode.</div><div class="line"> @return A new security policy.</div><div class="line"> */</div><div class="line">+ (instancetype)policyWithPinningMode:(AFSSLPinningMode)pinningMode;</div><div class="line"></div><div class="line">/**</div><div class="line"> Creates and returns a security policy with the specified pinning mode.</div><div class="line"></div><div class="line"> @param pinningMode The SSL pinning mode.</div><div class="line"> @param pinnedCertificates The certificates to pin against.</div><div class="line"> @return A new security policy.</div><div class="line"> */</div><div class="line">+ (instancetype)policyWithPinningMode:(AFSSLPinningMode)pinningMode withPinnedCertificates:(NSSet &lt;NSData *&gt; *)pinnedCertificates;</div><div class="line"></div><div class="line">///------------------------------</div><div class="line">/// @name Evaluating Server Trust</div><div class="line">///------------------------------</div><div class="line"></div><div class="line">/**</div><div class="line"> Whether or not the specified server trust should be accepted, based on the security policy.</div><div class="line"></div><div class="line"> This method should be used when responding to an authentication challenge from a server.</div><div class="line"></div><div class="line"> @param serverTrust The X.509 certificate trust of the server.</div><div class="line"> @param domain The domain of serverTrust. If `nil`, the domain will not be validated.</div><div class="line"></div><div class="line"> @return Whether or not to trust the server.</div><div class="line"> */</div><div class="line">- (BOOL)evaluateServerTrust:(SecTrustRef)serverTrust</div><div class="line">                  forDomain:(nullable NSString *)domain;</div><div class="line"></div><div class="line">@end</div><div class="line"></div><div class="line">NS_ASSUME_NONNULL_END</div></pre></td></tr></table></figure>
+<h5 id="最主要的"><a href="#最主要的" class="headerlink" title="最主要的"></a>最主要的</h5><p>AFURLSessionManager : NSObject <nsurlsessiondelegate, nsurlsessiontaskdelegate,="" nsurlsessiondatadelegate,="" nsurlsessiondownloaddelegate,="" nssecurecoding,="" nscopying=""></nsurlsessiondelegate,></p>
+
+      
+    </div>
+    
+    
+    
+
+    
+
+    
+
+    
+
+    <footer class="post-footer">
+      
+
+      
+      
+      
+
+      
+        <div class="post-nav">
+          <div class="post-nav-next post-nav-item">
+            
+              <a href="/2017/04/06/LLDB/" rel="next" title="LLDB 的调试使用">
+                <i class="fa fa-chevron-left"></i> LLDB 的调试使用
+              </a>
+            
+          </div>
+
+          <span class="post-nav-divider"></span>
+
+          <div class="post-nav-prev post-nav-item">
+            
+              <a href="/2017/06/07/Foundation框架/" rel="prev" title="iOS开发系列—Objective-C之Foundation框架">
+                iOS开发系列—Objective-C之Foundation框架 <i class="fa fa-chevron-right"></i>
+              </a>
+            
+          </div>
+        </div>
+      
+
+      
+      
+    </footer>
+  </div>
+  
+  
+  
+  </article>
+
+
+
+    <div class="post-spread">
+      
+    </div>
+  </div>
+
+
+          </div>
+          
+
+
+          
+  <div class="comments" id="comments">
+    
+  </div>
+
+
+        </div>
+        
+          
+  
+  <div class="sidebar-toggle">
+    <div class="sidebar-toggle-line-wrap">
+      <span class="sidebar-toggle-line sidebar-toggle-line-first"></span>
+      <span class="sidebar-toggle-line sidebar-toggle-line-middle"></span>
+      <span class="sidebar-toggle-line sidebar-toggle-line-last"></span>
+    </div>
+  </div>
+
+  <aside id="sidebar" class="sidebar">
+    
+    <div class="sidebar-inner">
+
+      
+
+      
+        <ul class="sidebar-nav motion-element">
+          <li class="sidebar-nav-toc sidebar-nav-active" data-target="post-toc-wrap" >
+            文章目录
+          </li>
+          <li class="sidebar-nav-overview" data-target="site-overview">
+            站点概览
+          </li>
+        </ul>
+      
+
+      <section class="site-overview sidebar-panel">
+        <div class="site-author motion-element" itemprop="author" itemscope itemtype="http://schema.org/Person">
+          <img class="site-author-image" itemprop="image"
+               src="/images/avatar.gif"
+               alt="SongWei" />
+          <p class="site-author-name" itemprop="name">SongWei</p>
+           
+              <p class="site-description motion-element" itemprop="description">先拆轮子,在造轮子!</p>
+          
+        </div>
+        <nav class="site-state motion-element">
+
+          
+            <div class="site-state-item site-state-posts">
+            
+              <a href="/archives/">
+            
+                <span class="site-state-item-count">23</span>
+                <span class="site-state-item-name">日志</span>
+              </a>
+            </div>
+          
+
+          
+
+          
+            
+            
+            <div class="site-state-item site-state-tags">
+              <a href="/tags/index.html">
+                <span class="site-state-item-count">2</span>
+                <span class="site-state-item-name">标签</span>
+              </a>
+            </div>
+          
+
+        </nav>
+
+        
+
+        <div class="links-of-author motion-element">
+          
+            
+              <span class="links-of-author-item">
+                <a href="https://github.com/" target="_blank" title="GitHub">
+                  
+                    <i class="fa fa-fw fa-github"></i>
+                  
+                    
+                      GitHub
+                    
+                </a>
+              </span>
+            
+              <span class="links-of-author-item">
+                <a href="http://weibo.com/" target="_blank" title="Weibo">
+                  
+                    <i class="fa fa-fw fa-weibo"></i>
+                  
+                    
+                      Weibo
+                    
+                </a>
+              </span>
+            
+              <span class="links-of-author-item">
+                <a href="http://www.baidu.com" target="_blank" title="百度">
+                  
+                    <i class="fa fa-fw fa-globe"></i>
+                  
+                    
+                      百度
+                    
+                </a>
+              </span>
+            
+          
+        </div>
+
+        
+        
+
+        
+        
+
+        
+
+
+      </section>
+
+      
+      <!--noindex-->
+        <section class="post-toc-wrap motion-element sidebar-panel sidebar-panel-active">
+          <div class="post-toc">
+
+            
+              
+            
+
+            
+              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-2"><a class="nav-link" href="#AFNetworkReachabilityManager"><span class="nav-number">1.</span> <span class="nav-text">AFNetworkReachabilityManager</span></a><ol class="nav-child"><li class="nav-item nav-level-4"><a class="nav-link" href="#实现文件"><span class="nav-number">1.0.1.</span> <span class="nav-text">实现文件</span></a></li></ol></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#AFSecurityPolicy"><span class="nav-number">2.</span> <span class="nav-text">AFSecurityPolicy</span></a><ol class="nav-child"><li class="nav-item nav-level-5"><a class="nav-link" href="#最主要的"><span class="nav-number">2.0.0.1.</span> <span class="nav-text">最主要的</span></a></li></ol></li></ol></li></ol></li></ol></div>
+            
+
+          </div>
+        </section>
+      <!--/noindex-->
+      
+
+      
+
+    </div>
+  </aside>
+
+
+        
+      </div>
+    </main>
+
+    <footer id="footer" class="footer">
+      <div class="footer-inner">
+        <div class="copyright" >
+  
+  &copy; 
+  <span itemprop="copyrightYear">2017</span>
+  <span class="with-love">
+    <i class="fa fa-heart"></i>
+  </span>
+  <span class="author" itemprop="copyrightHolder">SongWei</span>
+
+  
+</div>
+
+
+  <div class="powered-by">由 <a class="theme-link" href="https://hexo.io">Hexo</a> 强力驱动</div>
+
+  <span class="post-meta-divider">|</span>
+
+  <div class="theme-info">主题 &mdash; <a class="theme-link" href="https://github.com/iissnan/hexo-theme-next">NexT.Gemini</a> v5.1.2</div>
+
+
+        
+<div class="busuanzi-count">
+  <script async src="https://dn-lbstatics.qbox.me/busuanzi/2.3/busuanzi.pure.mini.js"></script>
+
+  
+    <span class="site-uv">
+      本站访客数
+      <span class="busuanzi-value" id="busuanzi_value_site_uv"></span>
+      人次
+    </span>
+  
+
+  
+    <span class="site-pv">
+      本站总访问量
+      <span class="busuanzi-value" id="busuanzi_value_site_pv"></span>
+      次
+    </span>
+  
+</div>
+
+
+
+
+
+
+
+
+        
+      </div>
+    </footer>
+
+    
+      <div class="back-to-top">
+        <i class="fa fa-arrow-up"></i>
+        
+          <span id="scrollpercent"><span>0</span>%</span>
+        
+      </div>
+    
+
+  </div>
+
+  
+
+<script type="text/javascript">
+  if (Object.prototype.toString.call(window.Promise) !== '[object Function]') {
+    window.Promise = null;
+  }
+</script>
+
+
+
+
+
+
+
+
+
+  
+
+
+
+
+
+
+
+
+
+
+
+
+  
+  <script type="text/javascript" src="/lib/jquery/index.js?v=2.1.3"></script>
+
+  
+  <script type="text/javascript" src="/lib/fastclick/lib/fastclick.min.js?v=1.0.6"></script>
+
+  
+  <script type="text/javascript" src="/lib/jquery_lazyload/jquery.lazyload.js?v=1.9.7"></script>
+
+  
+  <script type="text/javascript" src="/lib/velocity/velocity.min.js?v=1.2.1"></script>
+
+  
+  <script type="text/javascript" src="/lib/velocity/velocity.ui.min.js?v=1.2.1"></script>
+
+  
+  <script type="text/javascript" src="/lib/fancybox/source/jquery.fancybox.pack.js?v=2.1.5"></script>
+
+
+  
+
+
+  <script type="text/javascript" src="/js/src/utils.js?v=5.1.2"></script>
+
+  <script type="text/javascript" src="/js/src/motion.js?v=5.1.2"></script>
+
+
+
+  
+  
+
+
+  <script type="text/javascript" src="/js/src/affix.js?v=5.1.2"></script>
+
+  <script type="text/javascript" src="/js/src/schemes/pisces.js?v=5.1.2"></script>
+
+
+
+  
+  <script type="text/javascript" src="/js/src/scrollspy.js?v=5.1.2"></script>
+<script type="text/javascript" src="/js/src/post-details.js?v=5.1.2"></script>
+
+
+
+  
+
+
+  <script type="text/javascript" src="/js/src/bootstrap.js?v=5.1.2"></script>
+
+
+
+  
+
+
+  
+
+
+
+
+	
+
+
+
+
+
+  
+
+
+
+
+
+  
+
+
+
+
+
+
+
+
+  
+
+
+
+
+
+  
+
+  
+
+  
+
+  
+
+  
+
+  
+
+</body>
+</html>

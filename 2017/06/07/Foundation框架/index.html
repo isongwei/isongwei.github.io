@@ -1,0 +1,842 @@
+<!DOCTYPE html>
+
+
+
+  
+
+
+<html class="theme-next gemini use-motion" lang="zh-Hans">
+<head>
+  <meta charset="UTF-8"/>
+<meta http-equiv="X-UA-Compatible" content="IE=edge" />
+<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1"/>
+<meta name="theme-color" content="#222">
+
+
+
+
+
+
+
+
+
+<meta http-equiv="Cache-Control" content="no-transform" />
+<meta http-equiv="Cache-Control" content="no-siteapp" />
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+  
+  
+  <link href="/lib/fancybox/source/jquery.fancybox.css?v=2.1.5" rel="stylesheet" type="text/css" />
+
+
+
+
+  
+  
+  
+  
+
+  
+    
+    
+  
+
+  
+
+  
+
+  
+
+  
+
+  
+    
+    
+    <link href="//fonts.googleapis.com/css?family=Lato:300,300italic,400,400italic,700,700italic&subset=latin,latin-ext" rel="stylesheet" type="text/css">
+  
+
+
+
+
+
+
+<link href="/lib/font-awesome/css/font-awesome.min.css?v=4.6.2" rel="stylesheet" type="text/css" />
+
+<link href="/css/main.css?v=5.1.2" rel="stylesheet" type="text/css" />
+
+
+  <meta name="keywords" content="iSong" />
+
+
+
+
+
+
+
+
+  <link rel="shortcut icon" type="image/x-icon" href="/favicon.ico?v=5.1.2" />
+
+
+
+
+
+
+<meta name="description" content="转自Objective-C之Foundation框架
+
+常用结构体
+NSRange、NSPoint、NSSize、NSRect等
+
+123456789101112131415161718192021222324252627282930313233343536373839#import &amp;lt;Foundation/Foundation.h&amp;gt;/*NSRange表示一个范围*/void test">
+<meta property="og:type" content="article">
+<meta property="og:title" content="iOS开发系列—Objective-C之Foundation框架">
+<meta property="og:url" content="http://yoursite.com/2017/06/07/Foundation框架/index.html">
+<meta property="og:site_name" content="Song">
+<meta property="og:description" content="转自Objective-C之Foundation框架
+
+常用结构体
+NSRange、NSPoint、NSSize、NSRect等
+
+123456789101112131415161718192021222324252627282930313233343536373839#import &amp;lt;Foundation/Foundation.h&amp;gt;/*NSRange表示一个范围*/void test">
+<meta property="og:image" content="http://oop93frdr.bkt.clouddn.com/2017-08-25-001.png">
+<meta property="og:updated_time" content="2017-08-25T16:09:26.000Z">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:title" content="iOS开发系列—Objective-C之Foundation框架">
+<meta name="twitter:description" content="转自Objective-C之Foundation框架
+
+常用结构体
+NSRange、NSPoint、NSSize、NSRect等
+
+123456789101112131415161718192021222324252627282930313233343536373839#import &amp;lt;Foundation/Foundation.h&amp;gt;/*NSRange表示一个范围*/void test">
+<meta name="twitter:image" content="http://oop93frdr.bkt.clouddn.com/2017-08-25-001.png">
+
+
+
+<script type="text/javascript" id="hexo.configurations">
+  var NexT = window.NexT || {};
+  var CONFIG = {
+    root: '/',
+    scheme: 'Gemini',
+    version: '5.1.2',
+    sidebar: {"position":"left","display":"post","offset":12,"offset_float":12,"b2t":false,"scrollpercent":true,"onmobile":false},
+    fancybox: true,
+    tabs: true,
+    motion: true,
+    duoshuo: {
+      userId: '0',
+      author: '博主'
+    },
+    algolia: {
+      applicationID: '',
+      apiKey: '',
+      indexName: '',
+      hits: {"per_page":10},
+      labels: {"input_placeholder":"Search for Posts","hits_empty":"We didn't find any results for the search: ${query}","hits_stats":"${hits} results found in ${time} ms"}
+    }
+  };
+</script>
+
+
+
+  <link rel="canonical" href="http://yoursite.com/2017/06/07/Foundation框架/"/>
+
+
+
+
+
+  <title>iOS开发系列—Objective-C之Foundation框架 | Song</title>
+  
+
+
+
+
+
+
+
+
+</head>
+
+<body itemscope itemtype="http://schema.org/WebPage" lang="zh-Hans">
+
+  
+  
+    
+  
+
+  <div class="container sidebar-position-left page-post-detail ">
+    <div class="headband"></div>
+
+    <header id="header" class="header" itemscope itemtype="http://schema.org/WPHeader">
+      <div class="header-inner"><div class="site-brand-wrapper">
+  <div class="site-meta ">
+    
+
+    <div class="custom-logo-site-title">
+      <a href="/"  class="brand" rel="start">
+        <span class="logo-line-before"><i></i></span>
+        <span class="site-title">Song</span>
+        <span class="logo-line-after"><i></i></span>
+      </a>
+    </div>
+      
+        <p class="site-subtitle"></p>
+      
+  </div>
+
+  <div class="site-nav-toggle">
+    <button>
+      <span class="btn-bar"></span>
+      <span class="btn-bar"></span>
+      <span class="btn-bar"></span>
+    </button>
+  </div>
+</div>
+
+<nav class="site-nav">
+  
+
+  
+    <ul id="menu" class="menu">
+      
+        
+        <li class="menu-item menu-item-home">
+          <a href="/" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-home"></i> <br />
+            
+            首页
+          </a>
+        </li>
+      
+        
+        <li class="menu-item menu-item-about">
+          <a href="/about/" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-user"></i> <br />
+            
+            关于
+          </a>
+        </li>
+      
+        
+        <li class="menu-item menu-item-archives">
+          <a href="/archives/" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-archive"></i> <br />
+            
+            归档
+          </a>
+        </li>
+      
+        
+        <li class="menu-item menu-item-tags">
+          <a href="/tags/" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-tags"></i> <br />
+            
+            标签
+          </a>
+        </li>
+      
+
+      
+    </ul>
+  
+
+  
+</nav>
+
+
+
+ </div>
+    </header>
+
+    <main id="main" class="main">
+      <div class="main-inner">
+        <div class="content-wrap">
+          <div id="content" class="content">
+            
+
+  <div id="posts" class="posts-expand">
+    
+
+  
+
+  
+  
+  
+
+  <article class="post post-type-normal" itemscope itemtype="http://schema.org/Article">
+  
+  
+  
+  <div class="post-block">
+    <link itemprop="mainEntityOfPage" href="http://yoursite.com/2017/06/07/Foundation框架/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="name" content="SongWei">
+      <meta itemprop="description" content="">
+      <meta itemprop="image" content="/images/avatar.gif">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="Song">
+    </span>
+
+    
+      <header class="post-header">
+
+        
+        
+          <h1 class="post-title" itemprop="name headline">iOS开发系列—Objective-C之Foundation框架</h1>
+        
+
+        <div class="post-meta">
+          <span class="post-time">
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-calendar-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">发表于</span>
+              
+              <time title="创建于" itemprop="dateCreated datePublished" datetime="2017-06-07T10:05:18+08:00">
+                2017-06-07
+              </time>
+            
+
+            
+
+            
+          </span>
+
+          
+
+          
+            
+          
+
+          
+          
+
+          
+            <span class="post-meta-divider">|</span>
+            <span class="page-pv">本文总阅读量
+            <span class="busuanzi-value" id="busuanzi_value_page_pv" ></span>次
+            </span>
+          
+
+          
+
+          
+
+        </div>
+      </header>
+    
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+
+      
+      
+
+      
+        <p>转自<a href="http://www.cnblogs.com/kenshincui/p/3885689.html" target="_blank" rel="external">Objective-C之Foundation框架</a></p>
+<blockquote>
+<p>常用结构体</p>
+<p>NSRange、NSPoint、NSSize、NSRect等</p>
+</blockquote>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div><div class="line">17</div><div class="line">18</div><div class="line">19</div><div class="line">20</div><div class="line">21</div><div class="line">22</div><div class="line">23</div><div class="line">24</div><div class="line">25</div><div class="line">26</div><div class="line">27</div><div class="line">28</div><div class="line">29</div><div class="line">30</div><div class="line">31</div><div class="line">32</div><div class="line">33</div><div class="line">34</div><div class="line">35</div><div class="line">36</div><div class="line">37</div><div class="line">38</div><div class="line">39</div></pre></td><td class="code"><pre><div class="line">#import &lt;Foundation/Foundation.h&gt;</div><div class="line"></div><div class="line">/*NSRange表示一个范围*/</div><div class="line">void test1()&#123;</div><div class="line">    NSRange rg=&#123;3,5&#125;;//第一参数是起始位置第二个参数是长度</div><div class="line">    //NSRange rg;</div><div class="line">    //rg.location=3;</div><div class="line">    //rg.length=5;</div><div class="line">    //NSRange rg=&#123;.location=3,.length=5&#125;;</div><div class="line">    //常用下面的方式定义 NSRange rg2=NSMakeRange(3,5);//使用NSMakeRange定义一个NSRange </div><div class="line">    //打印NSRange可以使用Foundation中方法 NSLog(@&quot;rg2 is %@&quot;, NSStringFromRange(rg2));//注意不能直接NSLog(@&quot;rg2 is %@&quot;, rg2)，因为rg2不是对象（准确的说%@是指针）而是结构体</div><div class="line">&#125;</div><div class="line">/*NSPoint表示一个点*/</div><div class="line">void test2()&#123;</div><div class="line">    NSPoint p=NSMakePoint(10, 15);//NSPoint其实就是CGPoint</div><div class="line">    //这种方式比较常见 NSPoint p2=CGPointMake(10, 15);</div><div class="line">    NSLog(NSStringFromPoint(p2));</div><div class="line">&#125;</div><div class="line">/*NSSize表示大小*/</div><div class="line">void test3()&#123;</div><div class="line">    NSSize s=NSMakeSize(10, 15);//NSSize其实就是CGSize</div><div class="line">    //这种方式比较常见 CGSize s2=CGSizeMake(10, 15);</div><div class="line">    NSLog(NSStringFromSize(s2));</div><div class="line">&#125;</div><div class="line">/*NSRect表示一个矩形*/</div><div class="line">void test4()&#123;</div><div class="line">    NSRect r=NSMakeRect(10, 5, 100, 200);//NSRect其实就是CGRect</div><div class="line">    //这种方式比较常见 NSRect r2=CGRectMake(10, 5, 100, 200);</div><div class="line">    NSLog(NSStringFromRect(r2));</div><div class="line">&#125;</div><div class="line"></div><div class="line">int main(int argc, const char * argv[]) &#123;</div><div class="line">    @autoreleasepool &#123;</div><div class="line">        test1();</div><div class="line">        test2();</div><div class="line">        test3();</div><div class="line">        test4();</div><div class="line">    &#125; return 0;</div><div class="line">&#125;</div></pre></td></tr></table></figure>
+<blockquote>
+<p>可以看到对于常用结构体在Foundation框架中都有一个对应的make方法进行创建，这也是我们日后比较常用的操作;而且与之对应的还都有一个NSStringFromXX方法来进行字符串转换，方便我们调试。上面也提到NSSize其实就是CGSize，NSRect其实就是CGRect，我们可以通过查看代码进行确认，例如NSSize定义：</p>
+</blockquote>
+<p><img src="http://oop93frdr.bkt.clouddn.com/2017-08-25-001.png" alt=""></p>
+<blockquote>
+<p>日期</p>
+</blockquote>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div><div class="line">17</div><div class="line">18</div><div class="line">19</div><div class="line">20</div><div class="line">21</div><div class="line">22</div><div class="line">23</div><div class="line">24</div><div class="line">25</div><div class="line">26</div><div class="line">27</div><div class="line">28</div><div class="line">29</div><div class="line">30</div><div class="line">31</div></pre></td><td class="code"><pre><div class="line">#import &lt;Foundation/Foundation.h&gt;</div><div class="line"></div><div class="line"></div><div class="line">int main(int argc, const char * argv[]) &#123;</div><div class="line">    </div><div class="line">    NSDate *date1=[NSDate date];//获得当前日期</div><div class="line">    NSLog(@&quot;%@&quot;,date1); //结果：2014-07-16 07:25:28 +0000</div><div class="line">    </div><div class="line">    NSDate *date2=[NSDate dateWithTimeIntervalSinceNow:100];//在当前日期的基础上加上100秒，注意在ObjC中多数时间单位都是秒</div><div class="line">    NSLog(@&quot;%@&quot;,date2); //结果：2014-07-16 07:27:08 +0000</div><div class="line">    </div><div class="line">    NSDate *date3=[NSDate distantFuture];//随机获取一个将来的日期</div><div class="line">    NSLog(@&quot;%@&quot;,date3); //结果：4001-01-01 00:00:00 +0000</div><div class="line">    </div><div class="line">    NSTimeInterval time=[date2 timeIntervalSinceDate:date1];//日期之差,返回单位为秒</div><div class="line">    NSLog(@&quot;%f&quot;,time); //结果：100.008833</div><div class="line">    </div><div class="line">    NSDate *date5=[date1 earlierDate:date3];//返回比较早的日期</div><div class="line">    NSLog(@&quot;%@&quot;,date5); //结果：2014-07-16 07:25:28 +0000</div><div class="line">    </div><div class="line">    //日期格式化</div><div class="line">    NSDateFormatter *formater1=[[NSDateFormatter alloc]init];</div><div class="line">    formater1.dateFormat=@&quot;yy-MM-dd HH:mm:ss&quot;;</div><div class="line">    NSString *datestr1=[formater1 stringFromDate:date1];</div><div class="line">    NSLog(@&quot;%@&quot;,datestr1); //结果：14-07-16 15:25:28</div><div class="line">    //字符串转化为日期</div><div class="line">    NSDate *date6=[formater1 dateFromString:@&quot;14-02-14 11:07:16&quot;];</div><div class="line">    NSLog(@&quot;%@&quot;,date6); //结果：2014-02-14 03:07:16 +0000</div><div class="line"></div><div class="line">    return 0;</div><div class="line">&#125;</div></pre></td></tr></table></figure>
+<blockquote>
+<p>字符串</p>
+<p>在ObjC中字符串操作要比在C语言中简单的多，在下面的例子中你将看到字符串的初始化、大小写转化、后缀前缀判断、字符串比较、字符串截取、字符串转换等，通过下面的例子我们基本可以掌握常用的字符串操作(注意这些内容虽然基本，但却是十分常用的操作，需要牢记)：</p>
+</blockquote>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div><div class="line">17</div><div class="line">18</div><div class="line">19</div><div class="line">20</div><div class="line">21</div><div class="line">22</div><div class="line">23</div><div class="line">24</div><div class="line">25</div><div class="line">26</div><div class="line">27</div><div class="line">28</div><div class="line">29</div><div class="line">30</div><div class="line">31</div><div class="line">32</div><div class="line">33</div><div class="line">34</div><div class="line">35</div><div class="line">36</div><div class="line">37</div><div class="line">38</div><div class="line">39</div><div class="line">40</div><div class="line">41</div><div class="line">42</div><div class="line">43</div><div class="line">44</div><div class="line">45</div><div class="line">46</div><div class="line">47</div><div class="line">48</div><div class="line">49</div><div class="line">50</div><div class="line">51</div><div class="line">52</div><div class="line">53</div><div class="line">54</div><div class="line">55</div><div class="line">56</div><div class="line">57</div><div class="line">58</div><div class="line">59</div><div class="line">60</div><div class="line">61</div><div class="line">62</div><div class="line">63</div><div class="line">64</div><div class="line">65</div><div class="line">66</div><div class="line">67</div><div class="line">68</div><div class="line">69</div><div class="line">70</div><div class="line">71</div><div class="line">72</div><div class="line">73</div><div class="line">74</div><div class="line">75</div><div class="line">76</div><div class="line">77</div><div class="line">78</div><div class="line">79</div><div class="line">80</div><div class="line">81</div><div class="line">82</div><div class="line">83</div><div class="line">84</div><div class="line">85</div><div class="line">86</div><div class="line">87</div><div class="line">88</div><div class="line">89</div><div class="line">90</div><div class="line">91</div><div class="line">92</div><div class="line">93</div><div class="line">94</div><div class="line">95</div></pre></td><td class="code"><pre><div class="line">#import &lt;Foundation/Foundation.h&gt;</div><div class="line"></div><div class="line"></div><div class="line">/**字符串操作*/</div><div class="line">void test1()&#123;</div><div class="line">    char *str1=&quot;C string&quot;;//这是C语言创建的字符串</div><div class="line">    NSString *str2=@&quot;OC string&quot;;//ObjC字符串需要加@，并且这种方式创建的对象不需要自己释放内存</div><div class="line"></div><div class="line">    //下面的创建方法都应该释放内存</div><div class="line">    NSString *str3=[[NSString alloc] init];</div><div class="line">    str3=@&quot;OC string&quot;;</div><div class="line">    NSString *str4=[[NSString alloc] initWithString:@&quot;Objective-C string&quot;];</div><div class="line">    NSString *str5=[[NSString alloc] initWithFormat:@&quot;age is %i,name is %.2f&quot;,19,1.72f];</div><div class="line">    NSString *str6=[[NSString alloc] initWithUTF8String:&quot;C string&quot;];//C语言的字符串转换为ObjC字符串</div><div class="line"></div><div class="line">    //以上方法都有对应静态方法（一般以string开头）,不需要管理内存（系统静态方法一般都是自动释放）</div><div class="line">    NSString *str7=[NSString stringWithString:@&quot;Objective-C string&quot;];</div><div class="line">&#125;</div><div class="line">void test2()&#123;</div><div class="line">    NSLog(@&quot;\&quot;Hello world!\&quot; to upper is %@&quot;,[@&quot;Hello world!&quot; uppercaseString]);</div><div class="line">    //结果：&quot;Hello world!&quot; to upper is HELLO WORLD!</div><div class="line">    NSLog(@&quot;\&quot;Hello world!\&quot; to lowwer is %@&quot;,[@&quot;Hello world!&quot; lowercaseString]);</div><div class="line">    //结果：&quot;Hello world!&quot; to lowwer is hello world!</div><div class="line">     </div><div class="line">    //首字母大写，其他字母小写</div><div class="line">    NSLog(@&quot;\&quot;Hello world!\&quot; to capitalize is %@&quot;,[@&quot;Hello world!&quot; capitalizedString]);</div><div class="line">    //结果：&quot;Hello world!&quot; to capitalize is Hello World!</div><div class="line">     </div><div class="line">    BOOL result= [@&quot;abc&quot; isEqualToString:@&quot;aBc&quot;];</div><div class="line">    NSLog(@&quot;%i&quot;,result);</div><div class="line">    //结果：0</div><div class="line">    NSComparisonResult result2= [@&quot;abc&quot; compare:@&quot;aBc&quot;];//如果是[@&quot;abc&quot; caseInsensitiveCompare:@&quot;aBc&quot;]则忽略大小写比较</div><div class="line">    if(result2==NSOrderedAscending)&#123;</div><div class="line">        NSLog(@&quot;left&lt;right.&quot;);</div><div class="line">    &#125;else if(result2==NSOrderedDescending)&#123;</div><div class="line">        NSLog(@&quot;left&gt;right.&quot;);</div><div class="line">    &#125;else if(result2==NSOrderedSame)&#123;</div><div class="line">        NSLog(@&quot;left=right.&quot;);</div><div class="line">    &#125;</div><div class="line">    //结果：left&gt;right.</div><div class="line">&#125;</div><div class="line">void test3()&#123;</div><div class="line">    NSLog(@&quot;has prefix ab? %i&quot;,[@&quot;abcdef&quot; hasPrefix:@&quot;ab&quot;]);</div><div class="line">    //结果：has prefix ab? 1</div><div class="line">    NSLog(@&quot;has suffix ab? %i&quot;,[@&quot;abcdef&quot; hasSuffix:@&quot;ef&quot;]);</div><div class="line">    //结果：has suffix ab? 1</div><div class="line">    NSRange range=[@&quot;abcdefabcdef&quot; rangeOfString:@&quot;cde&quot;];//注意如果遇到cde则不再往后面搜索,如果从后面搜索或其他搜索方式可以设置第二个options参数</div><div class="line">    if(range.location==NSNotFound)&#123;</div><div class="line">        NSLog(@&quot;not found.&quot;);</div><div class="line">    &#125;else&#123;</div><div class="line">        NSLog(@&quot;range is %@&quot;,NSStringFromRange(range));</div><div class="line">    &#125;</div><div class="line">    //结果：range is &#123;2, 3&#125;</div><div class="line">&#125;</div><div class="line">//字符串分割</div><div class="line">void test4()&#123;</div><div class="line">    NSLog(@&quot;%@&quot;,[@&quot;abcdef&quot; substringFromIndex:3]);//从第三个索引开始（包括第三个索引对应的字符）截取到最后一位</div><div class="line">    //结果：def</div><div class="line">    NSLog(@&quot;%@&quot;,[@&quot;abcdef&quot; substringToIndex:3]);////从0开始截取到第三个索引（不包括第三个索引对应的字符）</div><div class="line">    //结果：abc</div><div class="line">    NSLog(@&quot;%@&quot;,[@&quot;abcdef&quot; substringWithRange:NSMakeRange(2, 3)]);</div><div class="line">    //结果：cde</div><div class="line">    NSString *str1=@&quot;12.abcd.3a&quot;;</div><div class="line">    NSArray *array1=[str1 componentsSeparatedByString:@&quot;.&quot;];//字符串分割</div><div class="line">    NSLog(@&quot;%@&quot;,array1);</div><div class="line">     /*结果：</div><div class="line">      (</div><div class="line">         12,</div><div class="line">         abcd,</div><div class="line">         3a</div><div class="line">      )</div><div class="line">      */</div><div class="line"> </div><div class="line">&#125;</div><div class="line">//其他操作</div><div class="line">void test5()&#123;</div><div class="line">    NSLog(@&quot;%i&quot;,[@&quot;12&quot; intValue]);//类型转换</div><div class="line">    //结果：12</div><div class="line">    NSLog(@&quot;%zi&quot;,[@&quot;hello world,世界你好！&quot; length]);//字符串长度注意不是字节数</div><div class="line">    //结果：17</div><div class="line">    NSLog(@&quot;%c&quot;,[@&quot;abc&quot; characterAtIndex:0]);//取出制定位置的字符</div><div class="line">    //结果：a</div><div class="line">    const char *s=[@&quot;abc&quot; UTF8String];//转换为C语言字符串</div><div class="line">    NSLog(@&quot;%s&quot;,s);</div><div class="line">    //结果：abc</div><div class="line">&#125;</div><div class="line"></div><div class="line">int main(int argc, const char * argv[]) &#123;</div><div class="line">    test1();</div><div class="line">    test2();</div><div class="line">    test3();</div><div class="line">    test4();</div><div class="line">    test5();</div><div class="line">    return 0;</div><div class="line">&#125;</div></pre></td></tr></table></figure>
+<blockquote>
+<p>注意：上面代码注释中提到的需要释放内存指的是在MRC下的情况，当然本质上在ARC下也需要释放，只是这部分代码编译器会自动创建。</p>
+<p>扩展–文件操作</p>
+<p>在ObjC中路径、文件读写等操作是利用字符串来完成的，这里通过几个简单的例子来演示（首先在桌面上新建一个test.txt文件，里面存储的内容是”hello world,世界你好！”）</p>
+</blockquote>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div><div class="line">17</div><div class="line">18</div><div class="line">19</div><div class="line">20</div><div class="line">21</div><div class="line">22</div><div class="line">23</div><div class="line">24</div><div class="line">25</div><div class="line">26</div><div class="line">27</div><div class="line">28</div><div class="line">29</div><div class="line">30</div><div class="line">31</div><div class="line">32</div><div class="line">33</div><div class="line">34</div><div class="line">35</div><div class="line">36</div><div class="line">37</div><div class="line">38</div><div class="line">39</div><div class="line">40</div><div class="line">41</div><div class="line">42</div><div class="line">43</div><div class="line">44</div><div class="line">45</div><div class="line">46</div><div class="line">47</div><div class="line">48</div><div class="line">49</div><div class="line">50</div><div class="line">51</div><div class="line">52</div><div class="line">53</div><div class="line">54</div><div class="line">55</div><div class="line">56</div><div class="line">57</div><div class="line">58</div><div class="line">59</div><div class="line">60</div><div class="line">61</div><div class="line">62</div><div class="line">63</div><div class="line">64</div><div class="line">65</div><div class="line">66</div><div class="line">67</div><div class="line">68</div><div class="line">69</div><div class="line">70</div><div class="line">71</div><div class="line">72</div><div class="line">73</div><div class="line">74</div><div class="line">75</div><div class="line">76</div><div class="line">77</div><div class="line">78</div><div class="line">79</div><div class="line">80</div><div class="line">81</div><div class="line">82</div><div class="line">83</div><div class="line">84</div><div class="line">85</div><div class="line">86</div><div class="line">87</div><div class="line">88</div><div class="line">89</div><div class="line">90</div><div class="line">91</div><div class="line">92</div><div class="line">93</div><div class="line">94</div></pre></td><td class="code"><pre><div class="line">#import &lt;Foundation/Foundation.h&gt;</div><div class="line"></div><div class="line"></div><div class="line">void test1()&#123;</div><div class="line">    //读取文件内容</div><div class="line">    NSString *path=@&quot;/Users/kenshincui/Desktop/test.txt&quot;;</div><div class="line">    NSString *str1=[NSString stringWithContentsOfFile:path encoding:NSUTF8StringEncoding error:nil];</div><div class="line">    //注意上面也可以使用gb2312 gbk等,例如kCFStringEncodingGB_18030_2000，但是需要用CFStringConvertEncodingToNSStringEncoding转换</div><div class="line">    NSLog(@&quot;str1 is %@&quot;,str1);</div><div class="line">    //结果：str1 is hello world,世界你好！</div><div class="line"></div><div class="line">    </div><div class="line">    </div><div class="line">    </div><div class="line">    //上面我们看到了读取文件，但并没有处理错误,当然在ObjC中可以@try @catch @finnally但通常我们并不那么做</div><div class="line">    //由于我们的test.txt中有中文，所以使用下面的编码读取会报错，下面的代码演示了错误获取的过程</div><div class="line">    NSError *error;</div><div class="line">    NSString *str2=[NSString stringWithContentsOfFile:path encoding:kCFStringEncodingGB_18030_2000 error:&amp;error];//注意这句话中的error变量是**error，就是指针的指针那就是指针的地址，由于error就是一个指针此处也就是error的地址&amp;error，具体原因见下面补充</div><div class="line">    if(error)&#123;</div><div class="line">        NSLog(@&quot;read error ,the error is %@&quot;,error);</div><div class="line">    &#125;else&#123;</div><div class="line">        NSLog(@&quot;read success,the file content is %@&quot;,str2);</div><div class="line">    &#125;</div><div class="line">    //结果：read error ,the error is Error Domain=NSCocoaErrorDomain Code=261 &quot;The file couldn’t be opened using the specified text encoding.&quot; UserInfo=0x100109620 &#123;NSFilePath=/Users/kenshincui/Desktop/test.txt, NSStringEncoding=1586&#125;</div><div class="line"></div><div class="line">    </div><div class="line">    </div><div class="line">    </div><div class="line">    //读取文件内容还有一种方式就是利用URl，它除了可以读取本地文件还可以读取网络文件</div><div class="line">    //NSURL *url=[NSURL URLWithString:@&quot;file:///Users/kenshincui/Desktop/test.txt&quot;];</div><div class="line">    NSURL *url=[NSURL URLWithString:@&quot;http://www.apple.com&quot;];</div><div class="line">    NSString *str3=[NSString stringWithContentsOfURL:url encoding:NSUTF8StringEncoding error:nil];</div><div class="line">    NSLog(@&quot;str3 is %@&quot;,str3);</div><div class="line">&#125;</div><div class="line">void test2()&#123;</div><div class="line">    //下面是文件写入</div><div class="line">    NSString *path1=@&quot;/Users/kenshincui/Desktop/test2.txt&quot;;</div><div class="line">    NSError *error1;</div><div class="line">    NSString *str11=@&quot;hello world,世界你好！&quot;;</div><div class="line">    [str11 writeToFile:path1 atomically:YES encoding:NSUTF8StringEncoding error:&amp;error1];//automically代表一次性写入，如果写到中间出错了最后就全部不写入</div><div class="line">    if(error1)&#123;</div><div class="line">        NSLog(@&quot;write fail,the error is %@&quot;,[error1 localizedDescription]);//调用localizedDescription是只打印关键错误信息</div><div class="line">    &#125;else&#123;</div><div class="line">        NSLog(@&quot;write success!&quot;);</div><div class="line">    &#125;</div><div class="line">    //结果：write success!</div><div class="line">&#125;</div><div class="line">//路径操作</div><div class="line">void test3()&#123;</div><div class="line">    NSMutableArray *marray=[NSMutableArray array];//可变数组</div><div class="line">    [marray addObject:@&quot;Users&quot;];</div><div class="line">    [marray addObject:@&quot;KenshinCui&quot;];</div><div class="line">    [marray addObject:@&quot;Desktop&quot;];</div><div class="line"></div><div class="line">    NSString *path=[NSString pathWithComponents:marray];</div><div class="line">    NSLog(@&quot;%@&quot;,path);//字符串拼接成路径</div><div class="line">    //结果：Users/KenshinCui/Desktop</div><div class="line"></div><div class="line">    NSLog(@&quot;%@&quot;,[path pathComponents]);//路径分割成数组</div><div class="line">    /*结果： </div><div class="line">     (</div><div class="line">        Users,</div><div class="line">        KenshinCui,</div><div class="line">        Desktop</div><div class="line">    )</div><div class="line">    */</div><div class="line"></div><div class="line">    NSLog(@&quot;%i&quot;,[path isAbsolutePath]);//是否绝对路径（其实就是看字符串是否以“/”开头）</div><div class="line">    //结果：0</div><div class="line">    NSLog(@&quot;%@&quot;,[path lastPathComponent]);//取得最后一个目录</div><div class="line">    //结果：Desktop</div><div class="line">    NSLog(@&quot;%@&quot;,[path stringByDeletingLastPathComponent]);//删除最后一个目录，注意path本身是常量不会被修改,只是返回一个新字符串</div><div class="line">    //结果：Users/KenshinCui</div><div class="line">    NSLog(@&quot;%@&quot;,[path stringByAppendingPathComponent:@&quot;Documents&quot;]);//路径拼接</div><div class="line">    //结果：Users/KenshinCui/Desktop/Documents</div><div class="line">&#125;</div><div class="line"> //扩展名操作</div><div class="line">void test4()&#123;</div><div class="line">    NSString *path=@&quot;Users/KenshinCui/Desktop/test.txt&quot;;</div><div class="line">    NSLog(@&quot;%@&quot;,[path pathExtension]);//取得扩展名，注意ObjC中扩展名不包括&quot;.&quot;</div><div class="line">    //结果：txt</div><div class="line">    NSLog(@&quot;%@&quot;,[path stringByDeletingPathExtension]);//删除扩展名，注意包含&quot;.&quot;</div><div class="line">    //结果：Users/KenshinCui/Desktop/test</div><div class="line">    NSLog(@&quot;%@&quot;,[@&quot;Users/KenshinCui/Desktop/test&quot; stringByAppendingPathExtension:@&quot;mp3&quot;]);//添加扩展名</div><div class="line">    //结果：Users/KenshinCui/Desktop/test.mp3</div><div class="line">&#125;</div><div class="line"></div><div class="line">int main(int argc, const char * argv[]) &#123;</div><div class="line">    test1();</div><div class="line">    test2();</div><div class="line">    test3();</div><div class="line">    test4();</div><div class="line">    return 0;</div><div class="line">&#125;</div></pre></td></tr></table></figure>
+<blockquote>
+<p>可变字符串</p>
+<p>我们知道在字符串操作过程中我们经常希望改变原来的字符串，当然这在C语言中实现比较复杂，但是ObjC为我们提供了新的可变字符串类NSMutableString，它是NSString的子类。</p>
+</blockquote>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div><div class="line">17</div><div class="line">18</div><div class="line">19</div><div class="line">20</div><div class="line">21</div><div class="line">22</div><div class="line">23</div><div class="line">24</div><div class="line">25</div><div class="line">26</div><div class="line">27</div><div class="line">28</div><div class="line">29</div><div class="line">30</div><div class="line">31</div><div class="line">32</div><div class="line">33</div><div class="line">34</div><div class="line">35</div><div class="line">36</div><div class="line">37</div><div class="line">38</div></pre></td><td class="code"><pre><div class="line">#import &lt;Foundation/Foundation.h&gt;</div><div class="line"></div><div class="line"></div><div class="line">int main(int argc, const char * argv[]) &#123;</div><div class="line">    </div><div class="line">    /*可变字符串，注意NSMutableString是NSString子类*/</div><div class="line">    //注意虽然initWithCapacity分配字符串大小，但是不是绝对的不可以超过此范围，声明此变量对性能有好处</div><div class="line">    NSMutableString *str1= [[NSMutableString alloc] initWithCapacity:10];</div><div class="line">    [str1 setString:@&quot;hello&quot;];//设置字符串</div><div class="line">    NSLog(@&quot;%@&quot;,str1);</div><div class="line">    //结果：hello</div><div class="line"></div><div class="line">    [str1 appendString:@&quot;,world!&quot;];//追加字符串</div><div class="line">    NSLog(@&quot;%@&quot;,str1);</div><div class="line">    //结果：hello,world!</div><div class="line"></div><div class="line">    [str1 appendFormat:@&quot;我的年龄是%i。dear,I love you.&quot;,18];</div><div class="line">    NSLog(@&quot;%@&quot;,str1);</div><div class="line">    //结果：hello,world!我的年龄是18。dear,I love you.</div><div class="line">    </div><div class="line">    //替换字符串</div><div class="line">    NSRange range=[str1 rangeOfString:@&quot;dear&quot;];</div><div class="line">    [str1 replaceCharactersInRange:range withString:@&quot;Honey&quot;];</div><div class="line">    NSLog(@&quot;%@&quot;,str1);</div><div class="line">    //结果：hello,world!我的年龄是18。Honey,I love you.</div><div class="line">    </div><div class="line">    //插入字符串</div><div class="line">    [str1 insertString:@&quot;My name is Kenshin.&quot; atIndex:12];</div><div class="line">    NSLog(@&quot;%@&quot;,str1);</div><div class="line">    //结果：hello,world!My name is Kenshin.我的年龄是18。Honey,I love you.</div><div class="line">    </div><div class="line">    //删除指定字符串</div><div class="line">    [str1 deleteCharactersInRange:[str1 rangeOfString:@&quot;My name is Kenshin.&quot;]];//删除指定范围的字符串</div><div class="line">    NSLog(@&quot;%@&quot;,str1);</div><div class="line">    //结果：hello,world!我的年龄是18。Honey,I love you.</div><div class="line">    </div><div class="line">    return 0;</div><div class="line">&#125;</div></pre></td></tr></table></figure>
+<hr>
+<blockquote>
+<p>数组</p>
+<p>不可变数组</p>
+</blockquote>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div><div class="line">17</div><div class="line">18</div><div class="line">19</div><div class="line">20</div><div class="line">21</div><div class="line">22</div><div class="line">23</div><div class="line">24</div><div class="line">25</div><div class="line">26</div><div class="line">27</div><div class="line">28</div><div class="line">29</div><div class="line">30</div><div class="line">31</div><div class="line">32</div><div class="line">33</div><div class="line">34</div><div class="line">35</div><div class="line">36</div><div class="line">37</div><div class="line">38</div><div class="line">39</div><div class="line">40</div><div class="line">41</div><div class="line">42</div><div class="line">43</div><div class="line">44</div><div class="line">45</div><div class="line">46</div><div class="line">47</div><div class="line">48</div><div class="line">49</div><div class="line">50</div><div class="line">51</div><div class="line">52</div><div class="line">53</div><div class="line">54</div><div class="line">55</div><div class="line">56</div><div class="line">57</div><div class="line">58</div><div class="line">59</div><div class="line">60</div><div class="line">61</div><div class="line">62</div><div class="line">63</div><div class="line">64</div><div class="line">65</div><div class="line">66</div><div class="line">67</div><div class="line">68</div><div class="line">69</div><div class="line">70</div><div class="line">71</div><div class="line">72</div><div class="line">73</div><div class="line">74</div><div class="line">75</div><div class="line">76</div><div class="line">77</div><div class="line">78</div><div class="line">79</div><div class="line">80</div><div class="line">81</div><div class="line">82</div><div class="line">83</div><div class="line">84</div><div class="line">85</div><div class="line">86</div><div class="line">87</div><div class="line">88</div><div class="line">89</div><div class="line">90</div><div class="line">91</div><div class="line">92</div><div class="line">93</div><div class="line">94</div><div class="line">95</div><div class="line">96</div><div class="line">97</div><div class="line">98</div><div class="line">99</div><div class="line">100</div><div class="line">101</div><div class="line">102</div><div class="line">103</div><div class="line">104</div><div class="line">105</div><div class="line">106</div><div class="line">107</div><div class="line">108</div><div class="line">109</div><div class="line">110</div><div class="line">111</div><div class="line">112</div><div class="line">113</div><div class="line">114</div><div class="line">115</div><div class="line">116</div><div class="line">117</div><div class="line">118</div><div class="line">119</div><div class="line">120</div><div class="line">121</div><div class="line">122</div><div class="line">123</div><div class="line">124</div><div class="line">125</div><div class="line">126</div><div class="line">127</div><div class="line">128</div><div class="line">129</div><div class="line">130</div><div class="line">131</div><div class="line">132</div><div class="line">133</div><div class="line">134</div><div class="line">135</div><div class="line">136</div><div class="line">137</div><div class="line">138</div><div class="line">139</div><div class="line">140</div><div class="line">141</div><div class="line">142</div><div class="line">143</div><div class="line">144</div><div class="line">145</div><div class="line">146</div><div class="line">147</div><div class="line">148</div><div class="line">149</div><div class="line">150</div><div class="line">151</div><div class="line">152</div><div class="line">153</div><div class="line">154</div><div class="line">155</div><div class="line">156</div><div class="line">157</div><div class="line">158</div><div class="line">159</div><div class="line">160</div><div class="line">161</div><div class="line">162</div><div class="line">163</div><div class="line">164</div><div class="line">165</div><div class="line">166</div><div class="line">167</div><div class="line">168</div><div class="line">169</div><div class="line">170</div><div class="line">171</div><div class="line">172</div><div class="line">173</div><div class="line">174</div><div class="line">175</div><div class="line">176</div><div class="line">177</div><div class="line">178</div><div class="line">179</div><div class="line">180</div><div class="line">181</div><div class="line">182</div><div class="line">183</div><div class="line">184</div><div class="line">185</div><div class="line">186</div><div class="line">187</div><div class="line">188</div><div class="line">189</div><div class="line">190</div><div class="line">191</div><div class="line">192</div><div class="line">193</div><div class="line">194</div><div class="line">195</div><div class="line">196</div><div class="line">197</div><div class="line">198</div><div class="line">199</div><div class="line">200</div><div class="line">201</div><div class="line">202</div><div class="line">203</div><div class="line">204</div><div class="line">205</div><div class="line">206</div><div class="line">207</div><div class="line">208</div><div class="line">209</div><div class="line">210</div><div class="line">211</div><div class="line">212</div><div class="line">213</div><div class="line">214</div></pre></td><td class="code"><pre><div class="line">#import &lt;Foundation/Foundation.h&gt;</div><div class="line">#import &quot;Person.h&quot;</div><div class="line"></div><div class="line"></div><div class="line">void test1()&#123;</div><div class="line">    //NSArray长度不可变所以初始化的时候就赋值，并且最后以nil结尾</div><div class="line">    //此外需要注意NSArray不能存放C语言的基础类型</div><div class="line">    NSObject *obj=[[NSObject alloc]init];</div><div class="line">    //NSArray *array1=[[NSArray alloc] initWithObjects:@&quot;abc&quot;,obj,@&quot;cde&quot;,@&quot;opq&quot;, nil];</div><div class="line">    NSArray *array1=[NSArray arrayWithObjects:@&quot;abc&quot;,obj,@&quot;cde&quot;,@&quot;opq&quot;,@25, nil];</div><div class="line">    NSLog(@&quot;%zi&quot;,array1.count);//数组长度,结果：5</div><div class="line">    NSLog(@&quot;%i&quot;,[array1 containsObject:@&quot;cde&quot;]);//是否包含某个对象，结果：1</div><div class="line">    NSLog(@&quot;%@&quot;,[array1 lastObject]);//最后一个对象，结果：25</div><div class="line">    NSLog(@&quot;%zi&quot;,[array1 indexOfObject:@&quot;abc&quot;]);//对象所在的位置：0</div><div class="line">    </div><div class="line">    Person *person1=[Person personWithName:@&quot;Kenshin&quot;];</div><div class="line">    Person *person2=[Person personWithName:@&quot;Kaoru&quot;];</div><div class="line">    Person *person3=[Person personWithName:@&quot;Rosa&quot;];</div><div class="line">    NSArray *array2=[[NSArray alloc]initWithObjects:person1,person2,person3, nil];</div><div class="line">    [array2 makeObjectsPerformSelector:@selector(showMessage:) withObject:@&quot;Hello,world!&quot;];//执行所有元素的showMessage方法,后面的参数最多只能有一个</div><div class="line">    /*结果：</div><div class="line">     My name is Kenshin,the infomation is &quot;Hello,world!&quot;.</div><div class="line">     My name is Kaoru,the infomation is &quot;Hello,world!&quot;.</div><div class="line">     My name is Rosa,the infomation is &quot;Hello,world!&quot;.</div><div class="line">     */</div><div class="line">&#125;</div><div class="line">//数组的遍历</div><div class="line">void test2()&#123;</div><div class="line">    NSObject *obj=[[NSObject alloc]init];</div><div class="line">    NSArray *array=[[NSArray alloc] initWithObjects:@&quot;abc&quot;,obj,@&quot;cde&quot;,@&quot;opq&quot;,@25, nil];</div><div class="line">    //方法1</div><div class="line">    for(int i=0,len=array.count;i&lt;len;++i)&#123;</div><div class="line">        NSLog(@&quot;method1:index %i is %@&quot;,i,[array objectAtIndex:i]);</div><div class="line">    &#125;</div><div class="line">    /*结果：</div><div class="line">     method1:index 0 is abc</div><div class="line">     method1:index 1 is &lt;NSObject: 0x100106de0&gt;</div><div class="line">     method1:index 2 is cde</div><div class="line">     method1:index 3 is opq</div><div class="line">     method1:index 4 is 25</div><div class="line">     */</div><div class="line">    </div><div class="line">    </div><div class="line">    //方法2</div><div class="line">    for(id obj in array)&#123;</div><div class="line">        NSLog(@&quot;method2:index %zi is %@&quot;,[array indexOfObject:obj],obj);</div><div class="line">    &#125;</div><div class="line">    /*结果：</div><div class="line">     method2:index 0 is abc</div><div class="line">     method2:index 1 is &lt;NSObject: 0x100602f00&gt;</div><div class="line">     method2:index 2 is cde</div><div class="line">     method2:index 3 is opq</div><div class="line">     method2:index 4 is 25</div><div class="line">     */</div><div class="line">    </div><div class="line">    </div><div class="line">    //方法3,利用代码块方法</div><div class="line">    [array enumerateObjectsUsingBlock:^(id obj, NSUInteger idx, BOOL *stop) &#123;</div><div class="line">        NSLog(@&quot;method3:index %zi is %@&quot;,idx,obj);</div><div class="line">        if(idx==2)&#123;//当idx=2时设置*stop为YES停止遍历</div><div class="line">            *stop=YES;</div><div class="line">        &#125;</div><div class="line">    &#125;];</div><div class="line">    /*结果：</div><div class="line">     method3:index 0 is abc</div><div class="line">     method3:index 1 is &lt;NSObject: 0x100106de0&gt;</div><div class="line">     method3:index 2 is cde</div><div class="line">     */</div><div class="line">    </div><div class="line">    </div><div class="line">    //方法4，利用迭代器</div><div class="line">    //NSEnumerator *enumerator= [array objectEnumerator];//获得一个迭代器</div><div class="line">    NSEnumerator *enumerator=[array reverseObjectEnumerator];//获取一个反向迭代器</div><div class="line">    //NSLog(@&quot;all:%@&quot;,[enumerator allObjects]);//获取所有迭代对象，注意调用完此方法迭代器就遍历完了，下面的nextObject就没有值了</div><div class="line">    id obj2=nil;</div><div class="line">    while (obj2=[enumerator nextObject]) &#123;</div><div class="line">        NSLog(@&quot;method4:%@&quot;,obj2);</div><div class="line">    &#125;</div><div class="line">    /*结果：</div><div class="line">     method4:25</div><div class="line">     method4:opq</div><div class="line">     method4:cde</div><div class="line">     method4:&lt;NSObject: 0x100106de0&gt;</div><div class="line">     method4:abc</div><div class="line">     */</div><div class="line">&#125;</div><div class="line">//数组派生出新的数组</div><div class="line">void test3()&#123;</div><div class="line">    NSArray *array=[NSArray arrayWithObjects:@&quot;1&quot;,@&quot;2&quot;,@&quot;3&quot;, nil];</div><div class="line">    NSArray *array2=[array arrayByAddingObject:@&quot;4&quot;];//注意此时array并没有变</div><div class="line">    NSLog(@&quot;%@&quot;,array2);</div><div class="line">    /*结果：</div><div class="line">     (</div><div class="line">         1,</div><div class="line">         2,</div><div class="line">         3,</div><div class="line">         4</div><div class="line">     )</div><div class="line">     */</div><div class="line">    </div><div class="line">    </div><div class="line">    NSLog(@&quot;%@&quot;,[array2 arrayByAddingObjectsFromArray:[NSArray arrayWithObjects:@&quot;5&quot;,@&quot;6&quot;, nil]]);//追加形成新的数组</div><div class="line">    /*结果：</div><div class="line">     (</div><div class="line">         1,</div><div class="line">         2,</div><div class="line">         3,</div><div class="line">         4,</div><div class="line">         5,</div><div class="line">         6</div><div class="line">     )</div><div class="line">     */</div><div class="line">    </div><div class="line">    </div><div class="line">    NSLog(@&quot;%@&quot;,[array2 subarrayWithRange:NSMakeRange(1, 3)]);//根据一定范围取得生成一个新的数组</div><div class="line">    /*结果：</div><div class="line">     (</div><div class="line">         2,</div><div class="line">         3,</div><div class="line">         4</div><div class="line">     )</div><div class="line">     */</div><div class="line">    </div><div class="line">    </div><div class="line">    NSLog(@&quot;%@&quot;,[array componentsJoinedByString:@&quot;,&quot;]);//数组连接，形成一个字符串</div><div class="line">    //结果：1,2,3</div><div class="line">    </div><div class="line">    //读写文件</div><div class="line">    NSString *path=@&quot;/Users/KenshinCui/Desktop/array.xml&quot;;</div><div class="line">    [array writeToFile:path atomically:YES];</div><div class="line">    NSArray *array3=[NSArray arrayWithContentsOfFile:path];</div><div class="line">    NSLog(@&quot;%@&quot;,array3);</div><div class="line">    /*结果：</div><div class="line">     (</div><div class="line">         1,</div><div class="line">         2,</div><div class="line">         3</div><div class="line">     )</div><div class="line">     */</div><div class="line">&#125;</div><div class="line">//数组排序</div><div class="line">void test4()&#123;</div><div class="line">    //方法1,使用自带的比较器</div><div class="line">    NSArray *array=[NSArray arrayWithObjects:@&quot;3&quot;,@&quot;1&quot;,@&quot;2&quot;, nil];</div><div class="line">    NSArray *array2= [array sortedArrayUsingSelector:@selector(compare:)];</div><div class="line">    NSLog(@&quot;%@&quot;,array2);</div><div class="line">    /*结果：</div><div class="line">     (</div><div class="line">         1,</div><div class="line">         2,</div><div class="line">         3</div><div class="line">     )</div><div class="line">     */</div><div class="line">    </div><div class="line">    </div><div class="line">    //方法2,自己定义比较器</div><div class="line">    Person *person1=[Person personWithName:@&quot;Kenshin&quot;];</div><div class="line">    Person *person2=[Person personWithName:@&quot;Kaoru&quot;];</div><div class="line">    Person *person3=[Person personWithName:@&quot;Rosa&quot;];</div><div class="line">    NSArray *array3=[NSArray arrayWithObjects:person1,person2,person3, nil];</div><div class="line">    NSArray *array4=[array3 sortedArrayUsingSelector:@selector(comparePerson:)];</div><div class="line">    NSLog(@&quot;%@&quot;,array4);</div><div class="line">    /*结果：</div><div class="line">     (</div><div class="line">         &quot;name=Kaoru&quot;,</div><div class="line">         &quot;name=Kenshin&quot;,</div><div class="line">         &quot;name=Rosa&quot;</div><div class="line">     )</div><div class="line">     */</div><div class="line">    </div><div class="line">    </div><div class="line">    //方法3使用代码块</div><div class="line">    NSArray *array5=[array3 sortedArrayUsingComparator:^NSComparisonResult(Person *obj1, Person *obj2) &#123;</div><div class="line">        return [obj2.name compare:obj1.name];//降序</div><div class="line">    &#125;];</div><div class="line">    NSLog(@&quot;%@&quot;,array5);</div><div class="line">    /*结果：</div><div class="line">     (</div><div class="line">         &quot;name=Rosa&quot;,</div><div class="line">         &quot;name=Kenshin&quot;,</div><div class="line">         &quot;name=Kaoru&quot;</div><div class="line">     )</div><div class="line">     */</div><div class="line">    </div><div class="line">    </div><div class="line">    //方法4 通过描述器定义排序规则</div><div class="line">    Person *person4=[Person personWithName:@&quot;Jack&quot;];</div><div class="line">    Person *person5=[Person personWithName:@&quot;Jerry&quot;];</div><div class="line">    Person *person6=[Person personWithName:@&quot;Tom&quot;];</div><div class="line">    Person *person7=[Person personWithName:@&quot;Terry&quot;];</div><div class="line">    NSArray *array6=[NSArray arrayWithObjects:person4,person5,person6,person7, nil];</div><div class="line">    //定义一个排序描述</div><div class="line">    NSSortDescriptor *personName=[NSSortDescriptor sortDescriptorWithKey:@&quot;name&quot; ascending:YES];</div><div class="line">    NSSortDescriptor *accountBalance=[NSSortDescriptor sortDescriptorWithKey:@&quot;account.balance&quot; ascending:YES];</div><div class="line">    NSArray *des=[NSArray arrayWithObjects:personName,accountBalance, nil];//先按照person的name排序再按照account的balance排序</div><div class="line">    NSArray *array7=[array6 sortedArrayUsingDescriptors:des];</div><div class="line">    NSLog(@&quot;%@&quot;,array7);</div><div class="line">    /*结果：</div><div class="line">     (</div><div class="line">         &quot;name=Jack&quot;,</div><div class="line">         &quot;name=Jerry&quot;,</div><div class="line">         &quot;name=Terry&quot;,</div><div class="line">         &quot;name=Tom&quot;</div><div class="line">     )</div><div class="line">     */</div><div class="line">&#125;</div><div class="line"></div><div class="line">int main(int argc, const char * argv[]) &#123;</div><div class="line">    test1();</div><div class="line">    test2();</div><div class="line">    test3();</div><div class="line">    test4();</div><div class="line">    return 0;</div><div class="line">&#125;</div></pre></td></tr></table></figure>
+<blockquote>
+<p>需要注意几点：</p>
+<p>NSArray中只能存放对象，不能存放基本数据类型，通常我们可以通过在基本数据类型前加@进行转换；<br>数组中的元素后面必须加nil以表示数据结束；</p>
+<p>makeObjectsPerformSelector执行数组中对象的方法，其参数最多只能有一个；</p>
+<p>上面数组操作中无论是数组的追加、删除、截取都没有改变原来的数组，只是产生了新的数组而已；<br>对象的比较除了使用系统自带的方法，我们可以通过自定义比较器的方法来实现；</p>
+<p>可变数组</p>
+</blockquote>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div><div class="line">17</div><div class="line">18</div><div class="line">19</div><div class="line">20</div><div class="line">21</div><div class="line">22</div><div class="line">23</div><div class="line">24</div><div class="line">25</div><div class="line">26</div><div class="line">27</div><div class="line">28</div><div class="line">29</div><div class="line">30</div><div class="line">31</div><div class="line">32</div><div class="line">33</div><div class="line">34</div><div class="line">35</div><div class="line">36</div><div class="line">37</div><div class="line">38</div><div class="line">39</div><div class="line">40</div><div class="line">41</div><div class="line">42</div><div class="line">43</div><div class="line">44</div><div class="line">45</div><div class="line">46</div><div class="line">47</div><div class="line">48</div><div class="line">49</div><div class="line">50</div><div class="line">51</div><div class="line">52</div><div class="line">53</div><div class="line">54</div><div class="line">55</div><div class="line">56</div><div class="line">57</div><div class="line">58</div><div class="line">59</div><div class="line">60</div><div class="line">61</div><div class="line">62</div><div class="line">63</div><div class="line">64</div><div class="line">65</div><div class="line">66</div><div class="line">67</div><div class="line">68</div><div class="line">69</div><div class="line">70</div><div class="line">71</div><div class="line">72</div><div class="line">73</div><div class="line">74</div><div class="line">75</div><div class="line">76</div><div class="line">77</div><div class="line">78</div><div class="line">79</div><div class="line">80</div><div class="line">81</div><div class="line">82</div><div class="line">83</div><div class="line">84</div><div class="line">85</div><div class="line">86</div><div class="line">87</div><div class="line">88</div><div class="line">89</div><div class="line">90</div><div class="line">91</div><div class="line">92</div><div class="line">93</div><div class="line">94</div><div class="line">95</div><div class="line">96</div><div class="line">97</div><div class="line">98</div><div class="line">99</div><div class="line">100</div><div class="line">101</div><div class="line">102</div><div class="line">103</div></pre></td><td class="code"><pre><div class="line">#import &lt;Foundation/Foundation.h&gt;</div><div class="line">#import &quot;Person.h&quot;</div><div class="line"></div><div class="line"></div><div class="line">void test1()&#123;</div><div class="line">    Person *person1=[Person personWithName:@&quot;Kenshin&quot;];</div><div class="line">    Person *person2=[Person personWithName:@&quot;Kaoru&quot;];</div><div class="line">    Person *person3=[Person personWithName:@&quot;Rosa&quot;];</div><div class="line">    NSMutableArray *array1=[NSMutableArray arrayWithObjects:person1,person2,person3, nil];</div><div class="line">    NSLog(@&quot;%@&quot;,array1);</div><div class="line">    /*结果：</div><div class="line">     (</div><div class="line">         &quot;name=Kenshin&quot;,</div><div class="line">         &quot;name=Kaoru&quot;,</div><div class="line">         &quot;name=Rosa&quot;</div><div class="line">     )</div><div class="line">     */</div><div class="line">    </div><div class="line">    Person *person4=[Person personWithName:@&quot;Jack&quot;];//此时person4的retainCount为1</div><div class="line">    [array1 addObject:person4];//添加一个元素,此时person4的retainCount为2</div><div class="line">    NSLog(@&quot;%@&quot;,array1);</div><div class="line">    /*结果：</div><div class="line">     (</div><div class="line">         &quot;name=Kenshin&quot;,</div><div class="line">         &quot;name=Kaoru&quot;,</div><div class="line">         &quot;name=Rosa&quot;,</div><div class="line">         &quot;name=Jack&quot;</div><div class="line">     )</div><div class="line">     */</div><div class="line">    </div><div class="line">    [array1 removeObject:person3];//删除一个元素</div><div class="line">    NSLog(@&quot;%@&quot;,array1);</div><div class="line">    /*结果：</div><div class="line">     (</div><div class="line">         &quot;name=Kenshin&quot;,</div><div class="line">         &quot;name=Kaoru&quot;,</div><div class="line">         &quot;name=Jack&quot;</div><div class="line">     )</div><div class="line">     */</div><div class="line">    </div><div class="line">    [array1 removeLastObject];//删除最后一个元素,//此时person4的retainCount为1</div><div class="line">    NSLog(@&quot;%@&quot;,array1);</div><div class="line">    /*结果：</div><div class="line">     (</div><div class="line">         &quot;name=Kenshin&quot;,</div><div class="line">         &quot;name=Kaoru&quot;</div><div class="line">     )</div><div class="line">     */</div><div class="line">    </div><div class="line">    [array1 removeAllObjects];//删除所以元素</div><div class="line">    </div><div class="line">    //注意当往数组中添加一个元素时会retain因此计数器+1，当从数组中移除一个元素时会release因此计数器-1</div><div class="line">    //当NSMutalbeArray对象release的时候会依次调用每一个对象的release</div><div class="line">&#125;</div><div class="line">void test2()&#123;</div><div class="line">    NSMutableArray *array1=[NSMutableArray arrayWithObjects:@&quot;1&quot;,@&quot;3&quot;,@&quot;2&quot;, nil];</div><div class="line">    NSLog(@&quot;%@&quot;,array1);</div><div class="line">    /*结果：</div><div class="line">     (</div><div class="line">         1,</div><div class="line">         3,</div><div class="line">         2</div><div class="line">     )</div><div class="line">     */</div><div class="line">    </div><div class="line">    NSArray *array2= [array1 sortedArrayUsingSelector:@selector(compare:)];//注意这个方法没有修改array1</div><div class="line">    NSLog(@&quot;%@&quot;,array1);</div><div class="line">    /*结果：</div><div class="line">     (</div><div class="line">         1,</div><div class="line">         3,</div><div class="line">         2</div><div class="line">     )</div><div class="line">     */</div><div class="line">    </div><div class="line">    NSLog(@&quot;%@&quot;,array2);</div><div class="line">    /*结果：</div><div class="line">     (</div><div class="line">         1,</div><div class="line">         2,</div><div class="line">         3</div><div class="line">     )</div><div class="line">     */</div><div class="line">    [array1 sortUsingSelector:@selector(compare:)];//这个方法会修改array1</div><div class="line">    NSLog(@&quot;%@&quot;,array1);</div><div class="line">    /*结果：</div><div class="line">     (</div><div class="line">         1,</div><div class="line">         2,</div><div class="line">         3</div><div class="line">     )</div><div class="line">     */</div><div class="line">    </div><div class="line">&#125;</div><div class="line"></div><div class="line">int main(int argc, const char * argv[]) &#123;</div><div class="line">    </div><div class="line">    test1();</div><div class="line">    </div><div class="line">    test2();</div><div class="line">    </div><div class="line">    return 0;</div><div class="line">&#125;</div></pre></td></tr></table></figure>
+<blockquote>
+<p>可变数组中的元素后面必须加nil以表示数据结束；</p>
+<p>往一个可变数组中添加一个对象，此时这个对象的引用计数器会加1，当这个对象从可变数组中移除其引用计数器减1。同时当整个数组销毁之后会依次调用每个对象的releaes方法。</p>
+<p>在不可变数组中无论对数组怎么排序，原来的数组顺序都不会改变，但是在可变数组中如果使用sortUsingSelector:排序原来的数组顺序就发生了变化。</p>
+</blockquote>
+<hr>
+<blockquote>
+<p>字典</p>
+<p>字典在我们日常开发中也是比较常用的，通过下面的代码我们看一下在ObjC中的字典的常用操作：初始化、遍历、排序</p>
+</blockquote>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div><div class="line">17</div><div class="line">18</div><div class="line">19</div><div class="line">20</div><div class="line">21</div><div class="line">22</div><div class="line">23</div><div class="line">24</div><div class="line">25</div><div class="line">26</div><div class="line">27</div><div class="line">28</div><div class="line">29</div><div class="line">30</div><div class="line">31</div><div class="line">32</div><div class="line">33</div><div class="line">34</div><div class="line">35</div><div class="line">36</div><div class="line">37</div><div class="line">38</div><div class="line">39</div><div class="line">40</div><div class="line">41</div><div class="line">42</div><div class="line">43</div><div class="line">44</div><div class="line">45</div><div class="line">46</div><div class="line">47</div><div class="line">48</div><div class="line">49</div><div class="line">50</div><div class="line">51</div><div class="line">52</div><div class="line">53</div><div class="line">54</div><div class="line">55</div><div class="line">56</div><div class="line">57</div><div class="line">58</div><div class="line">59</div><div class="line">60</div><div class="line">61</div><div class="line">62</div><div class="line">63</div><div class="line">64</div><div class="line">65</div><div class="line">66</div><div class="line">67</div><div class="line">68</div><div class="line">69</div><div class="line">70</div><div class="line">71</div><div class="line">72</div><div class="line">73</div><div class="line">74</div><div class="line">75</div><div class="line">76</div><div class="line">77</div><div class="line">78</div><div class="line">79</div><div class="line">80</div><div class="line">81</div><div class="line">82</div><div class="line">83</div><div class="line">84</div><div class="line">85</div><div class="line">86</div><div class="line">87</div><div class="line">88</div><div class="line">89</div><div class="line">90</div><div class="line">91</div><div class="line">92</div><div class="line">93</div><div class="line">94</div><div class="line">95</div><div class="line">96</div><div class="line">97</div><div class="line">98</div><div class="line">99</div><div class="line">100</div><div class="line">101</div><div class="line">102</div><div class="line">103</div><div class="line">104</div><div class="line">105</div><div class="line">106</div><div class="line">107</div><div class="line">108</div><div class="line">109</div><div class="line">110</div><div class="line">111</div><div class="line">112</div><div class="line">113</div><div class="line">114</div><div class="line">115</div><div class="line">116</div><div class="line">117</div><div class="line">118</div><div class="line">119</div><div class="line">120</div><div class="line">121</div><div class="line">122</div><div class="line">123</div><div class="line">124</div><div class="line">125</div><div class="line">126</div><div class="line">127</div><div class="line">128</div><div class="line">129</div><div class="line">130</div><div class="line">131</div><div class="line">132</div><div class="line">133</div><div class="line">134</div><div class="line">135</div><div class="line">136</div><div class="line">137</div><div class="line">138</div><div class="line">139</div><div class="line">140</div><div class="line">141</div><div class="line">142</div><div class="line">143</div><div class="line">144</div><div class="line">145</div><div class="line">146</div><div class="line">147</div><div class="line">148</div><div class="line">149</div><div class="line">150</div><div class="line">151</div><div class="line">152</div><div class="line">153</div><div class="line">154</div><div class="line">155</div><div class="line">156</div><div class="line">157</div><div class="line">158</div><div class="line">159</div><div class="line">160</div><div class="line">161</div><div class="line">162</div><div class="line">163</div><div class="line">164</div><div class="line">165</div><div class="line">166</div><div class="line">167</div><div class="line">168</div><div class="line">169</div><div class="line">170</div><div class="line">171</div><div class="line">172</div><div class="line">173</div><div class="line">174</div><div class="line">175</div><div class="line">176</div><div class="line">177</div><div class="line">178</div><div class="line">179</div></pre></td><td class="code"><pre><div class="line">#import &lt;Foundation/Foundation.h&gt;</div><div class="line"></div><div class="line"></div><div class="line">void test1()&#123;</div><div class="line">    NSDictionary *dic1=[NSDictionary dictionaryWithObject:@&quot;1&quot; forKey:@&quot;a&quot;];</div><div class="line">    NSLog(@&quot;%@&quot;,dic1);</div><div class="line">    /*结果：</div><div class="line">     &#123;</div><div class="line">        a = 1;</div><div class="line">     &#125;</div><div class="line">     */</div><div class="line">    </div><div class="line">    //常用的方式</div><div class="line">    NSDictionary *dic2=[NSDictionary dictionaryWithObjectsAndKeys:</div><div class="line">                        @&quot;1&quot;,@&quot;a&quot;,</div><div class="line">                        @&quot;2&quot;,@&quot;b&quot;,</div><div class="line">                        @&quot;3&quot;,@&quot;c&quot;,</div><div class="line">                        nil];</div><div class="line">    NSLog(@&quot;%@&quot;,dic2);</div><div class="line">    /*结果：</div><div class="line">     &#123;</div><div class="line">         a = 1;</div><div class="line">         b = 2;</div><div class="line">         c = 3;</div><div class="line">     &#125;</div><div class="line">     */</div><div class="line">    </div><div class="line">    </div><div class="line">    NSDictionary *dic3=[NSDictionary dictionaryWithObjects:[NSArray arrayWithObjects:@&quot;1&quot;,@&quot;2&quot;, nil] forKeys:[NSArray arrayWithObjects:@&quot;a&quot;,@&quot;b&quot;, nil]];</div><div class="line">    NSLog(@&quot;%@&quot;,dic3);</div><div class="line">    /*结果：</div><div class="line">     &#123;</div><div class="line">         a = 1;</div><div class="line">         b = 2;</div><div class="line">     &#125;</div><div class="line">     */</div><div class="line">    </div><div class="line">    </div><div class="line">    //更简单的方式</div><div class="line">    NSDictionary *dic4=@&#123;@&quot;1&quot;:@&quot;a&quot;,@&quot;2&quot;:@&quot;b&quot;,@&quot;3&quot;:@&quot;c&quot;&#125;;</div><div class="line">    NSLog(@&quot;%@&quot;,dic4);</div><div class="line">    /*结果：</div><div class="line">     &#123;</div><div class="line">         1 = a;</div><div class="line">         2 = b;</div><div class="line">         3 = c;</div><div class="line">     &#125;</div><div class="line">     */</div><div class="line">&#125;</div><div class="line">void test2()&#123;</div><div class="line">    NSDictionary *dic1=[NSDictionary dictionaryWithObjectsAndKeys:</div><div class="line">                        @&quot;1&quot;,@&quot;a&quot;,</div><div class="line">                        @&quot;2&quot;,@&quot;b&quot;,</div><div class="line">                        @&quot;3&quot;,@&quot;c&quot;,</div><div class="line">                        @&quot;2&quot;,@&quot;d&quot;,</div><div class="line">                        nil];</div><div class="line">    NSLog(@&quot;%zi&quot;,[dic1 count]); //结果：4</div><div class="line">    NSLog(@&quot;%@&quot;,[dic1 valueForKey:@&quot;b&quot;]);//根据键取得值，结果：2</div><div class="line">    NSLog(@&quot;%@&quot;,dic1[@&quot;b&quot;]);//还可以这样读取，结果：2</div><div class="line">    NSLog(@&quot;%@,%@&quot;,[dic1 allKeys],[dic1 allValues]);</div><div class="line">    /*结果：</div><div class="line">     (</div><div class="line">         d,</div><div class="line">         b,</div><div class="line">         c,</div><div class="line">         a</div><div class="line">     ),(</div><div class="line">         2,</div><div class="line">         2,</div><div class="line">         3,</div><div class="line">         1</div><div class="line">     )</div><div class="line"></div><div class="line">     */</div><div class="line">    </div><div class="line">    NSLog(@&quot;%@&quot;,[dic1 objectsForKeys:[NSArray arrayWithObjects:@&quot;a&quot;,@&quot;e&quot; , nil]notFoundMarker:@&quot;not fount&quot;]);//后面一个参数notFoundMarker是如果找不到对应的key用什么值代替</div><div class="line">    /*结果：</div><div class="line">     (</div><div class="line">         1,</div><div class="line">         &quot;not fount&quot;</div><div class="line">     )</div><div class="line">     */</div><div class="line">&#125;</div><div class="line">void test3()&#123;</div><div class="line">    NSDictionary *dic1=[NSDictionary dictionaryWithObjectsAndKeys:</div><div class="line">                        @&quot;1&quot;,@&quot;a&quot;,</div><div class="line">                        @&quot;2&quot;,@&quot;b&quot;,</div><div class="line">                        @&quot;3&quot;,@&quot;c&quot;,</div><div class="line">                        @&quot;2&quot;,@&quot;d&quot;,</div><div class="line">                        nil];</div><div class="line">    //遍历1</div><div class="line">    for (id key in dic1) &#123;//注意对于字典for遍历循环的是key</div><div class="line">        NSLog(@&quot;%@=%@&quot;,key,[dic1 objectForKey:key]);</div><div class="line">    &#125;</div><div class="line">    /*结果：</div><div class="line">     d=2</div><div class="line">     b=2</div><div class="line">     c=3</div><div class="line">     a=1</div><div class="line">     */</div><div class="line">    </div><div class="line">    //遍历2</div><div class="line">    NSEnumerator *enumerator=[dic1 keyEnumerator];//还有值的迭代器[dic1 objectEnumerator]</div><div class="line">    id key=nil;</div><div class="line">    while (key=[enumerator nextObject]) &#123;</div><div class="line">        NSLog(@&quot;%@=%@&quot;,key,[dic1 objectForKey:key]);</div><div class="line">        </div><div class="line">    &#125;</div><div class="line">    /*结果：</div><div class="line">     d=2</div><div class="line">     b=2</div><div class="line">     c=3</div><div class="line">     a=1</div><div class="line">     */</div><div class="line">    </div><div class="line">    //遍历3</div><div class="line">    [dic1 enumerateKeysAndObjectsUsingBlock:^(id key, id obj, BOOL *stop) &#123;</div><div class="line">        NSLog(@&quot;%@=%@&quot;,key,obj);</div><div class="line">    &#125;];</div><div class="line">    /*结果：</div><div class="line">     d=2</div><div class="line">     b=2</div><div class="line">     c=3</div><div class="line">     a=1</div><div class="line">     */</div><div class="line">&#125;</div><div class="line"></div><div class="line">void test4()&#123;</div><div class="line">    NSMutableDictionary *dic=[NSMutableDictionary dictionaryWithObjectsAndKeys:@&quot;1&quot;,@&quot;a&quot;,</div><div class="line">                              @&quot;2&quot;,@&quot;b&quot;,</div><div class="line">                              @&quot;3&quot;,@&quot;c&quot;,</div><div class="line">                              @&quot;2&quot;,@&quot;d&quot;,</div><div class="line">                            nil];</div><div class="line">    [dic removeObjectForKey:@&quot;b&quot;];</div><div class="line">    NSLog(@&quot;%@&quot;,dic);</div><div class="line">    /*结果：</div><div class="line">     &#123;</div><div class="line">         a = 1;</div><div class="line">         c = 3;</div><div class="line">         d = 2;</div><div class="line">     &#125;</div><div class="line">     */</div><div class="line">    </div><div class="line">    [dic addEntriesFromDictionary:@&#123;@&quot;e&quot;:@&quot;7&quot;,@&quot;f&quot;:@&quot;6&quot;&#125;];</div><div class="line">    NSLog(@&quot;%@&quot;,dic);</div><div class="line">    /*结果：</div><div class="line">     &#123;</div><div class="line">         a = 1;</div><div class="line">         c = 3;</div><div class="line">         d = 2;</div><div class="line">         e = 7;</div><div class="line">         f = 6;</div><div class="line">     &#125;</div><div class="line">     */</div><div class="line">    </div><div class="line">    [dic setValue:@&quot;5&quot; forKey:@&quot;a&quot;];</div><div class="line">    NSLog(@&quot;%@&quot;,dic);</div><div class="line">    /*结果：</div><div class="line">     &#123;</div><div class="line">         a = 5;</div><div class="line">         c = 3;</div><div class="line">         d = 2;</div><div class="line">         e = 7;</div><div class="line">         f = 6;</div><div class="line">     &#125;</div><div class="line">     */</div><div class="line">     </div><div class="line">    </div><div class="line">    //注意，一个字典的key或value添加到字典中时计数器+1；字典释放时调用key或value的release一次，计数器-1</div><div class="line">&#125;</div><div class="line"></div><div class="line"></div><div class="line">int main(int argc, const char * argv[]) &#123;</div><div class="line">    test1();</div><div class="line">    test2();</div><div class="line">    test3();</div><div class="line">    test4();</div><div class="line">    return 0;</div><div class="line">&#125;</div></pre></td></tr></table></figure>
+<blockquote>
+<p>注意：同数组一样，不管是可变字典还是不可变字典初始化元素后面必须加上nil以表示结束。</p>
+</blockquote>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div><div class="line">17</div><div class="line">18</div><div class="line">19</div><div class="line">20</div><div class="line">21</div><div class="line">22</div><div class="line">23</div><div class="line">24</div><div class="line">25</div><div class="line">26</div><div class="line">27</div></pre></td><td class="code"><pre><div class="line">其实从上面的例子中我们也可以看到，数组和字典中只能存储对象类型，其他基本类型和结构体是没有办法放到数组和字典中的，当然你也是无法给它们发送消息的（也就是说有些NSObject的方法是无法调用的），这个时候通常会用到装箱（boxing）和拆箱（unboxing）。其实各种高级语言基本上都有装箱和拆箱的过程，例如C#中我们将基本数据类型转化为Object就是一个装箱的过程，将这个Object对象转换为基本数据类型的过程就是拆箱，而且在C#中装箱的过程可以自动完成，基本数据类型可以直接赋值给Object对象。但是在ObjC中装箱的过程必须手动实现，ObjC不支持自动装箱。</div><div class="line"></div><div class="line">在ObjC中我们一般将基本数据类型装箱成NSNumber类型（当然它也是NSObject的子类，但是NSNumber不能对结构体装箱），调用其对应的方法进行转换：</div><div class="line"></div><div class="line">+(NSNumber *)numberWithChar:(char)value;</div><div class="line"></div><div class="line">+(NSNumber *)numberWithInt:(int)value;</div><div class="line"></div><div class="line">+(NSNumber *)numberWithFloat:(float)value;</div><div class="line"></div><div class="line">+(NSNumber *)numberWithDouble:(double)value;</div><div class="line"></div><div class="line">+(NSNumber *)numberWithBool:(BOOL)value;</div><div class="line"></div><div class="line">+(NSNumber *)numberWithInteger:(NSInteger)value;</div><div class="line"></div><div class="line">拆箱的过程就更加简单了，可以调用如下方法：</div><div class="line"></div><div class="line">-(char)charValue;</div><div class="line"></div><div class="line">-(int)intValue;</div><div class="line"></div><div class="line">-(float)floatValue;</div><div class="line"></div><div class="line">-(double)doubleValue;</div><div class="line"></div><div class="line">-(BOOL)boolValue;</div></pre></td></tr></table></figure>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div><div class="line">17</div><div class="line">18</div><div class="line">19</div><div class="line">20</div><div class="line">21</div><div class="line">22</div><div class="line">23</div><div class="line">24</div><div class="line">25</div><div class="line">26</div><div class="line">27</div><div class="line">28</div></pre></td><td class="code"><pre><div class="line"></div><div class="line">#import &lt;Foundation/Foundation.h&gt;</div><div class="line"></div><div class="line"></div><div class="line">/*可以存放基本类型到数组、字典*/</div><div class="line">void test1()&#123;</div><div class="line">    //包装类NSNumber，可以包装基本类型但是无法包装结构体类型</div><div class="line">    NSNumber *number1=[NSNumber numberWithChar:&apos;a&apos;];//&apos;a&apos;是一个C语言的char类型我们无法放倒NSArray中，但是我们可以通过NSNumber包装</div><div class="line">    NSArray *array1=[NSArray arrayWithObject:number1];</div><div class="line">    NSLog(@&quot;%@&quot;,array1);</div><div class="line">    /*结果：</div><div class="line">     (</div><div class="line">        97</div><div class="line">     )</div><div class="line">     */</div><div class="line">    </div><div class="line">    NSNumber *number2= [array1 lastObject];</div><div class="line">    NSLog(@&quot;%@&quot;,number2);//返回的不是基本类型,结果：97</div><div class="line">    </div><div class="line">    </div><div class="line">    char char1=[number2 charValue];//number转化为char</div><div class="line">    NSLog(@&quot;%c&quot;,char1); //结果：a</div><div class="line">&#125;</div><div class="line"></div><div class="line">int main(int argc, const char * argv[]) &#123;</div><div class="line">    test1();</div><div class="line">    return  0;</div><div class="line">&#125;</div></pre></td></tr></table></figure>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div><div class="line">17</div></pre></td><td class="code"><pre><div class="line">上面我们看到了基本数据类型的装箱和拆箱过程，那么结构体呢？这个时候我们需要引入另外一个类型NSValue，其实上面的NSNumber就是NSValue的子类，它包装了一些基本数据类型的常用装箱、拆箱方法，当要对结构体进行装箱、拆箱操作我们需要使用NSValue，NSValue可以对任何数据类型进行装箱、拆箱操作。</div><div class="line"></div><div class="line">事实上对于常用的结构体Foundation已经为我们提供好了具体的装箱方法：</div><div class="line"></div><div class="line">+(NSValue *)valueWithPoint:(NSPoint)point;</div><div class="line"></div><div class="line">+(NSValue *)valueWithSize:(NSSize)size;</div><div class="line"></div><div class="line">+(NSValue *)valueWithRect:(NSRect)rect;</div><div class="line"></div><div class="line">对应的拆箱方法：</div><div class="line"></div><div class="line">-(NSPoint)pointValue;</div><div class="line"></div><div class="line">-(NSSize)sizeValue;</div><div class="line"></div><div class="line">-(NSRect)rectValue;</div></pre></td></tr></table></figure>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div></pre></td><td class="code"><pre><div class="line">那么如果是我们自定义的结构体类型呢，这个时候我们需要使用NSValue如下方法进行装箱：</div><div class="line"></div><div class="line">+(NSValue *)valueWithBytes:(const void *)value objCType:(const char *)type;</div><div class="line"></div><div class="line">调用下面的方法进行拆箱：</div><div class="line"></div><div class="line">-(void)getValue:(void *)value;</div></pre></td></tr></table></figure>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div><div class="line">17</div><div class="line">18</div><div class="line">19</div><div class="line">20</div><div class="line">21</div><div class="line">22</div><div class="line">23</div><div class="line">24</div><div class="line">25</div><div class="line">26</div><div class="line">27</div><div class="line">28</div><div class="line">29</div><div class="line">30</div><div class="line">31</div><div class="line">32</div><div class="line">33</div><div class="line">34</div><div class="line">35</div></pre></td><td class="code"><pre><div class="line">#import &lt;Foundation/Foundation.h&gt;</div><div class="line"></div><div class="line">typedef struct &#123;</div><div class="line">    int year;</div><div class="line">    int month;</div><div class="line">    int day;</div><div class="line">&#125; Date;</div><div class="line"></div><div class="line"></div><div class="line">//NSNumber是NSValue的子类，而NSValue可以包装任何类型，包括结构体</div><div class="line">void test1()&#123;</div><div class="line">    //如果我们自己定义的结构体包装</div><div class="line">    Date date=&#123;2014,2,28&#125;;</div><div class="line">    char *type=@encode(Date);</div><div class="line">    NSValue *value3=[NSValue value:&amp;date withObjCType:type];//第一参数传递结构体地址，第二个参数传递类型字符串</div><div class="line">    NSArray *array2=[NSArray arrayWithObject:value3];</div><div class="line">    NSLog(@&quot;%@&quot;,array2);</div><div class="line">    /*结果：</div><div class="line">     (</div><div class="line">        &quot;&lt;de070000 02000000 1c000000&gt;&quot;</div><div class="line">     )</div><div class="line">     */</div><div class="line">    </div><div class="line">    Date date2;</div><div class="line">    [value3 getValue:&amp;date2];//取出对应的结构体，注意没有返回值</div><div class="line">    //[value3 objCType]//取出包装内容的类型</div><div class="line">    NSLog(@&quot;%i,%i,%i&quot;,date2.year,date2.month,date2.day); //结果：2014,2,28</div><div class="line">    </div><div class="line">&#125;</div><div class="line"></div><div class="line"></div><div class="line">int main(int argc, const char * argv[]) &#123;</div><div class="line">    test1();</div><div class="line">    return  0;</div><div class="line">&#125;</div></pre></td></tr></table></figure>
+<blockquote>
+<p>扩展1-NSNull</p>
+<p>通过前面的介绍大家都知道无论在数组还是在字典中都必须以nil结尾，否则数组或字典无法判断是否这个数组或字典已经结束（与C语言中的字符串比较类似，C语言中定义字符串后面必须加一个”\0”）。但是我们有时候确实想在数据或字典中存储nil值而不是作为结束标记怎么办呢？这个时候需要使用NSNull，这个类是一个单例，只有一个null方法。简单看一下：</p>
+</blockquote>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div><div class="line">17</div><div class="line">18</div><div class="line">19</div><div class="line">20</div><div class="line">21</div><div class="line">22</div></pre></td><td class="code"><pre><div class="line">#import &lt;Foundation/Foundation.h&gt;</div><div class="line"></div><div class="line"></div><div class="line"></div><div class="line">int main(int argc, const char * argv[]) &#123;</div><div class="line">    </div><div class="line">    NSNull *nl=[NSNull null];//注意这是一个对象，是一个单例，只有一个方法null创建一个对象</div><div class="line">    NSNull *nl2=[NSNull null];</div><div class="line">    NSLog(@&quot;%i&quot;,nl==nl2);//由于是单例所以地址相等,结果：1</div><div class="line">    </div><div class="line">    NSArray *array1=[NSArray arrayWithObjects:@&quot;abc&quot;,nl,@123, nil];</div><div class="line">    NSLog(@&quot;%@&quot;,array1);</div><div class="line">    /*结果：</div><div class="line">     (</div><div class="line">         abc,</div><div class="line">         &quot;&lt;null&gt;&quot;,</div><div class="line">         123</div><div class="line">     )</div><div class="line">     */</div><div class="line"></div><div class="line">    return  0;</div><div class="line">&#125;</div></pre></td></tr></table></figure>
+<blockquote>
+<p>扩展2-@符号</p>
+<p>我们知道在ObjC中很多关键字前都必须加上@符号，例如@protocol、@property等，当然ObjC中的字符串必须使用@符号，还有就是%@可以表示输出一个对象。其实@符号在新版的ObjC中还有一个作用：装箱。</p>
+</blockquote>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div><div class="line">17</div><div class="line">18</div><div class="line">19</div><div class="line">20</div><div class="line">21</div><div class="line">22</div><div class="line">23</div><div class="line">24</div><div class="line">25</div><div class="line">26</div><div class="line">27</div><div class="line">28</div><div class="line">29</div><div class="line">30</div><div class="line">31</div><div class="line">32</div><div class="line">33</div><div class="line">34</div><div class="line">35</div><div class="line">36</div><div class="line">37</div><div class="line">38</div><div class="line">39</div><div class="line">40</div><div class="line">41</div><div class="line">42</div><div class="line">43</div><div class="line">44</div><div class="line">45</div><div class="line">46</div><div class="line">47</div><div class="line">48</div><div class="line">49</div><div class="line">50</div><div class="line">51</div></pre></td><td class="code"><pre><div class="line">#import &lt;Foundation/Foundation.h&gt;</div><div class="line"></div><div class="line">typedef enum &#123;</div><div class="line">    spring,</div><div class="line">    summer,</div><div class="line">    autumn,</div><div class="line">    winter</div><div class="line">&#125; Season;</div><div class="line"></div><div class="line">int main(int argc, const char * argv[]) &#123;</div><div class="line">    /*装箱*/</div><div class="line">    NSNumber *number1=@100;</div><div class="line">    NSArray *array1=[NSArray arrayWithObjects:number1,@&quot;abc&quot;,@16,@&apos;A&apos;,@16.7,@YES, nil];</div><div class="line">    NSLog(@&quot;%@&quot;,array1);</div><div class="line">    /*结果：</div><div class="line">     (</div><div class="line">         100,</div><div class="line">         abc,</div><div class="line">         16,</div><div class="line">         65,</div><div class="line">         &quot;16.7&quot;</div><div class="line">         1</div><div class="line">     )</div><div class="line">     */</div><div class="line">    NSNumber *number2=@(1+2*3);</div><div class="line">    NSLog(@&quot;%@&quot;,number2); //结果：7</div><div class="line">    NSNumber *number3=@(autumn);</div><div class="line">    NSLog(@&quot;%@&quot;,number3); //结果：2</div><div class="line">    </div><div class="line"></div><div class="line">    NSArray *array2=@[@&quot;abc&quot;,@16,@&apos;A&apos;,@16.7,@YES];//使用这种方式最后不用添加nil值了</div><div class="line">    NSLog(@&quot;%@&quot;,array2[2]); //结果：65</div><div class="line">    NSMutableArray *array3=[NSMutableArray arrayWithArray:array2];</div><div class="line">    array3[0]=@&quot;def&quot;;</div><div class="line">    NSLog(@&quot;%@&quot;,array3[0]); //结果：def</div><div class="line">    </div><div class="line">    NSDictionary *dic1=@&#123;@&quot;a&quot;:@123,@&quot;b&quot;:@&apos;c&apos;,@&quot;c&quot;:@YES&#125;;</div><div class="line">    NSLog(@&quot;%@&quot;,dic1);</div><div class="line">    /*结果：</div><div class="line">     &#123;</div><div class="line">         a = 123;</div><div class="line">         b = 99;</div><div class="line">         c = 1;</div><div class="line">     &#125;</div><div class="line">     */</div><div class="line">    NSMutableDictionary *dic2=[NSMutableDictionary dictionaryWithDictionary:dic1];</div><div class="line">    dic2[@&quot;a&quot;]=@456;</div><div class="line">    NSLog(@&quot;%@&quot;,dic2[@&quot;a&quot;]);//结果：456</div><div class="line"></div><div class="line">    return 0;</div><div class="line">&#125;</div></pre></td></tr></table></figure>
+<hr>
+<blockquote>
+<p>反射</p>
+<p>由于ObjC动态性，在ObjC中实现反射可以说是相当简单，下面代码中演示了常用的反射操作，具体作用也都在代码中进行了注释说明:</p>
+</blockquote>
+<p>创建类来解释</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div></pre></td><td class="code"><pre><div class="line">Account.h</div><div class="line">#import &lt;Foundation/Foundation.h&gt;</div><div class="line">@interface Account : NSObject</div><div class="line">@property (nonatomic,assign) double balance;</div><div class="line">@end</div></pre></td></tr></table></figure>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div><div class="line">17</div><div class="line">18</div></pre></td><td class="code"><pre><div class="line">Person.h</div><div class="line">#import &lt;Foundation/Foundation.h&gt;</div><div class="line">@class Account;</div><div class="line"></div><div class="line">@interface Person : NSObject</div><div class="line">@property (nonatomic,copy) NSString *name;</div><div class="line">@property (nonatomic,retain) Account *account;</div><div class="line"></div><div class="line">-(Person *)initWithName:(NSString *)name;</div><div class="line"></div><div class="line">+(Person *)personWithName:(NSString *)name;</div><div class="line"></div><div class="line">-(void)showMessage:(NSString *)infomation;</div><div class="line"></div><div class="line">//自己实现对象比较方法</div><div class="line">-(NSComparisonResult)comparePerson:(Person *)person;</div><div class="line"></div><div class="line">@end</div></pre></td></tr></table></figure>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div><div class="line">17</div><div class="line">18</div><div class="line">19</div><div class="line">20</div><div class="line">21</div><div class="line">22</div><div class="line">23</div><div class="line">24</div><div class="line">25</div><div class="line">26</div><div class="line">27</div><div class="line">28</div><div class="line">29</div><div class="line">30</div><div class="line">31</div></pre></td><td class="code"><pre><div class="line">Person.m</div><div class="line">#import &quot;Person.h&quot;</div><div class="line"></div><div class="line">@implementation Person</div><div class="line"></div><div class="line">-(Person *)initWithName:(NSString *)name&#123;</div><div class="line">    if(self=[super init])&#123;</div><div class="line">        self.name=name;</div><div class="line">    &#125;</div><div class="line">    return self;</div><div class="line">&#125;</div><div class="line"></div><div class="line">+(Person *)personWithName:(NSString *)name&#123;</div><div class="line">    Person *person=[[Person alloc]initWithName:name];</div><div class="line">    return person;</div><div class="line">&#125;</div><div class="line"></div><div class="line">-(void)showMessage:(NSString *)infomation&#123;</div><div class="line">    NSLog(@&quot;My name is %@,the infomation is \&quot;%@\&quot;.&quot;,_name,infomation);</div><div class="line">&#125;</div><div class="line"></div><div class="line">//自己实现对象比较方法</div><div class="line">-(NSComparisonResult)comparePerson:(Person *)person&#123;</div><div class="line">    return [_name compare:person.name];</div><div class="line">&#125;</div><div class="line"></div><div class="line">-(NSString *)description&#123;</div><div class="line">    return [NSString stringWithFormat:@&quot;name=%@&quot;,_name];</div><div class="line">&#125;</div><div class="line"></div><div class="line">@end</div></pre></td></tr></table></figure>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div><div class="line">17</div><div class="line">18</div><div class="line">19</div><div class="line">20</div><div class="line">21</div><div class="line">22</div><div class="line">23</div><div class="line">24</div><div class="line">25</div><div class="line">26</div><div class="line">27</div><div class="line">28</div><div class="line">29</div><div class="line">30</div><div class="line">31</div><div class="line">32</div><div class="line">33</div><div class="line">34</div><div class="line">35</div><div class="line">36</div><div class="line">37</div><div class="line">38</div><div class="line">39</div><div class="line">40</div><div class="line">41</div><div class="line">42</div></pre></td><td class="code"><pre><div class="line">main.m</div><div class="line">#import &lt;Foundation/Foundation.h&gt;</div><div class="line">#import &quot;Person.h&quot;</div><div class="line"></div><div class="line"></div><div class="line">int main(int argc, const char * argv[]) &#123;</div><div class="line">    /*常用方法*/</div><div class="line">    Person *person1=[Person personWithName:@&quot;Kenshin&quot;];</div><div class="line">    NSLog(@&quot;%i&quot;,[person1 isKindOfClass:[NSObject class]]); //判断一个对象是否为某种类型（如果是父类也返回YES），结果：1</div><div class="line">    NSLog(@&quot;%i&quot;,[person1 isMemberOfClass:[NSObject class]]); //判断一个对象是否是某个类的实例化对象，结果：0</div><div class="line">    NSLog(@&quot;%i&quot;,[person1 isMemberOfClass:[Person class]]); //结果：1</div><div class="line">    NSLog(@&quot;%i&quot;,[person1 conformsToProtocol:@protocol(NSCopying)]);//是否实现了某个协议，结果：0</div><div class="line">    NSLog(@&quot;%i&quot;,[person1 respondsToSelector:@selector(showMessage:)]);//是否存在某个方法，结果：1</div><div class="line">    </div><div class="line">    [person1 showMessage:@&quot;Hello,world!&quot;];//直接调用一个方法</div><div class="line">    [person1 performSelector:@selector(showMessage:) withObject:@&quot;Hello,world!&quot;];</div><div class="line">    //动态调用一个方法，注意如果有参数那么参数类型只能为ObjC对象，并且最多只能有两个参数</div><div class="line"></div><div class="line">    </div><div class="line">    /*反射*/</div><div class="line">    //动态生成一个类</div><div class="line">    NSString *className=@&quot;Person&quot;;</div><div class="line">    Class myClass=NSClassFromString(className);//根据类名生成类</div><div class="line">    Person *person2=[[myClass alloc]init]; //实例化</div><div class="line">    person2.name=@&quot;Kaoru&quot;;</div><div class="line">    NSLog(@&quot;%@&quot;,person2);//结果：name=Kaoru</div><div class="line"></div><div class="line">    //类转化为字符串</div><div class="line">    NSLog(@&quot;%@,%@&quot;,NSStringFromClass(myClass),NSStringFromClass([Person class])); //结果：Person,Person</div><div class="line"></div><div class="line">    //调用方法</div><div class="line">    NSString *methodName=@&quot;showMessage:&quot;;</div><div class="line">    SEL mySelector=NSSelectorFromString(methodName);</div><div class="line">    Person *person3=[[myClass alloc]init];</div><div class="line">    person3.name=@&quot;Rosa&quot;;</div><div class="line">    [person3 performSelector:mySelector withObject:@&quot;Hello,world!&quot;]; //结果：My name is Rosa,the infomation is &quot;Hello,world!&quot;.</div><div class="line"></div><div class="line">    //方法转化为字符串</div><div class="line">    NSLog(@&quot;%@&quot;,NSStringFromSelector(mySelector)); //结果：showMessage:</div><div class="line">    </div><div class="line">    return 0;</div><div class="line">&#125;</div></pre></td></tr></table></figure>
+<hr>
+<p>##拷贝</p>
+<blockquote>
+<p>对象拷贝操作也比较常见，在ObjC中有两种方式的拷贝：copy和mutablecopy，这两种方式都将产生一个新的对象，只是后者产生的是一个可变对象。在ObjC中如果要想实现copy或者mutablecopy操作需要实现NSCopy或者NSMutableCopy协议，拷贝操作产生的新的对象默认引用计数器是1，在非ARC模式下我们应该对这个对象进行内存管理。在熟悉这两种操作之前我们首先需要弄清两个概念:深复制（或深拷贝）和浅复制（或浅拷贝）。</p>
+<ul>
+<li><p>浅复制：在执行复制操作时，对于对象中每一层（对象中包含的对象，例如说属性是某个对象类型）复制都是指针复制（如果从引用计数器角度出发，那么每层对象的引用计数器都会加1）。</p>
+</li>
+<li><p>深复制：在执行复制操作时，至少有一个对象的复制是对象内容复制（如果从引用计数器角度出发，那么除了对象内容复制的那个对象的引用计数器不变，其他指针复制的对象其引用计数器都会加1）。</p>
+</li>
+</ul>
+<blockquote>
+<p>注</p>
+<p>指针拷贝:拷贝的是指针本身（也就是具体对象的地址）而不是指向的对象内容本身。</p>
+<p>对象复制：对象复制指的是复制内容是对象本身而不是对象的地址。</p>
+<p>完全复制：上面说了深复制和浅复制，既然深复制是至少一个对象复制是对象内容复制，那么如果所有复制都是对象内容复制那么这个复制就叫完全复制。</p>
+</blockquote>
+</blockquote>
+
+      
+    </div>
+    
+    
+    
+
+    
+
+    
+
+    
+
+    <footer class="post-footer">
+      
+
+      
+      
+      
+
+      
+        <div class="post-nav">
+          <div class="post-nav-next post-nav-item">
+            
+              <a href="/2017/05/02/AFNetworking/" rel="next" title="AFNetworking">
+                <i class="fa fa-chevron-left"></i> AFNetworking
+              </a>
+            
+          </div>
+
+          <span class="post-nav-divider"></span>
+
+          <div class="post-nav-prev post-nav-item">
+            
+              <a href="/2017/06/13/NS查询/" rel="prev" title="IOS开发之NSPredicate 查询、搜索">
+                IOS开发之NSPredicate 查询、搜索 <i class="fa fa-chevron-right"></i>
+              </a>
+            
+          </div>
+        </div>
+      
+
+      
+      
+    </footer>
+  </div>
+  
+  
+  
+  </article>
+
+
+
+    <div class="post-spread">
+      
+    </div>
+  </div>
+
+
+          </div>
+          
+
+
+          
+  <div class="comments" id="comments">
+    
+  </div>
+
+
+        </div>
+        
+          
+  
+  <div class="sidebar-toggle">
+    <div class="sidebar-toggle-line-wrap">
+      <span class="sidebar-toggle-line sidebar-toggle-line-first"></span>
+      <span class="sidebar-toggle-line sidebar-toggle-line-middle"></span>
+      <span class="sidebar-toggle-line sidebar-toggle-line-last"></span>
+    </div>
+  </div>
+
+  <aside id="sidebar" class="sidebar">
+    
+    <div class="sidebar-inner">
+
+      
+
+      
+
+      <section class="site-overview sidebar-panel sidebar-panel-active">
+        <div class="site-author motion-element" itemprop="author" itemscope itemtype="http://schema.org/Person">
+          <img class="site-author-image" itemprop="image"
+               src="/images/avatar.gif"
+               alt="SongWei" />
+          <p class="site-author-name" itemprop="name">SongWei</p>
+           
+              <p class="site-description motion-element" itemprop="description">先拆轮子,在造轮子!</p>
+          
+        </div>
+        <nav class="site-state motion-element">
+
+          
+            <div class="site-state-item site-state-posts">
+            
+              <a href="/archives/">
+            
+                <span class="site-state-item-count">23</span>
+                <span class="site-state-item-name">日志</span>
+              </a>
+            </div>
+          
+
+          
+
+          
+            
+            
+            <div class="site-state-item site-state-tags">
+              <a href="/tags/index.html">
+                <span class="site-state-item-count">2</span>
+                <span class="site-state-item-name">标签</span>
+              </a>
+            </div>
+          
+
+        </nav>
+
+        
+
+        <div class="links-of-author motion-element">
+          
+            
+              <span class="links-of-author-item">
+                <a href="https://github.com/" target="_blank" title="GitHub">
+                  
+                    <i class="fa fa-fw fa-github"></i>
+                  
+                    
+                      GitHub
+                    
+                </a>
+              </span>
+            
+              <span class="links-of-author-item">
+                <a href="http://weibo.com/" target="_blank" title="Weibo">
+                  
+                    <i class="fa fa-fw fa-weibo"></i>
+                  
+                    
+                      Weibo
+                    
+                </a>
+              </span>
+            
+              <span class="links-of-author-item">
+                <a href="http://www.baidu.com" target="_blank" title="百度">
+                  
+                    <i class="fa fa-fw fa-globe"></i>
+                  
+                    
+                      百度
+                    
+                </a>
+              </span>
+            
+          
+        </div>
+
+        
+        
+
+        
+        
+
+        
+
+
+      </section>
+
+      
+
+      
+
+    </div>
+  </aside>
+
+
+        
+      </div>
+    </main>
+
+    <footer id="footer" class="footer">
+      <div class="footer-inner">
+        <div class="copyright" >
+  
+  &copy; 
+  <span itemprop="copyrightYear">2017</span>
+  <span class="with-love">
+    <i class="fa fa-heart"></i>
+  </span>
+  <span class="author" itemprop="copyrightHolder">SongWei</span>
+
+  
+</div>
+
+
+  <div class="powered-by">由 <a class="theme-link" href="https://hexo.io">Hexo</a> 强力驱动</div>
+
+  <span class="post-meta-divider">|</span>
+
+  <div class="theme-info">主题 &mdash; <a class="theme-link" href="https://github.com/iissnan/hexo-theme-next">NexT.Gemini</a> v5.1.2</div>
+
+
+        
+<div class="busuanzi-count">
+  <script async src="https://dn-lbstatics.qbox.me/busuanzi/2.3/busuanzi.pure.mini.js"></script>
+
+  
+    <span class="site-uv">
+      本站访客数
+      <span class="busuanzi-value" id="busuanzi_value_site_uv"></span>
+      人次
+    </span>
+  
+
+  
+    <span class="site-pv">
+      本站总访问量
+      <span class="busuanzi-value" id="busuanzi_value_site_pv"></span>
+      次
+    </span>
+  
+</div>
+
+
+
+
+
+
+
+
+        
+      </div>
+    </footer>
+
+    
+      <div class="back-to-top">
+        <i class="fa fa-arrow-up"></i>
+        
+          <span id="scrollpercent"><span>0</span>%</span>
+        
+      </div>
+    
+
+  </div>
+
+  
+
+<script type="text/javascript">
+  if (Object.prototype.toString.call(window.Promise) !== '[object Function]') {
+    window.Promise = null;
+  }
+</script>
+
+
+
+
+
+
+
+
+
+  
+
+
+
+
+
+
+
+
+
+
+
+
+  
+  <script type="text/javascript" src="/lib/jquery/index.js?v=2.1.3"></script>
+
+  
+  <script type="text/javascript" src="/lib/fastclick/lib/fastclick.min.js?v=1.0.6"></script>
+
+  
+  <script type="text/javascript" src="/lib/jquery_lazyload/jquery.lazyload.js?v=1.9.7"></script>
+
+  
+  <script type="text/javascript" src="/lib/velocity/velocity.min.js?v=1.2.1"></script>
+
+  
+  <script type="text/javascript" src="/lib/velocity/velocity.ui.min.js?v=1.2.1"></script>
+
+  
+  <script type="text/javascript" src="/lib/fancybox/source/jquery.fancybox.pack.js?v=2.1.5"></script>
+
+
+  
+
+
+  <script type="text/javascript" src="/js/src/utils.js?v=5.1.2"></script>
+
+  <script type="text/javascript" src="/js/src/motion.js?v=5.1.2"></script>
+
+
+
+  
+  
+
+
+  <script type="text/javascript" src="/js/src/affix.js?v=5.1.2"></script>
+
+  <script type="text/javascript" src="/js/src/schemes/pisces.js?v=5.1.2"></script>
+
+
+
+  
+  <script type="text/javascript" src="/js/src/scrollspy.js?v=5.1.2"></script>
+<script type="text/javascript" src="/js/src/post-details.js?v=5.1.2"></script>
+
+
+
+  
+
+
+  <script type="text/javascript" src="/js/src/bootstrap.js?v=5.1.2"></script>
+
+
+
+  
+
+
+  
+
+
+
+
+	
+
+
+
+
+
+  
+
+
+
+
+
+  
+
+
+
+
+
+
+
+
+  
+
+
+
+
+
+  
+
+  
+
+  
+
+  
+
+  
+
+  
+
+</body>
+</html>

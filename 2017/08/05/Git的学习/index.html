@@ -1,0 +1,1229 @@
+<!DOCTYPE html>
+
+
+
+  
+
+
+<html class="theme-next gemini use-motion" lang="zh-Hans">
+<head>
+  <meta charset="UTF-8"/>
+<meta http-equiv="X-UA-Compatible" content="IE=edge" />
+<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1"/>
+<meta name="theme-color" content="#222">
+
+
+
+
+
+
+
+
+
+<meta http-equiv="Cache-Control" content="no-transform" />
+<meta http-equiv="Cache-Control" content="no-siteapp" />
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+  
+  
+  <link href="/lib/fancybox/source/jquery.fancybox.css?v=2.1.5" rel="stylesheet" type="text/css" />
+
+
+
+
+  
+  
+  
+  
+
+  
+    
+    
+  
+
+  
+
+  
+
+  
+
+  
+
+  
+    
+    
+    <link href="//fonts.googleapis.com/css?family=Lato:300,300italic,400,400italic,700,700italic&subset=latin,latin-ext" rel="stylesheet" type="text/css">
+  
+
+
+
+
+
+
+<link href="/lib/font-awesome/css/font-awesome.min.css?v=4.6.2" rel="stylesheet" type="text/css" />
+
+<link href="/css/main.css?v=5.1.2" rel="stylesheet" type="text/css" />
+
+
+  <meta name="keywords" content="iSong" />
+
+
+
+
+
+
+
+
+  <link rel="shortcut icon" type="image/x-icon" href="/favicon.ico?v=5.1.2" />
+
+
+
+
+
+
+<meta name="description" content="参考链接
+不错的资料
+学习开始 具体参考上面链接就不多说了
+最基本的初始化/创建创建版本仓库1234mkdir myGitcd myGitpwd/Users/mac/desktop/myGit
+通过 git init 来把这个仓库变成可以管理的仓库,会发现多一个 .git的文件夹
+添加一个文本, 先创建一个txt文件, 然后添加到文件夹中
+#添加到仓库
+git add readme.txt
+
+#提">
+<meta property="og:type" content="article">
+<meta property="og:title" content="Git的学习">
+<meta property="og:url" content="http://yoursite.com/2017/08/05/Git的学习/index.html">
+<meta property="og:site_name" content="Song">
+<meta property="og:description" content="参考链接
+不错的资料
+学习开始 具体参考上面链接就不多说了
+最基本的初始化/创建创建版本仓库1234mkdir myGitcd myGitpwd/Users/mac/desktop/myGit
+通过 git init 来把这个仓库变成可以管理的仓库,会发现多一个 .git的文件夹
+添加一个文本, 先创建一个txt文件, 然后添加到文件夹中
+#添加到仓库
+git add readme.txt
+
+#提">
+<meta property="og:image" content="http://oop93frdr.bkt.clouddn.com/2017-08-25-013.png">
+<meta property="og:image" content="http://oop93frdr.bkt.clouddn.com/2017-08-25-015.png">
+<meta property="og:image" content="http://oop93frdr.bkt.clouddn.com/2017-08-25-014.png">
+<meta property="og:image" content="http://oop93frdr.bkt.clouddn.com/2017-08-25-016.png">
+<meta property="og:image" content="http://oop93frdr.bkt.clouddn.com/2017-08-25-017.png">
+<meta property="og:image" content="http://oop93frdr.bkt.clouddn.com/2017-08-25-018.png">
+<meta property="og:image" content="http://oop93frdr.bkt.clouddn.com/2017-08-25-019.png">
+<meta property="og:image" content="http://oop93frdr.bkt.clouddn.com/2017-08-25-020.png">
+<meta property="og:image" content="http://oop93frdr.bkt.clouddn.com/2017-08-25-021.png">
+<meta property="og:image" content="http://oop93frdr.bkt.clouddn.com/2017-08-25-022.png">
+<meta property="og:image" content="http://oop93frdr.bkt.clouddn.com/2017-08-25-023.png">
+<meta property="og:image" content="http://oop93frdr.bkt.clouddn.com/2017-08-25-024.png">
+<meta property="og:image" content="http://oop93frdr.bkt.clouddn.com/2017-08-25-025.png">
+<meta property="og:image" content="http://oop93frdr.bkt.clouddn.com/2017-08-25-026.png">
+<meta property="og:image" content="http://oop93frdr.bkt.clouddn.com/2017-08-25-027.png">
+<meta property="og:image" content="http://oop93frdr.bkt.clouddn.com/2017-08-25-028.png">
+<meta property="og:image" content="http://oop93frdr.bkt.clouddn.com/2017-08-25-040.png">
+<meta property="og:image" content="http://oop93frdr.bkt.clouddn.com/2017-08-25-029.png">
+<meta property="og:image" content="http://oop93frdr.bkt.clouddn.com/2017-08-25-030.png">
+<meta property="og:image" content="http://oop93frdr.bkt.clouddn.com/2017-08-25-031.png">
+<meta property="og:image" content="http://oop93frdr.bkt.clouddn.com/2017-08-25-032.png">
+<meta property="og:image" content="http://oop93frdr.bkt.clouddn.com/2017-08-25-033.png">
+<meta property="og:image" content="http://oop93frdr.bkt.clouddn.com/2017-08-25-034.png">
+<meta property="og:image" content="http://oop93frdr.bkt.clouddn.com/2017-08-25-035.png">
+<meta property="og:image" content="http://oop93frdr.bkt.clouddn.com/2017-08-25-036.png">
+<meta property="og:image" content="http://oop93frdr.bkt.clouddn.com/2017-08-25-037.png">
+<meta property="og:image" content="http://oop93frdr.bkt.clouddn.com/2017-08-25-038.png">
+<meta property="og:image" content="http://oop93frdr.bkt.clouddn.com/2017-08-25-039.png">
+<meta property="og:updated_time" content="2017-08-25T16:05:46.000Z">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:title" content="Git的学习">
+<meta name="twitter:description" content="参考链接
+不错的资料
+学习开始 具体参考上面链接就不多说了
+最基本的初始化/创建创建版本仓库1234mkdir myGitcd myGitpwd/Users/mac/desktop/myGit
+通过 git init 来把这个仓库变成可以管理的仓库,会发现多一个 .git的文件夹
+添加一个文本, 先创建一个txt文件, 然后添加到文件夹中
+#添加到仓库
+git add readme.txt
+
+#提">
+<meta name="twitter:image" content="http://oop93frdr.bkt.clouddn.com/2017-08-25-013.png">
+
+
+
+<script type="text/javascript" id="hexo.configurations">
+  var NexT = window.NexT || {};
+  var CONFIG = {
+    root: '/',
+    scheme: 'Gemini',
+    version: '5.1.2',
+    sidebar: {"position":"left","display":"post","offset":12,"offset_float":12,"b2t":false,"scrollpercent":true,"onmobile":false},
+    fancybox: true,
+    tabs: true,
+    motion: true,
+    duoshuo: {
+      userId: '0',
+      author: '博主'
+    },
+    algolia: {
+      applicationID: '',
+      apiKey: '',
+      indexName: '',
+      hits: {"per_page":10},
+      labels: {"input_placeholder":"Search for Posts","hits_empty":"We didn't find any results for the search: ${query}","hits_stats":"${hits} results found in ${time} ms"}
+    }
+  };
+</script>
+
+
+
+  <link rel="canonical" href="http://yoursite.com/2017/08/05/Git的学习/"/>
+
+
+
+
+
+  <title>Git的学习 | Song</title>
+  
+
+
+
+
+
+
+
+
+</head>
+
+<body itemscope itemtype="http://schema.org/WebPage" lang="zh-Hans">
+
+  
+  
+    
+  
+
+  <div class="container sidebar-position-left page-post-detail ">
+    <div class="headband"></div>
+
+    <header id="header" class="header" itemscope itemtype="http://schema.org/WPHeader">
+      <div class="header-inner"><div class="site-brand-wrapper">
+  <div class="site-meta ">
+    
+
+    <div class="custom-logo-site-title">
+      <a href="/"  class="brand" rel="start">
+        <span class="logo-line-before"><i></i></span>
+        <span class="site-title">Song</span>
+        <span class="logo-line-after"><i></i></span>
+      </a>
+    </div>
+      
+        <p class="site-subtitle"></p>
+      
+  </div>
+
+  <div class="site-nav-toggle">
+    <button>
+      <span class="btn-bar"></span>
+      <span class="btn-bar"></span>
+      <span class="btn-bar"></span>
+    </button>
+  </div>
+</div>
+
+<nav class="site-nav">
+  
+
+  
+    <ul id="menu" class="menu">
+      
+        
+        <li class="menu-item menu-item-home">
+          <a href="/" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-home"></i> <br />
+            
+            首页
+          </a>
+        </li>
+      
+        
+        <li class="menu-item menu-item-about">
+          <a href="/about/" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-user"></i> <br />
+            
+            关于
+          </a>
+        </li>
+      
+        
+        <li class="menu-item menu-item-archives">
+          <a href="/archives/" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-archive"></i> <br />
+            
+            归档
+          </a>
+        </li>
+      
+        
+        <li class="menu-item menu-item-tags">
+          <a href="/tags/" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-tags"></i> <br />
+            
+            标签
+          </a>
+        </li>
+      
+
+      
+    </ul>
+  
+
+  
+</nav>
+
+
+
+ </div>
+    </header>
+
+    <main id="main" class="main">
+      <div class="main-inner">
+        <div class="content-wrap">
+          <div id="content" class="content">
+            
+
+  <div id="posts" class="posts-expand">
+    
+
+  
+
+  
+  
+  
+
+  <article class="post post-type-normal" itemscope itemtype="http://schema.org/Article">
+  
+  
+  
+  <div class="post-block">
+    <link itemprop="mainEntityOfPage" href="http://yoursite.com/2017/08/05/Git的学习/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="name" content="SongWei">
+      <meta itemprop="description" content="">
+      <meta itemprop="image" content="/images/avatar.gif">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="Song">
+    </span>
+
+    
+      <header class="post-header">
+
+        
+        
+          <h1 class="post-title" itemprop="name headline">Git的学习</h1>
+        
+
+        <div class="post-meta">
+          <span class="post-time">
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-calendar-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">发表于</span>
+              
+              <time title="创建于" itemprop="dateCreated datePublished" datetime="2017-08-05T11:41:26+08:00">
+                2017-08-05
+              </time>
+            
+
+            
+
+            
+          </span>
+
+          
+
+          
+            
+          
+
+          
+          
+
+          
+            <span class="post-meta-divider">|</span>
+            <span class="page-pv">本文总阅读量
+            <span class="busuanzi-value" id="busuanzi_value_page_pv" ></span>次
+            </span>
+          
+
+          
+
+          
+
+        </div>
+      </header>
+    
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+
+      
+      
+
+      
+        <p><a href="https://www.liaoxuefeng.com/wiki/0013739516305929606dd18361248578c67b8067c8c017b000/00137402760310626208b4f695940a49e5348b689d095fc000" target="_blank" rel="external">参考链接</a></p>
+<p><a href="http://iissnan.com/progit/" target="_blank" rel="external">不错的资料</a></p>
+<p>学习开始 具体参考上面链接就不多说了</p>
+<h3 id="最基本的初始化-创建"><a href="#最基本的初始化-创建" class="headerlink" title="最基本的初始化/创建"></a>最基本的初始化/创建</h3><h5 id="创建版本仓库"><a href="#创建版本仓库" class="headerlink" title="创建版本仓库"></a>创建版本仓库</h5><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div></pre></td><td class="code"><pre><div class="line">mkdir myGit</div><div class="line">cd myGit</div><div class="line">pwd</div><div class="line">/Users/mac/desktop/myGit</div></pre></td></tr></table></figure>
+<h5 id="通过-git-init-来把这个仓库变成可以管理的仓库-会发现多一个-git的文件夹"><a href="#通过-git-init-来把这个仓库变成可以管理的仓库-会发现多一个-git的文件夹" class="headerlink" title="通过 git init 来把这个仓库变成可以管理的仓库,会发现多一个 .git的文件夹"></a>通过 <code>git init</code> 来把这个仓库变成可以管理的仓库,会发现多一个 .git的文件夹</h5><p><img src="http://oop93frdr.bkt.clouddn.com/2017-08-25-013.png" alt=""></p>
+<h5 id="添加一个文本-先创建一个txt文件-然后添加到文件夹中"><a href="#添加一个文本-先创建一个txt文件-然后添加到文件夹中" class="headerlink" title="添加一个文本, 先创建一个txt文件, 然后添加到文件夹中"></a>添加一个文本, 先创建一个txt文件, 然后添加到文件夹中</h5><p><img src="http://oop93frdr.bkt.clouddn.com/2017-08-25-015.png" alt=""></p>
+<pre><code>#添加到仓库
+git add readme.txt
+
+#提交
+git commit -m &quot;wrote a readme file&quot;
+</code></pre><p><img src="http://oop93frdr.bkt.clouddn.com/2017-08-25-014.png" alt=""></p>
+<blockquote>
+<p>小结</p>
+<p>初始化一个Git仓库，使用git init命令。</p>
+<p>第一步，使用命令git add <file>，注意，可反复多次使用，添加多个文件；</file></p>
+<p>第二步，使用命令git commit，完成。</p>
+</blockquote>
+<h3 id="修改文件"><a href="#修改文件" class="headerlink" title="修改文件"></a>修改文件</h3><h5 id="修改文本的内容"><a href="#修改文本的内容" class="headerlink" title="修改文本的内容"></a>修改文本的内容</h5><pre><code>#查看当前的状态
+git status 
+#查看当前的改变
+git diff &lt;文件名字&gt; 
+</code></pre><p><img src="http://oop93frdr.bkt.clouddn.com/2017-08-25-016.png" alt=""></p>
+<h5 id="提交的话重新进行"><a href="#提交的话重新进行" class="headerlink" title="提交的话重新进行"></a>提交的话重新进行</h5><pre><code>#没有任何输出表示没问题
+git add readme.txt 
+</code></pre><p><img src="http://oop93frdr.bkt.clouddn.com/2017-08-25-017.png" alt=""></p>
+<h5 id="然后查看下当前的状态-有一个是需要提交的状态"><a href="#然后查看下当前的状态-有一个是需要提交的状态" class="headerlink" title="然后查看下当前的状态 有一个是需要提交的状态"></a>然后查看下当前的状态 有一个是需要提交的状态</h5><pre><code>git commit -m &quot;add something&quot;
+</code></pre><h5 id="然后再查看下当前的状态"><a href="#然后再查看下当前的状态" class="headerlink" title="然后再查看下当前的状态"></a>然后再查看下当前的状态</h5><pre><code>git status
+</code></pre><p><img src="http://oop93frdr.bkt.clouddn.com/2017-08-25-018.png" alt=""></p>
+<blockquote>
+<p>小结</p>
+<p>要随时掌握工作区的状态，使用<code>git status</code>命令。</p>
+<p>如果<code>git status</code>告诉你有文件被修改过，用<code>git diff</code>可以查看修改内容。    </p>
+</blockquote>
+<h5 id="前面的命令综合来一遍"><a href="#前面的命令综合来一遍" class="headerlink" title="前面的命令综合来一遍"></a>前面的命令综合来一遍</h5><pre><code>#创建一个当前的git仓库
+git init 
+#然后添加文件进去
+#把文件添加到仓库中去
+git add &lt;fileName&gt;
+#查看下状态
+git status 
+#提交状态
+git commit -m &quot;注释&quot; 
+#查看当前状态
+git status 
+#然后修改文件后
+#查看文件的变化
+git diff 
+#查看状态
+git status 
+#添加到暂存区
+git add &lt;fileName&gt; 
+#提交状态
+git commit -m &quot;注释&quot;    
+git status
+</code></pre><h3 id="版本回退"><a href="#版本回退" class="headerlink" title="版本回退"></a>版本回退</h3><pre><code>#显示所有的版本
+git log 
+</code></pre><p><img src="http://oop93frdr.bkt.clouddn.com/2017-08-25-019.png" alt=""></p>
+<pre><code>#只显示注释部分
+git log --pretty=oneline 
+</code></pre><p><img src="http://oop93frdr.bkt.clouddn.com/2017-08-25-020.png" alt=""></p>
+<h5 id="如果现在要回退的话-使用命令"><a href="#如果现在要回退的话-使用命令" class="headerlink" title="如果现在要回退的话 使用命令"></a>如果现在要回退的话 使用命令</h5><pre><code># HEAD 表示当前版本  ^表示上一个版本
+# hard 之后再说
+git reset --hard HEAD^
+</code></pre><h5 id="这时会发现-txt-文本发生了变化"><a href="#这时会发现-txt-文本发生了变化" class="headerlink" title="这时会发现 txt 文本发生了变化"></a>这时会发现 txt 文本发生了变化</h5><pre><code># 预览文本信息
+cat readme.txt 
+</code></pre><p><img src="http://oop93frdr.bkt.clouddn.com/2017-08-25-021.png" alt=""></p>
+<h5 id="然后现在-git-log后也没有了之前的版本"><a href="#然后现在-git-log后也没有了之前的版本" class="headerlink" title="然后现在 git log后也没有了之前的版本"></a>然后现在 <code>git log</code>后也没有了之前的版本</h5><p><img src="http://oop93frdr.bkt.clouddn.com/2017-08-25-022.png" alt=""></p>
+<blockquote>
+<p>只要上面的命令行窗口还没有被关掉，你就可以顺着往上找啊找啊，找到那个append GPL的commit id是3628164…，于是就可以指定回到未来的某个版本：</p>
+</blockquote>
+<pre><code>git reset --hard 3242432
+</code></pre><p><img src="http://oop93frdr.bkt.clouddn.com/2017-08-25-023.png" alt=""></p>
+<h5 id="所以呢就又回来了"><a href="#所以呢就又回来了" class="headerlink" title="所以呢就又回来了"></a>所以呢就又回来了</h5><h5 id="但是如果电脑关闭了-就没有版本号了-所以需要下面命令-会显示前面的版本号"><a href="#但是如果电脑关闭了-就没有版本号了-所以需要下面命令-会显示前面的版本号" class="headerlink" title="但是如果电脑关闭了, 就没有版本号了, 所以需要下面命令, 会显示前面的版本号"></a>但是如果电脑关闭了, 就没有版本号了, 所以需要下面命令, 会显示前面的版本号</h5><pre><code>git reflog
+</code></pre><p><img src="http://oop93frdr.bkt.clouddn.com/2017-08-25-024.png" alt=""></p>
+<blockquote>
+<p>小结</p>
+<p><code>git log</code>显示提交历史  方便回退版本</p>
+<p><code>git reflog</code> 查看命令历史 翻遍回退到未来的版本</p>
+</blockquote>
+<h3 id="工作区-暂缓区"><a href="#工作区-暂缓区" class="headerlink" title="工作区 暂缓区"></a>工作区 暂缓区</h3><blockquote>
+<p>git 相比 svn 是有一个暂缓区的概念</p>
+<blockquote>
+<p>工作区(工作区（Working Directory)</p>
+<p>就是能看到的目录  相应的文件夹</p>
+<p>版本库(Repository)</p>
+<p>隐藏的文件夹 .git 就是版本库, .git 存储着很多东西</p>
+<p>其中有个stage(或者index)的暂存区</p>
+<p>还有自动创建的master  以及只想master 的一个指针叫做 HEAD</p>
+<blockquote>
+<p>其中 <code>git add</code> 把文件添加进去  就是把文件添加到暂存区</p>
+<p><code>git commit</code> 提交更改 就是把暂存区的内容提交到当前分支</p>
+</blockquote>
+</blockquote>
+</blockquote>
+<h3 id="管理修改"><a href="#管理修改" class="headerlink" title="管理修改"></a>管理修改</h3><pre><code>#如果操作顺序
+第一次修改 -&gt; git add -&gt; 第二次修改 -&gt; git commit
+
+#会导致第二次的没有提交上去,才会提交上去
+第一次修改 -&gt; git add -&gt; 第二次修改 -&gt; git add -&gt; git commit
+</code></pre><h5 id="撤销修改"><a href="#撤销修改" class="headerlink" title="撤销修改"></a>撤销修改</h5><h6 id="如果仅仅是做了修改没有add"><a href="#如果仅仅是做了修改没有add" class="headerlink" title="如果仅仅是做了修改没有add"></a>如果仅仅是做了修改没有add</h6><p><img src="http://oop93frdr.bkt.clouddn.com/2017-08-25-025.png" alt=""></p>
+<pre><code>#Git会告诉你，git checkout -- file
+#可以丢弃工作区的修改, 回到原来状态
+git checkout -- readme.txt
+</code></pre><blockquote>
+<p>命令git checkout – readme.txt意思就是，把readme.txt文件在工作区的修改全部撤销</p>
+</blockquote>
+<h6 id="如果仅仅是做了修改并add"><a href="#如果仅仅是做了修改并add" class="headerlink" title="如果仅仅是做了修改并add"></a>如果仅仅是做了修改并add</h6><pre><code>#清空工作区的 是没有用的
+git checkout -- &lt;fileName&gt; 
+</code></pre><p><img src="http://oop93frdr.bkt.clouddn.com/2017-08-25-026.png" alt=""></p>
+<pre><code>如果已经提交到缓存区了  则执行两部
+#清空暂存区的
+git reset HEAD &lt;fileName&gt; 
+#清空工作区的
+git checkout -- &lt;fileName&gt; 
+</code></pre><blockquote>
+<p>小结</p>
+<p><code>git checkout -- file</code>命令中的–很重要，没有<code>--</code>，就变成了<code>“切换到另一个分支”</code>的命令</p>
+</blockquote>
+<h3 id="删除文件"><a href="#删除文件" class="headerlink" title="删除文件"></a>删除文件</h3><blockquote>
+<p>删除文件也是一个修改操作</p>
+</blockquote>
+<pre><code>git add info.txt
+rm info.txt
+# 提示有文件删除了
+git status 
+
+# 回到初始状态
+git checkout -- info.txt 
+
+
+#或者就是删除状态
+git  add info,.txt    
+rm info.txt
+git rm info.txt
+#如果发现不需要删除文件  就继续执行
+git checkout -- info.txt
+</code></pre><p><code>git checkout</code>  其实就是用版本库里的东西来替换工作区的东西 一键还原</p>
+<h3 id="远程仓库的使用"><a href="#远程仓库的使用" class="headerlink" title="远程仓库的使用"></a>远程仓库的使用</h3><blockquote>
+<p>根据网站上配置SSH 或者账号信息</p>
+</blockquote>
+<h5 id="链接好之后"><a href="#链接好之后" class="headerlink" title="链接好之后"></a>链接好之后</h5><pre><code>#推到远程仓库
+git push
+</code></pre><h5 id="关联远程库的方法"><a href="#关联远程库的方法" class="headerlink" title="关联远程库的方法"></a>关联远程库的方法</h5><blockquote>
+<p>使用命令   <code>git remote add origin git@server-name:path/repo-name.git；</code></p>
+<p>使用命令<code>git push origin master推送最新修改；</code></p>
+</blockquote>
+<h5 id="从远程仓库-克隆-直接创建一个文件夹"><a href="#从远程仓库-克隆-直接创建一个文件夹" class="headerlink" title="从远程仓库 克隆 直接创建一个文件夹"></a>从远程仓库 克隆 直接创建一个文件夹</h5><pre><code>git clone https://github.com/isongwei/learngit.git
+#然后进入到相应的文件夹下
+#就可以查看相关信息了
+git log 
+</code></pre><h3 id="创建与合并分支"><a href="#创建与合并分支" class="headerlink" title="创建与合并分支"></a>创建与合并分支</h3><blockquote>
+<p>一开始只有master 主分支 HEAD 是指向这个主分支的, master 才是指向提交的</p>
+<p>每次提交分支都会往前移动一格</p>
+<p>当创建新的分支的时候  Git 创建一个新的指针 指向master 相同的提交</p>
+<p>再把HEAD指向 dev </p>
+<p>如果dev 的工作完成了 就可以把dev 合并到master 上  最简单的就是把 master 指向dev</p>
+<p>分支完成 甚至可以删除 dev 分支 就是把dev 指针删除 删除后就剩下一个master 分支</p>
+</blockquote>
+<h5 id="首先创建-dev-分支"><a href="#首先创建-dev-分支" class="headerlink" title="首先创建 dev 分支"></a>首先创建 <code>dev</code> 分支</h5><pre><code>#选择切换到dev分支
+git checkout -b dev 
+</code></pre><h5 id="命令加上-b-表示创建并切换-相当于下面两条命令"><a href="#命令加上-b-表示创建并切换-相当于下面两条命令" class="headerlink" title="命令加上-b 表示创建并切换 相当于下面两条命令"></a>命令加上-b 表示创建并切换 相当于下面两条命令</h5><pre><code>git branch dev
+git checkout dev
+</code></pre><h5 id="然后查看当前分支"><a href="#然后查看当前分支" class="headerlink" title="然后查看当前分支"></a>然后查看当前分支</h5><pre><code>git branch 
+</code></pre><h5 id="命令会列出所有分支-当前的分支前面会带有"><a href="#命令会列出所有分支-当前的分支前面会带有" class="headerlink" title="命令会列出所有分支 当前的分支前面会带有*"></a>命令会列出所有分支 当前的分支前面会带有*</h5><h5 id="操作尝试下"><a href="#操作尝试下" class="headerlink" title="操作尝试下"></a>操作尝试下</h5><pre><code>#一系列的步骤就是
+# 创建一个分支
+git checkout -b dev
+#当前的分支状态
+git branch 
+
+#对文件进行修改
+# 修改放到暂存区
+git add &lt;fileName&gt; 
+# 提交更改
+git commit -m &quot;&quot; 
+#分支上的就完成了
+</code></pre><h5 id="现在切换到master-分支上"><a href="#现在切换到master-分支上" class="headerlink" title="现在切换到master 分支上"></a>现在切换到master 分支上</h5><pre><code>#选择你这分支到 主分支上
+会发现添加的修改没有了
+git checkout master 
+</code></pre><blockquote>
+<p>可以来回切换分支</p>
+<p>现在把分支合并到master 上</p>
+</blockquote>
+<pre><code>#合并分支 合并制定分支到当前分支
+git merge dev 
+#其中有一个 Fast-forward 信息  快进模式 不是每次都是
+</code></pre><p><img src="http://oop93frdr.bkt.clouddn.com/2017-08-25-027.png" alt=""></p>
+<h5 id="合并后就可以删除分支了-删除后就看不到-分支的信息了-相当于直接在主干开发的"><a href="#合并后就可以删除分支了-删除后就看不到-分支的信息了-相当于直接在主干开发的" class="headerlink" title="合并后就可以删除分支了(删除后就看不到  分支的信息了  相当于直接在主干开发的)"></a>合并后就可以删除分支了(删除后就看不到  分支的信息了  相当于直接在主干开发的)</h5><pre><code>#删除之后就只剩下master了
+git branch -d dev
+</code></pre><p><img src="http://oop93frdr.bkt.clouddn.com/2017-08-25-028.png" alt=""></p>
+<h5 id="有时需要从远端-clone-分支"><a href="#有时需要从远端-clone-分支" class="headerlink" title="有时需要从远端 clone 分支"></a>有时需要从远端 <code>clone</code> 分支</h5><pre><code>git clone https://git.oschina.net/xxx/xxx.git
+</code></pre><h5 id="会发现只有-master-主分支"><a href="#会发现只有-master-主分支" class="headerlink" title="会发现只有 master 主分支"></a>会发现只有 <code>master</code> 主分支</h5><pre><code>git branch
+</code></pre><h5 id="这就需要"><a href="#这就需要" class="headerlink" title="这就需要"></a>这就需要</h5><pre><code>#会显示所有的分支
+git branch -r
+</code></pre><h5 id="然后"><a href="#然后" class="headerlink" title="然后"></a>然后</h5><pre><code>#就会切换到指定的分支
+git checkout dev
+</code></pre><h5 id="或者之前定好clone某个分支"><a href="#或者之前定好clone某个分支" class="headerlink" title="或者之前定好clone某个分支"></a>或者之前定好<code>clone</code>某个分支</h5><pre><code>#`clone` 某个分支：
+git clone -b b1 https://github.com/...
+</code></pre><p><img src="http://oop93frdr.bkt.clouddn.com/2017-08-25-040.png" alt=""></p>
+<blockquote>
+<p>小结</p>
+<p>So Git鼓励你使用分支完成某个任务，合并后再删掉分支，这和直接在master分支上工作效果是一样的，但过程更安全。</p>
+<blockquote>
+<p>查看分支 <code>git branch</code></p>
+<p>创建分支 <code>git checkout -b dev</code></p>
+<blockquote>
+<p>分步实现 </p>
+<p><code>git branch dev</code></p>
+<p><code>git checkout dev</code></p>
+</blockquote>
+<p>合并某merge分支到当前分支 <code>git merge dev</code></p>
+<p>删除分支 <code>git branch -d dev</code></p>
+</blockquote>
+</blockquote>
+<h3 id="冲突的解决"><a href="#冲突的解决" class="headerlink" title="冲突的解决"></a>冲突的解决</h3><blockquote>
+<p>当进入分支 修改一个文件后  提交</p>
+<p>在切换到master 修改 提交</p>
+</blockquote>
+<pre><code>git merge dev
+</code></pre><blockquote>
+<p>会提示合并失败</p>
+<p>然后再进入文件进行修改</p>
+</blockquote>
+<pre><code>然后常规的提交就可以了
+最后删除分支
+</code></pre><blockquote>
+<p>小结</p>
+<p>这个是用来查看分支图的, 打印的是分支的路线</p>
+</blockquote>
+<pre><code>git log --graph
+</code></pre><h3 id="分支管理策略"><a href="#分支管理策略" class="headerlink" title="分支管理策略"></a>分支管理策略</h3><blockquote>
+<p>对于一般的 合并分支是使用的是Fastforward 模式</p>
+<p>但是删除分支后 分支的信息就会丢失</p>
+</blockquote>
+<h5 id="现在使用-–no-ff-参数-表示禁用-Fast-forward"><a href="#现在使用-–no-ff-参数-表示禁用-Fast-forward" class="headerlink" title="现在使用 –no-ff 参数   表示禁用 Fast forward"></a>现在使用 –no-ff 参数   表示禁用 Fast forward</h5><pre><code>git merge --no-ff -m &quot;分支的合并&quot;
+</code></pre><p><img src="http://oop93frdr.bkt.clouddn.com/2017-08-25-029.png" alt=""></p>
+<h5 id="现在看下结果"><a href="#现在看下结果" class="headerlink" title="现在看下结果"></a>现在看下结果</h5><pre><code>#显示简要的提交 以及分支情况
+git log --graph --pretty=oneline --abbrev-commit
+</code></pre><p><img src="http://oop93frdr.bkt.clouddn.com/2017-08-25-030.png" alt=""></p>
+<blockquote>
+<p>小结</p>
+<p>master 是非常稳定的  平时不在上面操作</p>
+<p>dev 不稳定</p>
+<p>如果要发布1.0 版本,  再把dev 合并到master上</p>
+<p>在master上发布1.0 版本</p>
+<p>所以每个人都在自己的dev上干活, 一直往自己的dev上合并</p>
+<p>合并分支时 机上<code>--no-ff</code> 参数就可以用普通模式合并  合并后的历史有分支  能看出来曾经做过合并</p>
+<p>而 fast forward看不出曾经做过合并 </p>
+</blockquote>
+<p><img src="http://oop93frdr.bkt.clouddn.com/2017-08-25-031.png" alt=""></p>
+<h3 id="bug-分支"><a href="#bug-分支" class="headerlink" title="bug 分支"></a>bug 分支</h3><blockquote>
+<p>使用情景 当前正在开发其他任务 但是线上出现了Bug 而现在做的有没办法惊醒提交</p>
+<p>所以Git 的 stash 功能把当前的工作储存下来 修复好后再继续工作</p>
+</blockquote>
+<h5 id="下面开始进行操作"><a href="#下面开始进行操作" class="headerlink" title="下面开始进行操作"></a>下面开始进行操作</h5><pre><code>#命令运行完后会发现 回到了没有修改的状态
+git stash
+#查看工作区就是干净的    
+git status 
+</code></pre><blockquote>
+<p>然后确定在哪个分支上进行修改</p>
+<p>假如在master 上</p>
+</blockquote>
+<pre><code>#切换到master上
+git checkout master
+#创建bug 分支
+git checkout -b issue-101
+#现在开始修复bug
+#修改后进行常规的提交操作
+git status #提交后都是干净的
+</code></pre><p><img src="http://oop93frdr.bkt.clouddn.com/2017-08-25-032.png" alt=""><br><img src="http://oop93frdr.bkt.clouddn.com/2017-08-25-033.png" alt=""></p>
+<h5 id="然后看下之前的状态"><a href="#然后看下之前的状态" class="headerlink" title="然后看下之前的状态"></a>然后看下之前的状态</h5><pre><code>git stash list
+</code></pre><p><img src="http://oop93frdr.bkt.clouddn.com/2017-08-25-034.png" alt=""></p>
+<h5 id="现在是有两种方法恢复"><a href="#现在是有两种方法恢复" class="headerlink" title="现在是有两种方法恢复"></a>现在是有两种方法恢复</h5><pre><code>1 #恢复后stash的内容不删除 
+  git stash apply
+  #来进行删除 
+  git stash drop
+2 #恢复的同时stash的内容也删除了 
+  git stash pop 
+
+
+开始操作 
+git stash pop
+
+
+这是后再次
+git stash list
+显示已经没有 list 了
+如果在一个分支上进行同样的操作  可能就会出现冲突
+按照之前的操作进行处理
+
+当然也可以进行制定的
+git stash apply stash@{0}
+</code></pre><blockquote>
+<p>小结<br>修复Bug 的时候我们通过创建新的分支进行修复 然后合并 最后删除</p>
+<p>当手头的工作没有完成时 先把现在 git stash一下 然后修复Bug<br>再git stash pop 回到工作现场</p>
+</blockquote>
+<h3 id="Feature分支"><a href="#Feature分支" class="headerlink" title="Feature分支"></a>Feature分支</h3><blockquote>
+<p>在实际的开发过程中 总是有无尽的需求添加进来</p>
+<p>比如 接到一个功能性的需求</p>
+</blockquote>
+<h5 id="先创建一分支"><a href="#先创建一分支" class="headerlink" title="先创建一分支"></a>先创建一分支</h5><pre><code>git checkout -b dev_new
+</code></pre><h5 id="一会开发完毕"><a href="#一会开发完毕" class="headerlink" title="一会开发完毕"></a>一会开发完毕</h5><pre><code>git add &lt;fileName&gt;
+git commit -m &quot;.....&quot;
+git status
+</code></pre><p>#####然后切换到现在自己的开发分支 dev 并删除分支</p>
+<pre><code>git checkout dev
+git merge --no-ff -m dev_new    
+</code></pre><p>#####但是此时 新功能取消  虽然白干了   分支必须删除</p>
+<pre><code>git branch -d dev_new
+</code></pre><p>#####这时会提示销毁失败 因为还没有合并</p>
+<pre><code># 强制删除
+git branch -D dev_new 
+</code></pre><p><img src="http://oop93frdr.bkt.clouddn.com/2017-08-25-035.png" alt=""></p>
+<h3 id="多人合作"><a href="#多人合作" class="headerlink" title="多人合作"></a>多人合作</h3><h5 id="把自己的文件-push-到Git-Hub-上"><a href="#把自己的文件-push-到Git-Hub-上" class="headerlink" title="把自己的文件 push 到Git Hub 上"></a>把自己的文件 push 到Git Hub 上</h5><pre><code>#可能需要创建的分支
+git checkout -b dev origin/dev 
+#不时的上传自己分支信息
+git push origin dev
+</code></pre><p><img src="http://oop93frdr.bkt.clouddn.com/2017-08-25-036.png" alt=""></p>
+<h5 id="但是如果两个人改了同一个东西会导致-后面的人push-失败"><a href="#但是如果两个人改了同一个东西会导致-后面的人push-失败" class="headerlink" title="但是如果两个人改了同一个东西会导致 后面的人push 失败"></a>但是如果两个人改了同一个东西会导致 后面的人push 失败</h5><pre><code>#所以需要先pull
+#然后解决冲突
+git pull
+</code></pre><p><img src="http://oop93frdr.bkt.clouddn.com/2017-08-25-037.png" alt=""></p>
+<blockquote>
+<p>小结</p>
+<p>因此多人工作 的工作模式是这样的</p>
+<p>1 首先 尝试 git push 推送自己的修改</p>
+<p>2 如果推送失败 是因为远程的更新 所以 git pull 尝试合并</p>
+<p>3 如果合并有冲突 则解决冲突 并在本地提交</p>
+<p>4 没有冲突后  再次 git push</p>
+<blockquote>
+<p>注意 如果git pull失败 提示 </p>
+<p><code>no tracking information</code></p>
+<p>则说明本地的分支 和远程的分支的链接关系没有创建</p>
+<p>则用命令 </p>
+<p><code>git branch --set-upstream branch-name orgin/branch-name</code></p>
+<p>查看远程库信息 <code>git remote -v</code> </p>
+<p>本地的分支如果不推送是看不到的</p>
+</blockquote>
+</blockquote>
+<p>###标签处理</p>
+<blockquote>
+<p>发布一个版本时 通常在版本库 打一个标签</p>
+<p>这样就唯一确定了打标签时刻的版本</p>
+<p>Git的标签是版本库的快照  但是实际就是指向某个commit 的指针<br>用来替代 commit的难记</p>
+</blockquote>
+<h5 id="先回顾下打分支"><a href="#先回顾下打分支" class="headerlink" title="先回顾下打分支"></a>先回顾下打分支</h5><pre><code>#列出当前的分支
+git branch 
+# 切换分支
+git checkout dev 
+</code></pre><p>#####打分支</p>
+<pre><code>#打分支
+git tag v1.0
+# 查看当前的分支
+git tag 
+</code></pre><blockquote>
+<p>默认打的标签是到最新提交的commit上</p>
+<p>如果要给之前的commit 打分支</p>
+</blockquote>
+<pre><code>#方法就是找到之前的提交信息
+git log --pretty=oneline --abbrev-commit
+#然后
+git tag v0.9 commit_id
+</code></pre><blockquote>
+<p>好像可以打多个标签</p>
+</blockquote>
+<pre><code>#然后 两个的显示效果是一样的
+git show tag    
+git show commit_id
+</code></pre><p><img src="http://oop93frdr.bkt.clouddn.com/2017-08-25-038.png" alt=""></p>
+<pre><code>#也可以打的标签详细一点
+git tag -a v0.7 -m &quot;version 0.7 released&quot; commit_id
+
+
+当然在高级一点
+还可以通过-s用私钥签名一个标签：
+git tag -s v0.2 -m &quot;version&quot;     commit_id
+签名采用PGP签名，因此，必须首先安装gpg（GnuPG），如果没有找到gpg，或者没有gpg密钥对，就会报错：
+gpg: signing failed: secret key not available
+error: gpg failed to sign the data
+error: unable to sign the tag
+</code></pre><blockquote>
+<p>小结</p>
+<p>1 <code>git tag v1.0.0</code> 新建标签 默认<code>HEAD</code></p>
+<p>2 <code>git tag -a &lt;tagname&gt; -m &quot;blablabla...&quot;</code>可以指定标签信息</p>
+<p>3 <code>git tag</code> 所有的标签信息</p>
+</blockquote>
+<h3 id="标签的操作"><a href="#标签的操作" class="headerlink" title="标签的操作"></a>标签的操作</h3><p>#####本地的标签都只存储在本地 所以打错后可以删除</p>
+<pre><code>git tag -d v0.1
+</code></pre><h5 id="推送标签"><a href="#推送标签" class="headerlink" title="推送标签"></a>推送标签</h5><pre><code>git push origin v0.1
+or
+git push origin --tags
+</code></pre><h5 id="如果已经推到了远程"><a href="#如果已经推到了远程" class="headerlink" title="如果已经推到了远程"></a>如果已经推到了远程</h5><pre><code>#首先本地删除
+git tag -d v0.1
+#再删除远程的
+git push origin :refs/tags/v0.1
+</code></pre><blockquote>
+<p>如果查看远程是否删除了标签  可以登录Git Hub 看下</p>
+<p>小结</p>
+<p>1 <code>git push origin &lt;tagname&gt;</code>可以推送一个本地标签</p>
+<p>2 <code>git push origin --tags</code>可以推送全部未推送过的本地标签</p>
+<p>3 <code>git tag -d &lt;tagname&gt;</code>可以删除一个本地标签</p>
+<p>4 <code>git push origin :refs/tags/&lt;tagname&gt;</code>可以删除一个远程标签</p>
+</blockquote>
+<h3 id="相关配置"><a href="#相关配置" class="headerlink" title="相关配置"></a>相关配置</h3><blockquote>
+<p>一些配置文件, 在根目录区创建一个文件</p>
+</blockquote>
+<pre><code>#这个是随`.git`在同目录的一个文件
+.gitignore
+#如果要配置全局的可以打开系统的通用配置文件
+~/.config/git
+</code></pre><p><img src="http://oop93frdr.bkt.clouddn.com/2017-08-25-039.png" alt=""></p>
+<p><a href="https://github.com/github/gitignore" target="_blank" rel="external">Git忽略文件</a></p>
+<blockquote>
+<p>如果想添加被忽略的文件</p>
+</blockquote>
+<pre><code>#强制添加
+git add -f &lt;fileName&gt;
+
+#这个可以检查忽略文件
+git check-ignore
+</code></pre><blockquote>
+<p>git 别名的设置<a href="https://www.liaoxuefeng.com/wiki/0013739516305929606dd18361248578c67b8067c8c017b000/001375234012342f90be1fc4d81446c967bbdc19e7c03d3000" target="_blank" rel="external">参考网页的内容</a></p>
+</blockquote>
+
+      
+    </div>
+    
+    
+    
+
+    
+
+    
+
+    
+
+    <footer class="post-footer">
+      
+
+      
+      
+      
+
+      
+        <div class="post-nav">
+          <div class="post-nav-next post-nav-item">
+            
+              <a href="/2017/08/03/推送点击相关逻辑/" rel="next" title="推送点击相关逻辑">
+                <i class="fa fa-chevron-left"></i> 推送点击相关逻辑
+              </a>
+            
+          </div>
+
+          <span class="post-nav-divider"></span>
+
+          <div class="post-nav-prev post-nav-item">
+            
+              <a href="/2017/08/11/正则表达式详解/" rel="prev" title="正则表达式详解">
+                正则表达式详解 <i class="fa fa-chevron-right"></i>
+              </a>
+            
+          </div>
+        </div>
+      
+
+      
+      
+    </footer>
+  </div>
+  
+  
+  
+  </article>
+
+
+
+    <div class="post-spread">
+      
+    </div>
+  </div>
+
+
+          </div>
+          
+
+
+          
+  <div class="comments" id="comments">
+    
+  </div>
+
+
+        </div>
+        
+          
+  
+  <div class="sidebar-toggle">
+    <div class="sidebar-toggle-line-wrap">
+      <span class="sidebar-toggle-line sidebar-toggle-line-first"></span>
+      <span class="sidebar-toggle-line sidebar-toggle-line-middle"></span>
+      <span class="sidebar-toggle-line sidebar-toggle-line-last"></span>
+    </div>
+  </div>
+
+  <aside id="sidebar" class="sidebar">
+    
+    <div class="sidebar-inner">
+
+      
+
+      
+        <ul class="sidebar-nav motion-element">
+          <li class="sidebar-nav-toc sidebar-nav-active" data-target="post-toc-wrap" >
+            文章目录
+          </li>
+          <li class="sidebar-nav-overview" data-target="site-overview">
+            站点概览
+          </li>
+        </ul>
+      
+
+      <section class="site-overview sidebar-panel">
+        <div class="site-author motion-element" itemprop="author" itemscope itemtype="http://schema.org/Person">
+          <img class="site-author-image" itemprop="image"
+               src="/images/avatar.gif"
+               alt="SongWei" />
+          <p class="site-author-name" itemprop="name">SongWei</p>
+           
+              <p class="site-description motion-element" itemprop="description">先拆轮子,在造轮子!</p>
+          
+        </div>
+        <nav class="site-state motion-element">
+
+          
+            <div class="site-state-item site-state-posts">
+            
+              <a href="/archives/">
+            
+                <span class="site-state-item-count">23</span>
+                <span class="site-state-item-name">日志</span>
+              </a>
+            </div>
+          
+
+          
+
+          
+            
+            
+            <div class="site-state-item site-state-tags">
+              <a href="/tags/index.html">
+                <span class="site-state-item-count">2</span>
+                <span class="site-state-item-name">标签</span>
+              </a>
+            </div>
+          
+
+        </nav>
+
+        
+
+        <div class="links-of-author motion-element">
+          
+            
+              <span class="links-of-author-item">
+                <a href="https://github.com/" target="_blank" title="GitHub">
+                  
+                    <i class="fa fa-fw fa-github"></i>
+                  
+                    
+                      GitHub
+                    
+                </a>
+              </span>
+            
+              <span class="links-of-author-item">
+                <a href="http://weibo.com/" target="_blank" title="Weibo">
+                  
+                    <i class="fa fa-fw fa-weibo"></i>
+                  
+                    
+                      Weibo
+                    
+                </a>
+              </span>
+            
+              <span class="links-of-author-item">
+                <a href="http://www.baidu.com" target="_blank" title="百度">
+                  
+                    <i class="fa fa-fw fa-globe"></i>
+                  
+                    
+                      百度
+                    
+                </a>
+              </span>
+            
+          
+        </div>
+
+        
+        
+
+        
+        
+
+        
+
+
+      </section>
+
+      
+      <!--noindex-->
+        <section class="post-toc-wrap motion-element sidebar-panel sidebar-panel-active">
+          <div class="post-toc">
+
+            
+              
+            
+
+            
+              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-3"><a class="nav-link" href="#最基本的初始化-创建"><span class="nav-number">1.</span> <span class="nav-text">最基本的初始化/创建</span></a><ol class="nav-child"><li class="nav-item nav-level-5"><a class="nav-link" href="#创建版本仓库"><span class="nav-number">1.0.1.</span> <span class="nav-text">创建版本仓库</span></a></li><li class="nav-item nav-level-5"><a class="nav-link" href="#通过-git-init-来把这个仓库变成可以管理的仓库-会发现多一个-git的文件夹"><span class="nav-number">1.0.2.</span> <span class="nav-text">通过 git init 来把这个仓库变成可以管理的仓库,会发现多一个 .git的文件夹</span></a></li><li class="nav-item nav-level-5"><a class="nav-link" href="#添加一个文本-先创建一个txt文件-然后添加到文件夹中"><span class="nav-number">1.0.3.</span> <span class="nav-text">添加一个文本, 先创建一个txt文件, 然后添加到文件夹中</span></a></li></ol></li></ol></li><li class="nav-item nav-level-3"><a class="nav-link" href="#修改文件"><span class="nav-number">2.</span> <span class="nav-text">修改文件</span></a><ol class="nav-child"><li class="nav-item nav-level-5"><a class="nav-link" href="#修改文本的内容"><span class="nav-number">2.0.1.</span> <span class="nav-text">修改文本的内容</span></a></li><li class="nav-item nav-level-5"><a class="nav-link" href="#提交的话重新进行"><span class="nav-number">2.0.2.</span> <span class="nav-text">提交的话重新进行</span></a></li><li class="nav-item nav-level-5"><a class="nav-link" href="#然后查看下当前的状态-有一个是需要提交的状态"><span class="nav-number">2.0.3.</span> <span class="nav-text">然后查看下当前的状态 有一个是需要提交的状态</span></a></li><li class="nav-item nav-level-5"><a class="nav-link" href="#然后再查看下当前的状态"><span class="nav-number">2.0.4.</span> <span class="nav-text">然后再查看下当前的状态</span></a></li><li class="nav-item nav-level-5"><a class="nav-link" href="#前面的命令综合来一遍"><span class="nav-number">2.0.5.</span> <span class="nav-text">前面的命令综合来一遍</span></a></li></ol></li></ol></li><li class="nav-item nav-level-3"><a class="nav-link" href="#版本回退"><span class="nav-number">3.</span> <span class="nav-text">版本回退</span></a><ol class="nav-child"><li class="nav-item nav-level-5"><a class="nav-link" href="#如果现在要回退的话-使用命令"><span class="nav-number">3.0.1.</span> <span class="nav-text">如果现在要回退的话 使用命令</span></a></li><li class="nav-item nav-level-5"><a class="nav-link" href="#这时会发现-txt-文本发生了变化"><span class="nav-number">3.0.2.</span> <span class="nav-text">这时会发现 txt 文本发生了变化</span></a></li><li class="nav-item nav-level-5"><a class="nav-link" href="#然后现在-git-log后也没有了之前的版本"><span class="nav-number">3.0.3.</span> <span class="nav-text">然后现在 git log后也没有了之前的版本</span></a></li><li class="nav-item nav-level-5"><a class="nav-link" href="#所以呢就又回来了"><span class="nav-number">3.0.4.</span> <span class="nav-text">所以呢就又回来了</span></a></li><li class="nav-item nav-level-5"><a class="nav-link" href="#但是如果电脑关闭了-就没有版本号了-所以需要下面命令-会显示前面的版本号"><span class="nav-number">3.0.5.</span> <span class="nav-text">但是如果电脑关闭了, 就没有版本号了, 所以需要下面命令, 会显示前面的版本号</span></a></li></ol></li></ol></li><li class="nav-item nav-level-3"><a class="nav-link" href="#工作区-暂缓区"><span class="nav-number">4.</span> <span class="nav-text">工作区 暂缓区</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#管理修改"><span class="nav-number">5.</span> <span class="nav-text">管理修改</span></a><ol class="nav-child"><li class="nav-item nav-level-5"><a class="nav-link" href="#撤销修改"><span class="nav-number">5.0.1.</span> <span class="nav-text">撤销修改</span></a><ol class="nav-child"><li class="nav-item nav-level-6"><a class="nav-link" href="#如果仅仅是做了修改没有add"><span class="nav-number">5.0.1.1.</span> <span class="nav-text">如果仅仅是做了修改没有add</span></a></li><li class="nav-item nav-level-6"><a class="nav-link" href="#如果仅仅是做了修改并add"><span class="nav-number">5.0.1.2.</span> <span class="nav-text">如果仅仅是做了修改并add</span></a></li></ol></li></ol></li></ol></li><li class="nav-item nav-level-3"><a class="nav-link" href="#删除文件"><span class="nav-number">6.</span> <span class="nav-text">删除文件</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#远程仓库的使用"><span class="nav-number">7.</span> <span class="nav-text">远程仓库的使用</span></a><ol class="nav-child"><li class="nav-item nav-level-5"><a class="nav-link" href="#链接好之后"><span class="nav-number">7.0.1.</span> <span class="nav-text">链接好之后</span></a></li><li class="nav-item nav-level-5"><a class="nav-link" href="#关联远程库的方法"><span class="nav-number">7.0.2.</span> <span class="nav-text">关联远程库的方法</span></a></li><li class="nav-item nav-level-5"><a class="nav-link" href="#从远程仓库-克隆-直接创建一个文件夹"><span class="nav-number">7.0.3.</span> <span class="nav-text">从远程仓库 克隆 直接创建一个文件夹</span></a></li></ol></li></ol></li><li class="nav-item nav-level-3"><a class="nav-link" href="#创建与合并分支"><span class="nav-number">8.</span> <span class="nav-text">创建与合并分支</span></a><ol class="nav-child"><li class="nav-item nav-level-5"><a class="nav-link" href="#首先创建-dev-分支"><span class="nav-number">8.0.1.</span> <span class="nav-text">首先创建 dev 分支</span></a></li><li class="nav-item nav-level-5"><a class="nav-link" href="#命令加上-b-表示创建并切换-相当于下面两条命令"><span class="nav-number">8.0.2.</span> <span class="nav-text">命令加上-b 表示创建并切换 相当于下面两条命令</span></a></li><li class="nav-item nav-level-5"><a class="nav-link" href="#然后查看当前分支"><span class="nav-number">8.0.3.</span> <span class="nav-text">然后查看当前分支</span></a></li><li class="nav-item nav-level-5"><a class="nav-link" href="#命令会列出所有分支-当前的分支前面会带有"><span class="nav-number">8.0.4.</span> <span class="nav-text">命令会列出所有分支 当前的分支前面会带有*</span></a></li><li class="nav-item nav-level-5"><a class="nav-link" href="#操作尝试下"><span class="nav-number">8.0.5.</span> <span class="nav-text">操作尝试下</span></a></li><li class="nav-item nav-level-5"><a class="nav-link" href="#现在切换到master-分支上"><span class="nav-number">8.0.6.</span> <span class="nav-text">现在切换到master 分支上</span></a></li><li class="nav-item nav-level-5"><a class="nav-link" href="#合并后就可以删除分支了-删除后就看不到-分支的信息了-相当于直接在主干开发的"><span class="nav-number">8.0.7.</span> <span class="nav-text">合并后就可以删除分支了(删除后就看不到  分支的信息了  相当于直接在主干开发的)</span></a></li><li class="nav-item nav-level-5"><a class="nav-link" href="#有时需要从远端-clone-分支"><span class="nav-number">8.0.8.</span> <span class="nav-text">有时需要从远端 clone 分支</span></a></li><li class="nav-item nav-level-5"><a class="nav-link" href="#会发现只有-master-主分支"><span class="nav-number">8.0.9.</span> <span class="nav-text">会发现只有 master 主分支</span></a></li><li class="nav-item nav-level-5"><a class="nav-link" href="#这就需要"><span class="nav-number">8.0.10.</span> <span class="nav-text">这就需要</span></a></li><li class="nav-item nav-level-5"><a class="nav-link" href="#然后"><span class="nav-number">8.0.11.</span> <span class="nav-text">然后</span></a></li><li class="nav-item nav-level-5"><a class="nav-link" href="#或者之前定好clone某个分支"><span class="nav-number">8.0.12.</span> <span class="nav-text">或者之前定好clone某个分支</span></a></li></ol></li></ol></li><li class="nav-item nav-level-3"><a class="nav-link" href="#冲突的解决"><span class="nav-number">9.</span> <span class="nav-text">冲突的解决</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#分支管理策略"><span class="nav-number">10.</span> <span class="nav-text">分支管理策略</span></a><ol class="nav-child"><li class="nav-item nav-level-5"><a class="nav-link" href="#现在使用-–no-ff-参数-表示禁用-Fast-forward"><span class="nav-number">10.0.1.</span> <span class="nav-text">现在使用 –no-ff 参数   表示禁用 Fast forward</span></a></li><li class="nav-item nav-level-5"><a class="nav-link" href="#现在看下结果"><span class="nav-number">10.0.2.</span> <span class="nav-text">现在看下结果</span></a></li></ol></li></ol></li><li class="nav-item nav-level-3"><a class="nav-link" href="#bug-分支"><span class="nav-number">11.</span> <span class="nav-text">bug 分支</span></a><ol class="nav-child"><li class="nav-item nav-level-5"><a class="nav-link" href="#下面开始进行操作"><span class="nav-number">11.0.1.</span> <span class="nav-text">下面开始进行操作</span></a></li><li class="nav-item nav-level-5"><a class="nav-link" href="#然后看下之前的状态"><span class="nav-number">11.0.2.</span> <span class="nav-text">然后看下之前的状态</span></a></li><li class="nav-item nav-level-5"><a class="nav-link" href="#现在是有两种方法恢复"><span class="nav-number">11.0.3.</span> <span class="nav-text">现在是有两种方法恢复</span></a></li></ol></li></ol></li><li class="nav-item nav-level-3"><a class="nav-link" href="#Feature分支"><span class="nav-number">12.</span> <span class="nav-text">Feature分支</span></a><ol class="nav-child"><li class="nav-item nav-level-5"><a class="nav-link" href="#先创建一分支"><span class="nav-number">12.0.1.</span> <span class="nav-text">先创建一分支</span></a></li><li class="nav-item nav-level-5"><a class="nav-link" href="#一会开发完毕"><span class="nav-number">12.0.2.</span> <span class="nav-text">一会开发完毕</span></a></li></ol></li></ol></li><li class="nav-item nav-level-3"><a class="nav-link" href="#多人合作"><span class="nav-number">13.</span> <span class="nav-text">多人合作</span></a><ol class="nav-child"><li class="nav-item nav-level-5"><a class="nav-link" href="#把自己的文件-push-到Git-Hub-上"><span class="nav-number">13.0.1.</span> <span class="nav-text">把自己的文件 push 到Git Hub 上</span></a></li><li class="nav-item nav-level-5"><a class="nav-link" href="#但是如果两个人改了同一个东西会导致-后面的人push-失败"><span class="nav-number">13.0.2.</span> <span class="nav-text">但是如果两个人改了同一个东西会导致 后面的人push 失败</span></a></li><li class="nav-item nav-level-5"><a class="nav-link" href="#先回顾下打分支"><span class="nav-number">13.0.3.</span> <span class="nav-text">先回顾下打分支</span></a></li></ol></li></ol></li><li class="nav-item nav-level-3"><a class="nav-link" href="#标签的操作"><span class="nav-number">14.</span> <span class="nav-text">标签的操作</span></a><ol class="nav-child"><li class="nav-item nav-level-5"><a class="nav-link" href="#推送标签"><span class="nav-number">14.0.1.</span> <span class="nav-text">推送标签</span></a></li><li class="nav-item nav-level-5"><a class="nav-link" href="#如果已经推到了远程"><span class="nav-number">14.0.2.</span> <span class="nav-text">如果已经推到了远程</span></a></li></ol></li></ol></li><li class="nav-item nav-level-3"><a class="nav-link" href="#相关配置"><span class="nav-number">15.</span> <span class="nav-text">相关配置</span></a></li></ol></div>
+            
+
+          </div>
+        </section>
+      <!--/noindex-->
+      
+
+      
+
+    </div>
+  </aside>
+
+
+        
+      </div>
+    </main>
+
+    <footer id="footer" class="footer">
+      <div class="footer-inner">
+        <div class="copyright" >
+  
+  &copy; 
+  <span itemprop="copyrightYear">2017</span>
+  <span class="with-love">
+    <i class="fa fa-heart"></i>
+  </span>
+  <span class="author" itemprop="copyrightHolder">SongWei</span>
+
+  
+</div>
+
+
+  <div class="powered-by">由 <a class="theme-link" href="https://hexo.io">Hexo</a> 强力驱动</div>
+
+  <span class="post-meta-divider">|</span>
+
+  <div class="theme-info">主题 &mdash; <a class="theme-link" href="https://github.com/iissnan/hexo-theme-next">NexT.Gemini</a> v5.1.2</div>
+
+
+        
+<div class="busuanzi-count">
+  <script async src="https://dn-lbstatics.qbox.me/busuanzi/2.3/busuanzi.pure.mini.js"></script>
+
+  
+    <span class="site-uv">
+      本站访客数
+      <span class="busuanzi-value" id="busuanzi_value_site_uv"></span>
+      人次
+    </span>
+  
+
+  
+    <span class="site-pv">
+      本站总访问量
+      <span class="busuanzi-value" id="busuanzi_value_site_pv"></span>
+      次
+    </span>
+  
+</div>
+
+
+
+
+
+
+
+
+        
+      </div>
+    </footer>
+
+    
+      <div class="back-to-top">
+        <i class="fa fa-arrow-up"></i>
+        
+          <span id="scrollpercent"><span>0</span>%</span>
+        
+      </div>
+    
+
+  </div>
+
+  
+
+<script type="text/javascript">
+  if (Object.prototype.toString.call(window.Promise) !== '[object Function]') {
+    window.Promise = null;
+  }
+</script>
+
+
+
+
+
+
+
+
+
+  
+
+
+
+
+
+
+
+
+
+
+
+
+  
+  <script type="text/javascript" src="/lib/jquery/index.js?v=2.1.3"></script>
+
+  
+  <script type="text/javascript" src="/lib/fastclick/lib/fastclick.min.js?v=1.0.6"></script>
+
+  
+  <script type="text/javascript" src="/lib/jquery_lazyload/jquery.lazyload.js?v=1.9.7"></script>
+
+  
+  <script type="text/javascript" src="/lib/velocity/velocity.min.js?v=1.2.1"></script>
+
+  
+  <script type="text/javascript" src="/lib/velocity/velocity.ui.min.js?v=1.2.1"></script>
+
+  
+  <script type="text/javascript" src="/lib/fancybox/source/jquery.fancybox.pack.js?v=2.1.5"></script>
+
+
+  
+
+
+  <script type="text/javascript" src="/js/src/utils.js?v=5.1.2"></script>
+
+  <script type="text/javascript" src="/js/src/motion.js?v=5.1.2"></script>
+
+
+
+  
+  
+
+
+  <script type="text/javascript" src="/js/src/affix.js?v=5.1.2"></script>
+
+  <script type="text/javascript" src="/js/src/schemes/pisces.js?v=5.1.2"></script>
+
+
+
+  
+  <script type="text/javascript" src="/js/src/scrollspy.js?v=5.1.2"></script>
+<script type="text/javascript" src="/js/src/post-details.js?v=5.1.2"></script>
+
+
+
+  
+
+
+  <script type="text/javascript" src="/js/src/bootstrap.js?v=5.1.2"></script>
+
+
+
+  
+
+
+  
+
+
+
+
+	
+
+
+
+
+
+  
+
+
+
+
+
+  
+
+
+
+
+
+
+
+
+  
+
+
+
+
+
+  
+
+  
+
+  
+
+  
+
+  
+
+  
+
+</body>
+</html>

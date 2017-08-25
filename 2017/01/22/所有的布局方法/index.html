@@ -1,0 +1,899 @@
+<!DOCTYPE html>
+
+
+
+  
+
+
+<html class="theme-next gemini use-motion" lang="zh-Hans">
+<head>
+  <meta charset="UTF-8"/>
+<meta http-equiv="X-UA-Compatible" content="IE=edge" />
+<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1"/>
+<meta name="theme-color" content="#222">
+
+
+
+
+
+
+
+
+
+<meta http-equiv="Cache-Control" content="no-transform" />
+<meta http-equiv="Cache-Control" content="no-siteapp" />
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+  
+  
+  <link href="/lib/fancybox/source/jquery.fancybox.css?v=2.1.5" rel="stylesheet" type="text/css" />
+
+
+
+
+  
+  
+  
+  
+
+  
+    
+    
+  
+
+  
+
+  
+
+  
+
+  
+
+  
+    
+    
+    <link href="//fonts.googleapis.com/css?family=Lato:300,300italic,400,400italic,700,700italic&subset=latin,latin-ext" rel="stylesheet" type="text/css">
+  
+
+
+
+
+
+
+<link href="/lib/font-awesome/css/font-awesome.min.css?v=4.6.2" rel="stylesheet" type="text/css" />
+
+<link href="/css/main.css?v=5.1.2" rel="stylesheet" type="text/css" />
+
+
+  <meta name="keywords" content="iSong" />
+
+
+
+
+
+
+
+
+  <link rel="shortcut icon" type="image/x-icon" href="/favicon.ico?v=5.1.2" />
+
+
+
+
+
+
+<meta name="description" content="123456789101112- (void)setNeedsDisplay;- (void)drawRect:(CGRect)rect- [self setAutoresizesSubviews:YES];- (void)layoutSubviews; - (void)layoutIfNeeded;- (void)setNeedsLayout;- (CGSize)sizeThatFits:(CG">
+<meta property="og:type" content="article">
+<meta property="og:title" content="所有的布局方法总结">
+<meta property="og:url" content="http://yoursite.com/2017/01/22/所有的布局方法/index.html">
+<meta property="og:site_name" content="Song">
+<meta property="og:description" content="123456789101112- (void)setNeedsDisplay;- (void)drawRect:(CGRect)rect- [self setAutoresizesSubviews:YES];- (void)layoutSubviews; - (void)layoutIfNeeded;- (void)setNeedsLayout;- (CGSize)sizeThatFits:(CG">
+<meta property="og:image" content="http://yoursite.com/Users/mac/Library/Mobile Documents/com~apple~CloudDocs/Hexo/source/_posts/Pic/007.png">
+<meta property="og:updated_time" content="2017-07-24T03:56:45.000Z">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:title" content="所有的布局方法总结">
+<meta name="twitter:description" content="123456789101112- (void)setNeedsDisplay;- (void)drawRect:(CGRect)rect- [self setAutoresizesSubviews:YES];- (void)layoutSubviews; - (void)layoutIfNeeded;- (void)setNeedsLayout;- (CGSize)sizeThatFits:(CG">
+<meta name="twitter:image" content="http://yoursite.com/Users/mac/Library/Mobile Documents/com~apple~CloudDocs/Hexo/source/_posts/Pic/007.png">
+
+
+
+<script type="text/javascript" id="hexo.configurations">
+  var NexT = window.NexT || {};
+  var CONFIG = {
+    root: '/',
+    scheme: 'Gemini',
+    version: '5.1.2',
+    sidebar: {"position":"left","display":"post","offset":12,"offset_float":12,"b2t":false,"scrollpercent":true,"onmobile":false},
+    fancybox: true,
+    tabs: true,
+    motion: true,
+    duoshuo: {
+      userId: '0',
+      author: '博主'
+    },
+    algolia: {
+      applicationID: '',
+      apiKey: '',
+      indexName: '',
+      hits: {"per_page":10},
+      labels: {"input_placeholder":"Search for Posts","hits_empty":"We didn't find any results for the search: ${query}","hits_stats":"${hits} results found in ${time} ms"}
+    }
+  };
+</script>
+
+
+
+  <link rel="canonical" href="http://yoursite.com/2017/01/22/所有的布局方法/"/>
+
+
+
+
+
+  <title>所有的布局方法总结 | Song</title>
+  
+
+
+
+
+
+
+
+
+</head>
+
+<body itemscope itemtype="http://schema.org/WebPage" lang="zh-Hans">
+
+  
+  
+    
+  
+
+  <div class="container sidebar-position-left page-post-detail ">
+    <div class="headband"></div>
+
+    <header id="header" class="header" itemscope itemtype="http://schema.org/WPHeader">
+      <div class="header-inner"><div class="site-brand-wrapper">
+  <div class="site-meta ">
+    
+
+    <div class="custom-logo-site-title">
+      <a href="/"  class="brand" rel="start">
+        <span class="logo-line-before"><i></i></span>
+        <span class="site-title">Song</span>
+        <span class="logo-line-after"><i></i></span>
+      </a>
+    </div>
+      
+        <p class="site-subtitle"></p>
+      
+  </div>
+
+  <div class="site-nav-toggle">
+    <button>
+      <span class="btn-bar"></span>
+      <span class="btn-bar"></span>
+      <span class="btn-bar"></span>
+    </button>
+  </div>
+</div>
+
+<nav class="site-nav">
+  
+
+  
+    <ul id="menu" class="menu">
+      
+        
+        <li class="menu-item menu-item-home">
+          <a href="/" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-home"></i> <br />
+            
+            首页
+          </a>
+        </li>
+      
+        
+        <li class="menu-item menu-item-about">
+          <a href="/about/" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-user"></i> <br />
+            
+            关于
+          </a>
+        </li>
+      
+        
+        <li class="menu-item menu-item-archives">
+          <a href="/archives/" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-archive"></i> <br />
+            
+            归档
+          </a>
+        </li>
+      
+        
+        <li class="menu-item menu-item-tags">
+          <a href="/tags/" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-tags"></i> <br />
+            
+            标签
+          </a>
+        </li>
+      
+
+      
+    </ul>
+  
+
+  
+</nav>
+
+
+
+ </div>
+    </header>
+
+    <main id="main" class="main">
+      <div class="main-inner">
+        <div class="content-wrap">
+          <div id="content" class="content">
+            
+
+  <div id="posts" class="posts-expand">
+    
+
+  
+
+  
+  
+  
+
+  <article class="post post-type-normal" itemscope itemtype="http://schema.org/Article">
+  
+  
+  
+  <div class="post-block">
+    <link itemprop="mainEntityOfPage" href="http://yoursite.com/2017/01/22/所有的布局方法/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="name" content="SongWei">
+      <meta itemprop="description" content="">
+      <meta itemprop="image" content="/images/avatar.gif">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="Song">
+    </span>
+
+    
+      <header class="post-header">
+
+        
+        
+          <h1 class="post-title" itemprop="name headline">所有的布局方法总结</h1>
+        
+
+        <div class="post-meta">
+          <span class="post-time">
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-calendar-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">发表于</span>
+              
+              <time title="创建于" itemprop="dateCreated datePublished" datetime="2017-01-22T10:03:33+08:00">
+                2017-01-22
+              </time>
+            
+
+            
+
+            
+          </span>
+
+          
+
+          
+            
+          
+
+          
+          
+
+          
+            <span class="post-meta-divider">|</span>
+            <span class="page-pv">本文总阅读量
+            <span class="busuanzi-value" id="busuanzi_value_page_pv" ></span>次
+            </span>
+          
+
+          
+
+          
+
+        </div>
+      </header>
+    
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+
+      
+      
+
+      
+        <figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div></pre></td><td class="code"><pre><div class="line"></div><div class="line">- (void)setNeedsDisplay;</div><div class="line">- (void)drawRect:(CGRect)rect</div><div class="line">- </div><div class="line">[self setAutoresizesSubviews:YES];</div><div class="line"></div><div class="line">- (void)layoutSubviews; </div><div class="line">- (void)layoutIfNeeded;</div><div class="line">- (void)setNeedsLayout;</div><div class="line"></div><div class="line">- (CGSize)sizeThatFits:(CGSize)size</div><div class="line">- (void)sizeToFit;</div></pre></td></tr></table></figure>
+<h3 id="重绘"><a href="#重绘" class="headerlink" title="重绘"></a>重绘</h3><p>&gt;</p>
+<ul>
+<li>-drawRect:(CGRect)rect方法：重写此方法，执行重绘任务</li>
+<li>-setNeedsDisplay方法：标记为需要重绘，异步调用drawRect</li>
+<li>-setNeedsDisplayInRect:(CGRect)invalidRect方法：标记为需要局部重绘</li>
+</ul>
+<h4 id="setNeedsDisplay"><a href="#setNeedsDisplay" class="headerlink" title="setNeedsDisplay"></a>setNeedsDisplay</h4><p><a href="">link</a></p>
+<blockquote>
+<p>标记为需要重绘，异步调用drawRect</p>
+<p>drawRect是对receiver的重绘，能获得context</p>
+<p>setNeedDisplay在receiver标上一个需要被重新绘图的标记，在下一个draw周期自动重绘，iphone device的刷新频率是60hz，也就是1/60秒后重绘 </p>
+</blockquote>
+<h4 id="drawRect"><a href="#drawRect" class="headerlink" title="drawRect"></a>drawRect</h4><p><a href="http://www.jcodecraeer.com/IOS/2015/0204/2414.html" target="_blank" rel="external">link</a></p>
+<blockquote>
+<p>重绘机制drawRect</p>
+<p>iOS的绘图操作是在UIView类的drawRect方法中完成的，所以如果我们要想在一个UIView中绘图，需要写一个扩展UIView 的类，并重写drawRect方法，在这里进行绘图操作，程序会自动调用此方法进行绘图。<br>下面先说明一下绘图，比如，你想绘制一个方块，你需要写一个类来扩展UIView并在drawRect方法中填入如下代码：</p>
+</blockquote>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div><div class="line">17</div><div class="line">18</div><div class="line">19</div><div class="line">20</div><div class="line">21</div><div class="line">22</div><div class="line">23</div><div class="line">24</div></pre></td><td class="code"><pre><div class="line">- (void)drawRect:(CGRect)rect &#123;  </div><div class="line">   // Drawing code.  </div><div class="line">   //获得处理的上下文    </div><div class="line">   CGContextRef context = UIGraphicsGetCurrentContext();    </div><div class="line">   //设置线条样式    </div><div class="line">   CGContextSetLineCap(context, kCGLineCapSquare);     </div><div class="line">   //设置线条粗细宽度    </div><div class="line">   CGContextSetLineWidth(context, 1.0);     </div><div class="line">   //设置颜色    </div><div class="line">   CGContextSetRGBStrokeColor(context, 1.0, 0.0, 0.0, 1.0);     </div><div class="line">   //开始一个起始路径    </div><div class="line">   CGContextBeginPath(context);     </div><div class="line">   //起始点设置为(0,0):注意这是上下文对应区域中的相对坐标，    </div><div class="line">   CGContextMoveToPoint(context, 0, 0);     </div><div class="line">   //设置下一个坐标点    </div><div class="line">   CGContextAddLineToPoint(context, 100, 100);     </div><div class="line">   //设置下一个坐标点    </div><div class="line">   CGContextAddLineToPoint(context, 0, 150);    </div><div class="line">   //设置下一个坐标点    </div><div class="line">   CGContextAddLineToPoint(context, 50, 180);    </div><div class="line">   //连接上面定义的坐标点    </div><div class="line">   CGContextStrokePath(context);</div><div class="line">   </div><div class="line">&#125;</div></pre></td></tr></table></figure>
+<p><img src="/Users/mac/Library/Mobile Documents/com~apple~CloudDocs/Hexo/source/_posts/Pic/007.png" alt=""></p>
+<blockquote>
+<p>再说明一下重绘，重绘操作仍然在drawRect方法中完成，但是苹果不建议直接调用drawRect方法，当然如果你强直直接调用此方法，当然是没有效果的。苹果要求我们调用UIView类中的setNeedsDisplay方法，则程序会自动调用drawRect方法进行重绘。==（调用setNeedsDisplay会自动调用drawRect）==</p>
+<p>在UIView中,重写drawRect: (CGRect) aRect方法,可以自己定义想要画的图案.且此方法一般情况下只会画一次.也就是说这个drawRect方法一般情况下只会被掉用一次. 当==某些情况下想要手动重画这个View,只需要掉用[self setNeedsDisplay]方法==即可.</p>
+</blockquote>
+<ul>
+<li></li>
+</ul>
+<blockquote>
+<p>==drawRect调是在Controller-&gt;loadView, Controller-&gt;viewDidLoad 两方法之后掉用的==.所以不用担心在控制器中,这些View的drawRect就开始画了.这样可以在控制器中设置一些值给View(如果这些View draw的时候需要用到某些变量值).</p>
+</blockquote>
+<p>&gt;</p>
+<ol>
+<li>如果在UIView初始化时没有设置rect大小，将直接导致drawRect不被自动调用。</li>
+<li>该方法在调用sizeThatFits后被调用，所以可以先调用sizeToFit计算出size。然后系统自动调用drawRect:方法。</li>
+<li>通过设置contentMode属性值为UIViewContentModeRedraw。那么将在每次设置或更改frame的时候自动调用drawRect:。</li>
+<li>直接调用setNeedsDisplay，或者setNeedsDisplayInRect:触发drawRect:，但是有个前提条件是rect不能为0.</li>
+</ol>
+<ul>
+<li>以上1,2推荐；而3,4不提倡</li>
+</ul>
+<p>&gt;</p>
+<ol>
+<li>若使用UIView绘图，只能在drawRect：方法中获取相应的contextRef并绘图。如果在其他方法中获取将获取到一个invalidate的ref并且不能用于画图。drawRect：方法不能手动显示调用，必须通过调用setNeedsDisplay 或者 setNeedsDisplayInRect ，让系统自动调该方法。</li>
+<li>若使用calayer绘图，只能在drawInContext: 中（类似于drawRect）绘制，或者在delegate中的相应方法绘制。同样也是调用setNeedDisplay等间接调用以上方法。</li>
+<li>若要实时画图，不能使用gestureRecognizer，只能使用touchbegan等方法来掉用setNeedsDisplay实时刷新屏幕</li>
+</ol>
+<hr>
+<h4 id="self-setAutoresizesSubviews-YES"><a href="#self-setAutoresizesSubviews-YES" class="headerlink" title="[self setAutoresizesSubviews:YES];"></a>[self setAutoresizesSubviews:YES];</h4><blockquote>
+<p>autoresizing是UIView的属性，一直存在，使用也比较简单，但是没有autolayout那样强大。如果你的界面比较简单，要求的细节没有那么高，那么你完全可以使用autoresizing去进行自动布局</p>
+<p>Autolayout（Autolayout是IOS6以后新增）</p>
+</blockquote>
+<p><a href="http://www.2cto.com/kf/201412/361676.html" target="_blank" rel="external">link</a></p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div></pre></td><td class="code"><pre><div class="line">UIViewAutoresizing是一个枚举类型，默认是UIViewAutoresizingNone，也就是不做任何处理。</div><div class="line"> </div><div class="line">typedef NS_OPTIONS(NSUInteger, UIViewAutoresizing) &#123;</div><div class="line">    UIViewAutoresizingNone                 = 0,</div><div class="line">    UIViewAutoresizingFlexibleLeftMargin   = 1 &lt;&lt; 0,</div><div class="line">    UIViewAutoresizingFlexibleWidth        = 1 &lt;&lt; 1,</div><div class="line">    UIViewAutoresizingFlexibleRightMargin  = 1 &lt;&lt; 2,</div><div class="line">    UIViewAutoresizingFlexibleTopMargin    = 1 &lt;&lt; 3,</div><div class="line">    UIViewAutoresizingFlexibleHeight       = 1 &lt;&lt; 4,</div><div class="line">    UIViewAutoresizingFlexibleBottomMargin = 1 &lt;&lt; 5</div><div class="line">&#125;;</div></pre></td></tr></table></figure>
+<blockquote>
+<p>各属性解释：</p>
+</blockquote>
+<table>
+<thead>
+<tr>
+<th>header 1</th>
+<th>header 2</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>UIViewAutoresizingNone</td>
+<td>不会随父视图的改变而改变</td>
+</tr>
+<tr>
+<td>UIViewAutoresizingFlexibleLeftMargin</td>
+<td>自动调整view与父视图左边距，以保证右边距不变</td>
+</tr>
+<tr>
+<td>UIViewAutoresizingFlexibleWidth</td>
+<td>自动调整view的宽度，保证左边距和右边距不变</td>
+</tr>
+<tr>
+<td>UIViewAutoresizingFlexibleRightMargin</td>
+<td>自动调整view与父视图右边距，以保证左边距不变</td>
+</tr>
+<tr>
+<td>UIViewAutoresizingFlexibleTopMargin</td>
+<td>自动调整view与父视图上边距，以保证下边距不变</td>
+</tr>
+<tr>
+<td>UIViewAutoresizingFlexibleHeight</td>
+<td>自动调整view的高度，以保证上边距和下边距不变</td>
+</tr>
+<tr>
+<td>UIViewAutoresizingFlexibleBottomMargin</td>
+<td>自动调整view与父视图的下边距，以保证上边距不变</td>
+</tr>
+</tbody>
+</table>
+<blockquote>
+<p>在这里说明一下，如果是经常使用Storyboard/Xib设置autoresizing，那么转变使用代码设置autoresizing的话，容易出现理解错误问题。比如说UIViewAutoresizingFlexibleTopMargin，也许会被误认为是顶部距离不变，其实是底部距离不变。这个解决办法也很简单，只需要把使用代码和使用Storyboard设置autoresizing，它们是相反的，只需要这样去记就可以了。</p>
+<p>如果视图的autoresizesSubviews属性被设置为 NO，则该视图的直接子视图的所有自动尺寸调整行为将被忽略。</p>
+<p>类似地，如果一个子视图的自动尺寸调整掩码被设置为 UIViewAutoresizingNone，则该子视图的尺寸将不会被调整，因而其直接子视图的尺寸也不会被调整。</p>
+<p>请注意：为了使自动尺寸调整的行为正确，视图的transform属性必须设置为恒等变换；其它变换下的尺寸自动调整行为是未定义的。</p>
+</blockquote>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div></pre></td><td class="code"><pre><div class="line">可以在设置好frame后再添加</div><div class="line"></div><div class="line">[View setAutoresizingMask:UIViewAutoresizingFlexibleWidth | UIViewAutoresizingFlexibleBottomMargin | UIViewAutoresizingFlexibleRightMargin | UIViewAutoresizingFlexibleLeftMargin];</div></pre></td></tr></table></figure>
+<h3 id="layout"><a href="#layout" class="headerlink" title="layout"></a>layout</h3><p>&gt;</p>
+<ul>
+<li>-(void)layoutSubviews; 这个方法，默认没有做任何事情，需要子类进行重写</li>
+<li>-(void)layoutIfNeeded; 标记为需要重新布局，异步调用layoutIfNeeded刷新布局，不立即刷新，但layoutSubviews一定会被调用</li>
+<li>-(void)setNeedsLayout; 如果，有需要刷新的标记，立即调用layoutSubviews进行布局（如果没有标记，不会调用layoutSubviews）</li>
+</ul>
+<p>*</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div></pre></td><td class="code"><pre><div class="line">layoutSubviews对subviews重新布局</div><div class="line"></div><div class="line">layoutSubviews方法调用先于drawRect</div><div class="line"></div><div class="line">setNeedsLayout在receiver标上一个需要被重新布局的标记，在系统runloop的下一个周期自动调用layoutSubviews</div><div class="line"></div><div class="line">layoutIfNeeded方法如其名，UIKit会判断该receiver是否需要layout.根据Apple官方文档,layoutIfNeeded方法应该是这样的</div><div class="line"></div><div class="line">layoutIfNeeded遍历的不是superview链，应该是subviews链</div></pre></td></tr></table></figure>
+<blockquote>
+<p>layoutSubviews在以下情况下会被调用：</p>
+</blockquote>
+<ol>
+<li><p>init初始化不会触发layoutSubviews,但是是用initWithFrame 进行初始化时，当rect的值不为CGRectZero时,也会触发</p>
+</li>
+<li><p>addSubview会触发layoutSubviews</p>
+</li>
+<li><p>设置view的Frame会触发layoutSubviews，当然前提是frame的值设置前后发生了变化</p>
+</li>
+<li><p>滚动一个UIScrollView会触发layoutSubviews</p>
+</li>
+<li><p>旋转Screen会触发父UIView上的layoutSubviews事件</p>
+</li>
+<li><p>改变一个UIView大小的时候也会触发父UIView上的layoutSubviews事件</p>
+</li>
+</ol>
+<blockquote>
+<p>在苹果的官方文档中强调:</p>
+</blockquote>
+<pre><code>You should override this method only if the autoresizing behaviors of the subviews do not offer the behavior you want.
+</code></pre><blockquote>
+<p>layoutSubviews, 当我们在某个类的内部调整子视图位置时，需要调用。</p>
+<p>反过来的意思就是说：如果你想要在外部设置subviews的位置，就不要重写。</p>
+</blockquote>
+<h3 id="sizeToFit"><a href="#sizeToFit" class="headerlink" title="sizeToFit"></a>sizeToFit</h3><p>&gt;</p>
+<ul>
+<li>-(CGSize)sizeThatFits:(CGSize)size</li>
+<li>-(void)sizeToFit;</li>
+</ul>
+<p>*</p>
+<blockquote>
+<p>sizeToFit会自动调用sizeThatFits方法；</p>
+<p>sizeToFit不应该在子类中被重写，应该重写sizeThatFits</p>
+<p>sizeThatFits传入的参数是receiver当前的size，返回一个适合的size</p>
+<p>sizeToFit可以被手动直接调用</p>
+<p>sizeToFit和sizeThatFits方法都没有递归，对subviews也不负责，只负责自己</p>
+</blockquote>
+
+      
+    </div>
+    
+    
+    
+
+    
+
+    
+
+    
+
+    <footer class="post-footer">
+      
+
+      
+      
+      
+
+      
+        <div class="post-nav">
+          <div class="post-nav-next post-nav-item">
+            
+              <a href="/2017/01/17/iOS-项目中的图片上传/" rel="next" title="iOS-项目中的图片上传">
+                <i class="fa fa-chevron-left"></i> iOS-项目中的图片上传
+              </a>
+            
+          </div>
+
+          <span class="post-nav-divider"></span>
+
+          <div class="post-nav-prev post-nav-item">
+            
+              <a href="/2017/01/22/iOS-Xcode8改动/" rel="prev" title="iOS-Xcode8改动">
+                iOS-Xcode8改动 <i class="fa fa-chevron-right"></i>
+              </a>
+            
+          </div>
+        </div>
+      
+
+      
+      
+    </footer>
+  </div>
+  
+  
+  
+  </article>
+
+
+
+    <div class="post-spread">
+      
+    </div>
+  </div>
+
+
+          </div>
+          
+
+
+          
+  <div class="comments" id="comments">
+    
+  </div>
+
+
+        </div>
+        
+          
+  
+  <div class="sidebar-toggle">
+    <div class="sidebar-toggle-line-wrap">
+      <span class="sidebar-toggle-line sidebar-toggle-line-first"></span>
+      <span class="sidebar-toggle-line sidebar-toggle-line-middle"></span>
+      <span class="sidebar-toggle-line sidebar-toggle-line-last"></span>
+    </div>
+  </div>
+
+  <aside id="sidebar" class="sidebar">
+    
+    <div class="sidebar-inner">
+
+      
+
+      
+        <ul class="sidebar-nav motion-element">
+          <li class="sidebar-nav-toc sidebar-nav-active" data-target="post-toc-wrap" >
+            文章目录
+          </li>
+          <li class="sidebar-nav-overview" data-target="site-overview">
+            站点概览
+          </li>
+        </ul>
+      
+
+      <section class="site-overview sidebar-panel">
+        <div class="site-author motion-element" itemprop="author" itemscope itemtype="http://schema.org/Person">
+          <img class="site-author-image" itemprop="image"
+               src="/images/avatar.gif"
+               alt="SongWei" />
+          <p class="site-author-name" itemprop="name">SongWei</p>
+           
+              <p class="site-description motion-element" itemprop="description">先拆轮子,在造轮子!</p>
+          
+        </div>
+        <nav class="site-state motion-element">
+
+          
+            <div class="site-state-item site-state-posts">
+            
+              <a href="/archives/">
+            
+                <span class="site-state-item-count">23</span>
+                <span class="site-state-item-name">日志</span>
+              </a>
+            </div>
+          
+
+          
+
+          
+            
+            
+            <div class="site-state-item site-state-tags">
+              <a href="/tags/index.html">
+                <span class="site-state-item-count">2</span>
+                <span class="site-state-item-name">标签</span>
+              </a>
+            </div>
+          
+
+        </nav>
+
+        
+
+        <div class="links-of-author motion-element">
+          
+            
+              <span class="links-of-author-item">
+                <a href="https://github.com/" target="_blank" title="GitHub">
+                  
+                    <i class="fa fa-fw fa-github"></i>
+                  
+                    
+                      GitHub
+                    
+                </a>
+              </span>
+            
+              <span class="links-of-author-item">
+                <a href="http://weibo.com/" target="_blank" title="Weibo">
+                  
+                    <i class="fa fa-fw fa-weibo"></i>
+                  
+                    
+                      Weibo
+                    
+                </a>
+              </span>
+            
+              <span class="links-of-author-item">
+                <a href="http://www.baidu.com" target="_blank" title="百度">
+                  
+                    <i class="fa fa-fw fa-globe"></i>
+                  
+                    
+                      百度
+                    
+                </a>
+              </span>
+            
+          
+        </div>
+
+        
+        
+
+        
+        
+
+        
+
+
+      </section>
+
+      
+      <!--noindex-->
+        <section class="post-toc-wrap motion-element sidebar-panel sidebar-panel-active">
+          <div class="post-toc">
+
+            
+              
+            
+
+            
+              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-3"><a class="nav-link" href="#重绘"><span class="nav-number">1.</span> <span class="nav-text">重绘</span></a><ol class="nav-child"><li class="nav-item nav-level-4"><a class="nav-link" href="#setNeedsDisplay"><span class="nav-number">1.1.</span> <span class="nav-text">setNeedsDisplay</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#drawRect"><span class="nav-number">1.2.</span> <span class="nav-text">drawRect</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#self-setAutoresizesSubviews-YES"><span class="nav-number">1.3.</span> <span class="nav-text">[self setAutoresizesSubviews:YES];</span></a></li></ol></li><li class="nav-item nav-level-3"><a class="nav-link" href="#layout"><span class="nav-number">2.</span> <span class="nav-text">layout</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#sizeToFit"><span class="nav-number">3.</span> <span class="nav-text">sizeToFit</span></a></li></ol></div>
+            
+
+          </div>
+        </section>
+      <!--/noindex-->
+      
+
+      
+
+    </div>
+  </aside>
+
+
+        
+      </div>
+    </main>
+
+    <footer id="footer" class="footer">
+      <div class="footer-inner">
+        <div class="copyright" >
+  
+  &copy; 
+  <span itemprop="copyrightYear">2017</span>
+  <span class="with-love">
+    <i class="fa fa-heart"></i>
+  </span>
+  <span class="author" itemprop="copyrightHolder">SongWei</span>
+
+  
+</div>
+
+
+  <div class="powered-by">由 <a class="theme-link" href="https://hexo.io">Hexo</a> 强力驱动</div>
+
+  <span class="post-meta-divider">|</span>
+
+  <div class="theme-info">主题 &mdash; <a class="theme-link" href="https://github.com/iissnan/hexo-theme-next">NexT.Gemini</a> v5.1.2</div>
+
+
+        
+<div class="busuanzi-count">
+  <script async src="https://dn-lbstatics.qbox.me/busuanzi/2.3/busuanzi.pure.mini.js"></script>
+
+  
+    <span class="site-uv">
+      本站访客数
+      <span class="busuanzi-value" id="busuanzi_value_site_uv"></span>
+      人次
+    </span>
+  
+
+  
+    <span class="site-pv">
+      本站总访问量
+      <span class="busuanzi-value" id="busuanzi_value_site_pv"></span>
+      次
+    </span>
+  
+</div>
+
+
+
+
+
+
+
+
+        
+      </div>
+    </footer>
+
+    
+      <div class="back-to-top">
+        <i class="fa fa-arrow-up"></i>
+        
+          <span id="scrollpercent"><span>0</span>%</span>
+        
+      </div>
+    
+
+  </div>
+
+  
+
+<script type="text/javascript">
+  if (Object.prototype.toString.call(window.Promise) !== '[object Function]') {
+    window.Promise = null;
+  }
+</script>
+
+
+
+
+
+
+
+
+
+  
+
+
+
+
+
+
+
+
+
+
+
+
+  
+  <script type="text/javascript" src="/lib/jquery/index.js?v=2.1.3"></script>
+
+  
+  <script type="text/javascript" src="/lib/fastclick/lib/fastclick.min.js?v=1.0.6"></script>
+
+  
+  <script type="text/javascript" src="/lib/jquery_lazyload/jquery.lazyload.js?v=1.9.7"></script>
+
+  
+  <script type="text/javascript" src="/lib/velocity/velocity.min.js?v=1.2.1"></script>
+
+  
+  <script type="text/javascript" src="/lib/velocity/velocity.ui.min.js?v=1.2.1"></script>
+
+  
+  <script type="text/javascript" src="/lib/fancybox/source/jquery.fancybox.pack.js?v=2.1.5"></script>
+
+
+  
+
+
+  <script type="text/javascript" src="/js/src/utils.js?v=5.1.2"></script>
+
+  <script type="text/javascript" src="/js/src/motion.js?v=5.1.2"></script>
+
+
+
+  
+  
+
+
+  <script type="text/javascript" src="/js/src/affix.js?v=5.1.2"></script>
+
+  <script type="text/javascript" src="/js/src/schemes/pisces.js?v=5.1.2"></script>
+
+
+
+  
+  <script type="text/javascript" src="/js/src/scrollspy.js?v=5.1.2"></script>
+<script type="text/javascript" src="/js/src/post-details.js?v=5.1.2"></script>
+
+
+
+  
+
+
+  <script type="text/javascript" src="/js/src/bootstrap.js?v=5.1.2"></script>
+
+
+
+  
+
+
+  
+
+
+
+
+	
+
+
+
+
+
+  
+
+
+
+
+
+  
+
+
+
+
+
+
+
+
+  
+
+
+
+
+
+  
+
+  
+
+  
+
+  
+
+  
+
+  
+
+</body>
+</html>

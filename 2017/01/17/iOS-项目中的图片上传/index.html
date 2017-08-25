@@ -1,0 +1,767 @@
+<!DOCTYPE html>
+
+
+
+  
+
+
+<html class="theme-next gemini use-motion" lang="zh-Hans">
+<head>
+  <meta charset="UTF-8"/>
+<meta http-equiv="X-UA-Compatible" content="IE=edge" />
+<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1"/>
+<meta name="theme-color" content="#222">
+
+
+
+
+
+
+
+
+
+<meta http-equiv="Cache-Control" content="no-transform" />
+<meta http-equiv="Cache-Control" content="no-siteapp" />
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+  
+  
+  <link href="/lib/fancybox/source/jquery.fancybox.css?v=2.1.5" rel="stylesheet" type="text/css" />
+
+
+
+
+  
+  
+  
+  
+
+  
+    
+    
+  
+
+  
+
+  
+
+  
+
+  
+
+  
+    
+    
+    <link href="//fonts.googleapis.com/css?family=Lato:300,300italic,400,400italic,700,700italic&subset=latin,latin-ext" rel="stylesheet" type="text/css">
+  
+
+
+
+
+
+
+<link href="/lib/font-awesome/css/font-awesome.min.css?v=4.6.2" rel="stylesheet" type="text/css" />
+
+<link href="/css/main.css?v=5.1.2" rel="stylesheet" type="text/css" />
+
+
+  <meta name="keywords" content="iSong" />
+
+
+
+
+
+
+
+
+  <link rel="shortcut icon" type="image/x-icon" href="/favicon.ico?v=5.1.2" />
+
+
+
+
+
+
+<meta name="description" content="不积跬步,无以至千里不积小流,无以成江海
+
+项目中的图片上传肯定是必不可少的内容,以下先将项目中的copy下来,而且仅仅是作为头像单个文件的上传,以后有时间在详细整理下
+1. 点击头像按钮12345678910111213141516171819202122232425262728所在的视图控制器需要遵从下&amp;lt;UIImagePickerControllerDelegate&amp;gt;代理- (v">
+<meta property="og:type" content="article">
+<meta property="og:title" content="iOS-项目中的图片上传">
+<meta property="og:url" content="http://yoursite.com/2017/01/17/iOS-项目中的图片上传/index.html">
+<meta property="og:site_name" content="Song">
+<meta property="og:description" content="不积跬步,无以至千里不积小流,无以成江海
+
+项目中的图片上传肯定是必不可少的内容,以下先将项目中的copy下来,而且仅仅是作为头像单个文件的上传,以后有时间在详细整理下
+1. 点击头像按钮12345678910111213141516171819202122232425262728所在的视图控制器需要遵从下&amp;lt;UIImagePickerControllerDelegate&amp;gt;代理- (v">
+<meta property="og:updated_time" content="2017-03-19T08:01:02.000Z">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:title" content="iOS-项目中的图片上传">
+<meta name="twitter:description" content="不积跬步,无以至千里不积小流,无以成江海
+
+项目中的图片上传肯定是必不可少的内容,以下先将项目中的copy下来,而且仅仅是作为头像单个文件的上传,以后有时间在详细整理下
+1. 点击头像按钮12345678910111213141516171819202122232425262728所在的视图控制器需要遵从下&amp;lt;UIImagePickerControllerDelegate&amp;gt;代理- (v">
+
+
+
+<script type="text/javascript" id="hexo.configurations">
+  var NexT = window.NexT || {};
+  var CONFIG = {
+    root: '/',
+    scheme: 'Gemini',
+    version: '5.1.2',
+    sidebar: {"position":"left","display":"post","offset":12,"offset_float":12,"b2t":false,"scrollpercent":true,"onmobile":false},
+    fancybox: true,
+    tabs: true,
+    motion: true,
+    duoshuo: {
+      userId: '0',
+      author: '博主'
+    },
+    algolia: {
+      applicationID: '',
+      apiKey: '',
+      indexName: '',
+      hits: {"per_page":10},
+      labels: {"input_placeholder":"Search for Posts","hits_empty":"We didn't find any results for the search: ${query}","hits_stats":"${hits} results found in ${time} ms"}
+    }
+  };
+</script>
+
+
+
+  <link rel="canonical" href="http://yoursite.com/2017/01/17/iOS-项目中的图片上传/"/>
+
+
+
+
+
+  <title>iOS-项目中的图片上传 | Song</title>
+  
+
+
+
+
+
+
+
+
+</head>
+
+<body itemscope itemtype="http://schema.org/WebPage" lang="zh-Hans">
+
+  
+  
+    
+  
+
+  <div class="container sidebar-position-left page-post-detail ">
+    <div class="headband"></div>
+
+    <header id="header" class="header" itemscope itemtype="http://schema.org/WPHeader">
+      <div class="header-inner"><div class="site-brand-wrapper">
+  <div class="site-meta ">
+    
+
+    <div class="custom-logo-site-title">
+      <a href="/"  class="brand" rel="start">
+        <span class="logo-line-before"><i></i></span>
+        <span class="site-title">Song</span>
+        <span class="logo-line-after"><i></i></span>
+      </a>
+    </div>
+      
+        <p class="site-subtitle"></p>
+      
+  </div>
+
+  <div class="site-nav-toggle">
+    <button>
+      <span class="btn-bar"></span>
+      <span class="btn-bar"></span>
+      <span class="btn-bar"></span>
+    </button>
+  </div>
+</div>
+
+<nav class="site-nav">
+  
+
+  
+    <ul id="menu" class="menu">
+      
+        
+        <li class="menu-item menu-item-home">
+          <a href="/" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-home"></i> <br />
+            
+            首页
+          </a>
+        </li>
+      
+        
+        <li class="menu-item menu-item-about">
+          <a href="/about/" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-user"></i> <br />
+            
+            关于
+          </a>
+        </li>
+      
+        
+        <li class="menu-item menu-item-archives">
+          <a href="/archives/" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-archive"></i> <br />
+            
+            归档
+          </a>
+        </li>
+      
+        
+        <li class="menu-item menu-item-tags">
+          <a href="/tags/" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-tags"></i> <br />
+            
+            标签
+          </a>
+        </li>
+      
+
+      
+    </ul>
+  
+
+  
+</nav>
+
+
+
+ </div>
+    </header>
+
+    <main id="main" class="main">
+      <div class="main-inner">
+        <div class="content-wrap">
+          <div id="content" class="content">
+            
+
+  <div id="posts" class="posts-expand">
+    
+
+  
+
+  
+  
+  
+
+  <article class="post post-type-normal" itemscope itemtype="http://schema.org/Article">
+  
+  
+  
+  <div class="post-block">
+    <link itemprop="mainEntityOfPage" href="http://yoursite.com/2017/01/17/iOS-项目中的图片上传/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="name" content="SongWei">
+      <meta itemprop="description" content="">
+      <meta itemprop="image" content="/images/avatar.gif">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="Song">
+    </span>
+
+    
+      <header class="post-header">
+
+        
+        
+          <h1 class="post-title" itemprop="name headline">iOS-项目中的图片上传</h1>
+        
+
+        <div class="post-meta">
+          <span class="post-time">
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-calendar-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">发表于</span>
+              
+              <time title="创建于" itemprop="dateCreated datePublished" datetime="2017-01-17T10:44:27+08:00">
+                2017-01-17
+              </time>
+            
+
+            
+
+            
+          </span>
+
+          
+
+          
+            
+          
+
+          
+          
+
+          
+            <span class="post-meta-divider">|</span>
+            <span class="page-pv">本文总阅读量
+            <span class="busuanzi-value" id="busuanzi_value_page_pv" ></span>次
+            </span>
+          
+
+          
+
+          
+
+        </div>
+      </header>
+    
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+
+      
+      
+
+      
+        <blockquote>
+<p>不积跬步,无以至千里<br>不积小流,无以成江海</p>
+</blockquote>
+<p>项目中的图片上传肯定是必不可少的内容,以下先将项目中的copy下来,而且仅仅是作为头像单个文件的上传,以后有时间在详细整理下</p>
+<h5 id="1-点击头像按钮"><a href="#1-点击头像按钮" class="headerlink" title="1. 点击头像按钮"></a>1. 点击头像按钮</h5><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div><div class="line">17</div><div class="line">18</div><div class="line">19</div><div class="line">20</div><div class="line">21</div><div class="line">22</div><div class="line">23</div><div class="line">24</div><div class="line">25</div><div class="line">26</div><div class="line">27</div><div class="line">28</div></pre></td><td class="code"><pre><div class="line">所在的视图控制器需要遵从下&lt;UIImagePickerControllerDelegate&gt;代理</div><div class="line">- (void)changeImage:(UIButton *)sender &#123;</div><div class="line"></div><div class="line">//创建常见的下滑提示栏, 注意iOS8 才有这个控件</div><div class="line">    UIAlertController  *alert = [UIAlertController alertControllerWithTitle:nil message:nil preferredStyle:(UIAlertControllerStyleActionSheet)];</div><div class="line">    UIAlertAction  *cancelAction = [UIAlertAction actionWithTitle:@&quot;取消&quot; style:(UIAlertActionStyleCancel) handler:^(UIAlertAction * _Nonnull action) &#123; &#125;];</div><div class="line">    UIAlertAction  *fromPhotoAction = [UIAlertAction actionWithTitle:@&quot;从相册选择&quot; style:(UIAlertActionStyleDefault) handler:^(UIAlertAction * _Nonnull action)  &#123;</div><div class="line">        UIImagePickerController *imagePicker = [[UIImagePickerController alloc] init];</div><div class="line">        imagePicker.sourceType = UIImagePickerControllerSourceTypePhotoLibrary;</div><div class="line">        imagePicker.modalTransitionStyle = UIModalTransitionStyleCoverVertical;</div><div class="line">        imagePicker.allowsEditing = YES;</div><div class="line">        imagePicker.delegate = self;</div><div class="line">        [self presentViewController:imagePicker animated:YES completion:nil];</div><div class="line">    &#125;];</div><div class="line">    UIAlertAction  *fromCameraAction = [UIAlertAction actionWithTitle:@&quot;拍照&quot; style:(UIAlertActionStyleDefault) handler:^(UIAlertAction * _Nonnull action)  &#123;</div><div class="line">        UIImagePickerController *imagePicker = [[UIImagePickerController alloc] init];</div><div class="line">        imagePicker.delegate = self;</div><div class="line">        imagePicker.allowsEditing = YES;</div><div class="line">        imagePicker.modalTransitionStyle = UIModalTransitionStyleCoverVertical;</div><div class="line">        imagePicker.sourceType = UIImagePickerControllerSourceTypeCamera;</div><div class="line">        [self presentViewController:imagePicker animated:YES completion:nil];</div><div class="line">    &#125;];</div><div class="line"></div><div class="line">    [alert addAction:cancelAction];</div><div class="line">    [alert addAction:fromCameraAction];</div><div class="line">    [alert addAction:fromPhotoAction];</div><div class="line">    [self presentViewController:alert animated:YES completion:nil];</div><div class="line">&#125;</div></pre></td></tr></table></figure>
+<h5 id="2-选中图片的处理"><a href="#2-选中图片的处理" class="headerlink" title="2. 选中图片的处理"></a>2. 选中图片的处理</h5><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div></pre></td><td class="code"><pre><div class="line">代理方法获取图片</div><div class="line">- (void)imagePickerController:(UIImagePickerController *)picker didFinishPickingMediaWithInfo:(NSDictionary *)info</div><div class="line">&#123;</div><div class="line">    [picker dismissViewControllerAnimated:YES completion:nil];</div><div class="line">    //可裁剪</div><div class="line">    UIImage *image = [info objectForKey:UIImagePickerControllerEditedImage];</div><div class="line">    //原图</div><div class="line">    //UIImage *image = [info objectForKey:UIImagePickerControllerOriginalImage];</div><div class="line">    [self performSelector:@selector(saveImage:) withObject:image afterDelay:0.5];</div><div class="line">    </div><div class="line">&#125;</div></pre></td></tr></table></figure>
+<h5 id="3-保存图片"><a href="#3-保存图片" class="headerlink" title="3. 保存图片"></a>3. 保存图片</h5><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div><div class="line">17</div><div class="line">18</div><div class="line">19</div><div class="line">20</div><div class="line">21</div><div class="line">22</div><div class="line">23</div><div class="line">24</div><div class="line">25</div><div class="line">26</div></pre></td><td class="code"><pre><div class="line"></div><div class="line">-(void)saveImage:(UIImage *)image&#123;</div><div class="line">//传递的参数</div><div class="line">    NSMutableDictionary *parameters = [NSMutableDictionary dictionary];</div><div class="line">    [parameters setObject:@&quot;&quot;forKey:@&quot;userId&quot;];</div><div class="line">//图片压缩处理</div><div class="line">    NSData *imageData = UIImageJPEGRepresentation(image, 0.5);</div><div class="line">//利用AFNetworking上传data</div><div class="line">    AFHTTPSessionManager * mgr = [AFHTTPSessionManager manager];</div><div class="line">    mgr.responseSerializer.acceptableContentTypes = [NSSet setWithObject:@&quot;text/html&quot;];</div><div class="line">     [mgr POST:[NSString stringWithFormat:@&quot;%@%@&quot;,BaseAPI,@&quot;/app/uploadPhoto&quot;] parameters:parameters constructingBodyWithBlock:^(id&lt;AFMultipartFormData&gt;  _Nonnull formData) &#123; </div><div class="line">//上传时使用当前的系统事件作为文件名</div><div class="line">        NSDateFormatter *formatter = [[NSDateFormatter alloc] init];</div><div class="line">        formatter.dateFormat = @&quot;yyyyMMddHHmmss&quot;;</div><div class="line">        formatter.timeZone = [NSTimeZone timeZoneWithAbbreviation:@&quot;GMT+0800&quot;];</div><div class="line">        NSString *str = [formatter stringFromDate:[NSDate date]];</div><div class="line">        NSString *fileName = [NSString stringWithFormat:@&quot;%@.jpg&quot;, str];</div><div class="line">//上传图片</div><div class="line">        [formData appendPartWithFileData:imageData name:@&quot;imgFile&quot; fileName:fileName  mimeType:@&quot;image/jpeg&quot;];</div><div class="line">            </div><div class="line">        &#125; progress:nil success:^(NSURLSessionDataTask * _Nonnull task, id  _Nullable responseObject) &#123;</div><div class="line">//返回结果</div><div class="line">        NSLOG(@&quot;Success &gt;&gt;&gt;&gt;&gt;&gt;&gt;&gt;&gt;&gt;&gt;&gt;&gt;&gt;&gt;&gt;&gt;%@&quot;, responseObject);</div><div class="line">        &#125; failure:^(NSURLSessionDataTask * _Nullable task, NSError * _Nonnull error) &#123;</div><div class="line">      &#125;];</div><div class="line">&#125;</div></pre></td></tr></table></figure>
+<p>图片上传的基本功能算是有了</p>
+
+      
+    </div>
+    
+    
+    
+
+    
+
+    
+
+    
+
+    <footer class="post-footer">
+      
+
+      
+      
+      
+
+      
+        <div class="post-nav">
+          <div class="post-nav-next post-nav-item">
+            
+              <a href="/2017/01/10/数据缓存的优化/" rel="next" title="数据缓存的优化">
+                <i class="fa fa-chevron-left"></i> 数据缓存的优化
+              </a>
+            
+          </div>
+
+          <span class="post-nav-divider"></span>
+
+          <div class="post-nav-prev post-nav-item">
+            
+              <a href="/2017/01/22/所有的布局方法/" rel="prev" title="所有的布局方法总结">
+                所有的布局方法总结 <i class="fa fa-chevron-right"></i>
+              </a>
+            
+          </div>
+        </div>
+      
+
+      
+      
+    </footer>
+  </div>
+  
+  
+  
+  </article>
+
+
+
+    <div class="post-spread">
+      
+    </div>
+  </div>
+
+
+          </div>
+          
+
+
+          
+  <div class="comments" id="comments">
+    
+  </div>
+
+
+        </div>
+        
+          
+  
+  <div class="sidebar-toggle">
+    <div class="sidebar-toggle-line-wrap">
+      <span class="sidebar-toggle-line sidebar-toggle-line-first"></span>
+      <span class="sidebar-toggle-line sidebar-toggle-line-middle"></span>
+      <span class="sidebar-toggle-line sidebar-toggle-line-last"></span>
+    </div>
+  </div>
+
+  <aside id="sidebar" class="sidebar">
+    
+    <div class="sidebar-inner">
+
+      
+
+      
+        <ul class="sidebar-nav motion-element">
+          <li class="sidebar-nav-toc sidebar-nav-active" data-target="post-toc-wrap" >
+            文章目录
+          </li>
+          <li class="sidebar-nav-overview" data-target="site-overview">
+            站点概览
+          </li>
+        </ul>
+      
+
+      <section class="site-overview sidebar-panel">
+        <div class="site-author motion-element" itemprop="author" itemscope itemtype="http://schema.org/Person">
+          <img class="site-author-image" itemprop="image"
+               src="/images/avatar.gif"
+               alt="SongWei" />
+          <p class="site-author-name" itemprop="name">SongWei</p>
+           
+              <p class="site-description motion-element" itemprop="description">先拆轮子,在造轮子!</p>
+          
+        </div>
+        <nav class="site-state motion-element">
+
+          
+            <div class="site-state-item site-state-posts">
+            
+              <a href="/archives/">
+            
+                <span class="site-state-item-count">23</span>
+                <span class="site-state-item-name">日志</span>
+              </a>
+            </div>
+          
+
+          
+
+          
+            
+            
+            <div class="site-state-item site-state-tags">
+              <a href="/tags/index.html">
+                <span class="site-state-item-count">2</span>
+                <span class="site-state-item-name">标签</span>
+              </a>
+            </div>
+          
+
+        </nav>
+
+        
+
+        <div class="links-of-author motion-element">
+          
+            
+              <span class="links-of-author-item">
+                <a href="https://github.com/" target="_blank" title="GitHub">
+                  
+                    <i class="fa fa-fw fa-github"></i>
+                  
+                    
+                      GitHub
+                    
+                </a>
+              </span>
+            
+              <span class="links-of-author-item">
+                <a href="http://weibo.com/" target="_blank" title="Weibo">
+                  
+                    <i class="fa fa-fw fa-weibo"></i>
+                  
+                    
+                      Weibo
+                    
+                </a>
+              </span>
+            
+              <span class="links-of-author-item">
+                <a href="http://www.baidu.com" target="_blank" title="百度">
+                  
+                    <i class="fa fa-fw fa-globe"></i>
+                  
+                    
+                      百度
+                    
+                </a>
+              </span>
+            
+          
+        </div>
+
+        
+        
+
+        
+        
+
+        
+
+
+      </section>
+
+      
+      <!--noindex-->
+        <section class="post-toc-wrap motion-element sidebar-panel sidebar-panel-active">
+          <div class="post-toc">
+
+            
+              
+            
+
+            
+              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-5"><a class="nav-link" href="#1-点击头像按钮"><span class="nav-number">1.</span> <span class="nav-text">1. 点击头像按钮</span></a></li><li class="nav-item nav-level-5"><a class="nav-link" href="#2-选中图片的处理"><span class="nav-number">2.</span> <span class="nav-text">2. 选中图片的处理</span></a></li><li class="nav-item nav-level-5"><a class="nav-link" href="#3-保存图片"><span class="nav-number">3.</span> <span class="nav-text">3. 保存图片</span></a></li></ol></div>
+            
+
+          </div>
+        </section>
+      <!--/noindex-->
+      
+
+      
+
+    </div>
+  </aside>
+
+
+        
+      </div>
+    </main>
+
+    <footer id="footer" class="footer">
+      <div class="footer-inner">
+        <div class="copyright" >
+  
+  &copy; 
+  <span itemprop="copyrightYear">2017</span>
+  <span class="with-love">
+    <i class="fa fa-heart"></i>
+  </span>
+  <span class="author" itemprop="copyrightHolder">SongWei</span>
+
+  
+</div>
+
+
+  <div class="powered-by">由 <a class="theme-link" href="https://hexo.io">Hexo</a> 强力驱动</div>
+
+  <span class="post-meta-divider">|</span>
+
+  <div class="theme-info">主题 &mdash; <a class="theme-link" href="https://github.com/iissnan/hexo-theme-next">NexT.Gemini</a> v5.1.2</div>
+
+
+        
+<div class="busuanzi-count">
+  <script async src="https://dn-lbstatics.qbox.me/busuanzi/2.3/busuanzi.pure.mini.js"></script>
+
+  
+    <span class="site-uv">
+      本站访客数
+      <span class="busuanzi-value" id="busuanzi_value_site_uv"></span>
+      人次
+    </span>
+  
+
+  
+    <span class="site-pv">
+      本站总访问量
+      <span class="busuanzi-value" id="busuanzi_value_site_pv"></span>
+      次
+    </span>
+  
+</div>
+
+
+
+
+
+
+
+
+        
+      </div>
+    </footer>
+
+    
+      <div class="back-to-top">
+        <i class="fa fa-arrow-up"></i>
+        
+          <span id="scrollpercent"><span>0</span>%</span>
+        
+      </div>
+    
+
+  </div>
+
+  
+
+<script type="text/javascript">
+  if (Object.prototype.toString.call(window.Promise) !== '[object Function]') {
+    window.Promise = null;
+  }
+</script>
+
+
+
+
+
+
+
+
+
+  
+
+
+
+
+
+
+
+
+
+
+
+
+  
+  <script type="text/javascript" src="/lib/jquery/index.js?v=2.1.3"></script>
+
+  
+  <script type="text/javascript" src="/lib/fastclick/lib/fastclick.min.js?v=1.0.6"></script>
+
+  
+  <script type="text/javascript" src="/lib/jquery_lazyload/jquery.lazyload.js?v=1.9.7"></script>
+
+  
+  <script type="text/javascript" src="/lib/velocity/velocity.min.js?v=1.2.1"></script>
+
+  
+  <script type="text/javascript" src="/lib/velocity/velocity.ui.min.js?v=1.2.1"></script>
+
+  
+  <script type="text/javascript" src="/lib/fancybox/source/jquery.fancybox.pack.js?v=2.1.5"></script>
+
+
+  
+
+
+  <script type="text/javascript" src="/js/src/utils.js?v=5.1.2"></script>
+
+  <script type="text/javascript" src="/js/src/motion.js?v=5.1.2"></script>
+
+
+
+  
+  
+
+
+  <script type="text/javascript" src="/js/src/affix.js?v=5.1.2"></script>
+
+  <script type="text/javascript" src="/js/src/schemes/pisces.js?v=5.1.2"></script>
+
+
+
+  
+  <script type="text/javascript" src="/js/src/scrollspy.js?v=5.1.2"></script>
+<script type="text/javascript" src="/js/src/post-details.js?v=5.1.2"></script>
+
+
+
+  
+
+
+  <script type="text/javascript" src="/js/src/bootstrap.js?v=5.1.2"></script>
+
+
+
+  
+
+
+  
+
+
+
+
+	
+
+
+
+
+
+  
+
+
+
+
+
+  
+
+
+
+
+
+
+
+
+  
+
+
+
+
+
+  
+
+  
+
+  
+
+  
+
+  
+
+  
+
+</body>
+</html>

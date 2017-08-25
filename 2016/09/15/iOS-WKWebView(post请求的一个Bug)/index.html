@@ -1,0 +1,783 @@
+<!DOCTYPE html>
+
+
+
+  
+
+
+<html class="theme-next gemini use-motion" lang="zh-Hans">
+<head>
+  <meta charset="UTF-8"/>
+<meta http-equiv="X-UA-Compatible" content="IE=edge" />
+<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1"/>
+<meta name="theme-color" content="#222">
+
+
+
+
+
+
+
+
+
+<meta http-equiv="Cache-Control" content="no-transform" />
+<meta http-equiv="Cache-Control" content="no-siteapp" />
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+  
+  
+  <link href="/lib/fancybox/source/jquery.fancybox.css?v=2.1.5" rel="stylesheet" type="text/css" />
+
+
+
+
+  
+  
+  
+  
+
+  
+    
+    
+  
+
+  
+
+  
+
+  
+
+  
+
+  
+    
+    
+    <link href="//fonts.googleapis.com/css?family=Lato:300,300italic,400,400italic,700,700italic&subset=latin,latin-ext" rel="stylesheet" type="text/css">
+  
+
+
+
+
+
+
+<link href="/lib/font-awesome/css/font-awesome.min.css?v=4.6.2" rel="stylesheet" type="text/css" />
+
+<link href="/css/main.css?v=5.1.2" rel="stylesheet" type="text/css" />
+
+
+  <meta name="keywords" content="iSong" />
+
+
+
+
+
+
+
+
+  <link rel="shortcut icon" type="image/x-icon" href="/favicon.ico?v=5.1.2" />
+
+
+
+
+
+
+<meta name="description" content="WKWebView新特性12341 在性能、稳定性、功能方面有很大提升（最直观的体现就是加载网页是占用的内存，模拟器加载百度与开源中国网站时，WKWebView占用23M，而UIWebView占用85M）2 和 Safari 相同的 JavaScript 引擎，允许JavaScript的Nitro库加载并使用（UIWebView中限制）；3 支持了更多的HTML5特性；4 自诩拥有 60fps 滚">
+<meta property="og:type" content="article">
+<meta property="og:title" content="WKWebView(post请求的一个Bug)">
+<meta property="og:url" content="http://yoursite.com/2016/09/15/iOS-WKWebView(post请求的一个Bug)/index.html">
+<meta property="og:site_name" content="Song">
+<meta property="og:description" content="WKWebView新特性12341 在性能、稳定性、功能方面有很大提升（最直观的体现就是加载网页是占用的内存，模拟器加载百度与开源中国网站时，WKWebView占用23M，而UIWebView占用85M）2 和 Safari 相同的 JavaScript 引擎，允许JavaScript的Nitro库加载并使用（UIWebView中限制）；3 支持了更多的HTML5特性；4 自诩拥有 60fps 滚">
+<meta property="og:image" content="http://upload-images.jianshu.io/upload_images/1636852-8524caf6dbdbfd62.png?imageMogr2/auto-orient/strip%7CimageView2/2/w/600">
+<meta property="og:image" content="http://upload-images.jianshu.io/upload_images/1636852-16880bd8e6e98fcc.png?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240">
+<meta property="og:image" content="http://upload-images.jianshu.io/upload_images/1636852-dc3fe0cf364ec36a.png?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240">
+<meta property="og:updated_time" content="2017-03-19T07:57:02.000Z">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:title" content="WKWebView(post请求的一个Bug)">
+<meta name="twitter:description" content="WKWebView新特性12341 在性能、稳定性、功能方面有很大提升（最直观的体现就是加载网页是占用的内存，模拟器加载百度与开源中国网站时，WKWebView占用23M，而UIWebView占用85M）2 和 Safari 相同的 JavaScript 引擎，允许JavaScript的Nitro库加载并使用（UIWebView中限制）；3 支持了更多的HTML5特性；4 自诩拥有 60fps 滚">
+<meta name="twitter:image" content="http://upload-images.jianshu.io/upload_images/1636852-8524caf6dbdbfd62.png?imageMogr2/auto-orient/strip%7CimageView2/2/w/600">
+
+
+
+<script type="text/javascript" id="hexo.configurations">
+  var NexT = window.NexT || {};
+  var CONFIG = {
+    root: '/',
+    scheme: 'Gemini',
+    version: '5.1.2',
+    sidebar: {"position":"left","display":"post","offset":12,"offset_float":12,"b2t":false,"scrollpercent":true,"onmobile":false},
+    fancybox: true,
+    tabs: true,
+    motion: true,
+    duoshuo: {
+      userId: '0',
+      author: '博主'
+    },
+    algolia: {
+      applicationID: '',
+      apiKey: '',
+      indexName: '',
+      hits: {"per_page":10},
+      labels: {"input_placeholder":"Search for Posts","hits_empty":"We didn't find any results for the search: ${query}","hits_stats":"${hits} results found in ${time} ms"}
+    }
+  };
+</script>
+
+
+
+  <link rel="canonical" href="http://yoursite.com/2016/09/15/iOS-WKWebView(post请求的一个Bug)/"/>
+
+
+
+
+
+  <title>WKWebView(post请求的一个Bug) | Song</title>
+  
+
+
+
+
+
+
+
+
+</head>
+
+<body itemscope itemtype="http://schema.org/WebPage" lang="zh-Hans">
+
+  
+  
+    
+  
+
+  <div class="container sidebar-position-left page-post-detail ">
+    <div class="headband"></div>
+
+    <header id="header" class="header" itemscope itemtype="http://schema.org/WPHeader">
+      <div class="header-inner"><div class="site-brand-wrapper">
+  <div class="site-meta ">
+    
+
+    <div class="custom-logo-site-title">
+      <a href="/"  class="brand" rel="start">
+        <span class="logo-line-before"><i></i></span>
+        <span class="site-title">Song</span>
+        <span class="logo-line-after"><i></i></span>
+      </a>
+    </div>
+      
+        <p class="site-subtitle"></p>
+      
+  </div>
+
+  <div class="site-nav-toggle">
+    <button>
+      <span class="btn-bar"></span>
+      <span class="btn-bar"></span>
+      <span class="btn-bar"></span>
+    </button>
+  </div>
+</div>
+
+<nav class="site-nav">
+  
+
+  
+    <ul id="menu" class="menu">
+      
+        
+        <li class="menu-item menu-item-home">
+          <a href="/" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-home"></i> <br />
+            
+            首页
+          </a>
+        </li>
+      
+        
+        <li class="menu-item menu-item-about">
+          <a href="/about/" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-user"></i> <br />
+            
+            关于
+          </a>
+        </li>
+      
+        
+        <li class="menu-item menu-item-archives">
+          <a href="/archives/" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-archive"></i> <br />
+            
+            归档
+          </a>
+        </li>
+      
+        
+        <li class="menu-item menu-item-tags">
+          <a href="/tags/" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-tags"></i> <br />
+            
+            标签
+          </a>
+        </li>
+      
+
+      
+    </ul>
+  
+
+  
+</nav>
+
+
+
+ </div>
+    </header>
+
+    <main id="main" class="main">
+      <div class="main-inner">
+        <div class="content-wrap">
+          <div id="content" class="content">
+            
+
+  <div id="posts" class="posts-expand">
+    
+
+  
+
+  
+  
+  
+
+  <article class="post post-type-normal" itemscope itemtype="http://schema.org/Article">
+  
+  
+  
+  <div class="post-block">
+    <link itemprop="mainEntityOfPage" href="http://yoursite.com/2016/09/15/iOS-WKWebView(post请求的一个Bug)/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="name" content="SongWei">
+      <meta itemprop="description" content="">
+      <meta itemprop="image" content="/images/avatar.gif">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="Song">
+    </span>
+
+    
+      <header class="post-header">
+
+        
+        
+          <h1 class="post-title" itemprop="name headline">WKWebView(post请求的一个Bug)</h1>
+        
+
+        <div class="post-meta">
+          <span class="post-time">
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-calendar-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">发表于</span>
+              
+              <time title="创建于" itemprop="dateCreated datePublished" datetime="2016-09-15T15:11:47+08:00">
+                2016-09-15
+              </time>
+            
+
+            
+
+            
+          </span>
+
+          
+
+          
+            
+          
+
+          
+          
+
+          
+            <span class="post-meta-divider">|</span>
+            <span class="page-pv">本文总阅读量
+            <span class="busuanzi-value" id="busuanzi_value_page_pv" ></span>次
+            </span>
+          
+
+          
+
+          
+
+        </div>
+      </header>
+    
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+
+      
+      
+
+      
+        <h1 id="WKWebView新特性"><a href="#WKWebView新特性" class="headerlink" title="WKWebView新特性"></a>WKWebView新特性</h1><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div></pre></td><td class="code"><pre><div class="line">1 在性能、稳定性、功能方面有很大提升（最直观的体现就是加载网页是占用的内存，模拟器加载百度与开源中国网站时，WKWebView占用23M，而UIWebView占用85M）</div><div class="line">2 和 Safari 相同的 JavaScript 引擎，允许JavaScript的Nitro库加载并使用（UIWebView中限制）；</div><div class="line">3 支持了更多的HTML5特性；</div><div class="line">4 自诩拥有 60fps 滚动刷新率、内置手势、高效的 app 和 web 信息交换通道</div></pre></td></tr></table></figure>
+<h1 id="WKWebView使用"><a href="#WKWebView使用" class="headerlink" title="WKWebView使用"></a>WKWebView使用</h1><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div></pre></td><td class="code"><pre><div class="line">// 创建webview</div><div class="line">WKWebView *webView = [[WKWebView alloc] initWithFrame:self.view.bounds];</div><div class="line">// 创建请求</div><div class="line">NSURLRequest *request =[NSURLRequest requestWithURL:[NSURL URLWithString:@&quot;http://www.baidu.com&quot;]];</div><div class="line">// 加载网页</div><div class="line">[webView loadRequest:request];</div><div class="line">// 将webView添加到界面</div><div class="line">[self.view addSubview:webView];</div></pre></td></tr></table></figure>
+<h1 id="WKWebView操作JS"><a href="#WKWebView操作JS" class="headerlink" title="WKWebView操作JS"></a>WKWebView操作JS</h1><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div></pre></td><td class="code"><pre><div class="line">//JS文件路径</div><div class="line">NSString *jsPath = [[NSBundle mainBundle] pathForResource:@&quot;demo&quot; ofType:@&quot;js&quot;];</div><div class="line">//读取JS文件内容</div><div class="line">NSString *jsContent = [NSString stringWithContentsOfFile:jsPath encoding:NSUTF8StringEncoding error:nil];</div><div class="line">//创建用户脚本对象，</div><div class="line">//WKUserScriptInjectionTimeAtDocumentStart :HTML文档创建后，完成加载前注入，类似于&lt;head&gt;中</div><div class="line">//WKUserScriptInjectionTimeAtDocumentEnd :HTML文件完成加载后注入,类似于&lt;body&gt;中</div><div class="line">WKUserScript *script = [[WKUserScript alloc] initWithSource:jsContent injectionTime:WKUserScriptInjectionTimeAtDocumentStart forMainFrameOnly:YES];</div><div class="line">//添加用户脚本</div><div class="line">[webView.configuration.userContentController addUserScript:script];</div></pre></td></tr></table></figure>
+<h3 id="WKWebView执行JS方法"><a href="#WKWebView执行JS方法" class="headerlink" title="WKWebView执行JS方法"></a>WKWebView执行JS方法</h3><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div></pre></td><td class="code"><pre><div class="line">//执行JS方法</div><div class="line">[webView evaluateJavaScript:@&quot;test()&quot; completionHandler:^(id _Nullable result, NSError * _Nullable error) &#123;</div><div class="line">    //result为执行js方法的返回值</div><div class="line">    if(error)&#123;</div><div class="line">        NSLog(@&quot;Success&quot;);</div><div class="line">    &#125;else&#123;</div><div class="line">        NSLog(@&quot;Fail&quot;);</div><div class="line">    &#125;</div><div class="line">&#125;];</div></pre></td></tr></table></figure>
+<h2 id="WKWebView代理方法"><a href="#WKWebView代理方法" class="headerlink" title="WKWebView代理方法"></a>WKWebView代理方法</h2><h4 id="WKNavigationDelegate-导航监听"><a href="#WKNavigationDelegate-导航监听" class="headerlink" title="WKNavigationDelegate 导航监听"></a>WKNavigationDelegate 导航监听</h4><p><img src="http://upload-images.jianshu.io/upload_images/1636852-8524caf6dbdbfd62.png?imageMogr2/auto-orient/strip%7CimageView2/2/w/600" alt="WKNavigationDelegate"></p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div><div class="line">17</div><div class="line">18</div><div class="line">19</div><div class="line">20</div><div class="line">21</div><div class="line">22</div><div class="line">23</div></pre></td><td class="code"><pre><div class="line">#pragma mark - WKNavigationDelegate</div><div class="line">// 页面开始加载时调用</div><div class="line">#UIWebViewDelegate: - webView:shouldStartLoadWithRequest:navigationType</div><div class="line">- (void)webView:(WKWebView *)webView didStartProvisionalNavigation:(WKNavigation *)navigation &#123;</div><div class="line">NSLog(@&quot;%s&quot;,__FUNCTION__);</div><div class="line">&#125;</div><div class="line"></div><div class="line">// 内容开始返回时调用(view的过渡动画可在此方法中加载)</div><div class="line">#UIWebViewDelegate: - webViewDidStartLoad:</div><div class="line">- (void)webView:(WKWebView *)webView didCommitNavigation:(WKNavigation *)navigation &#123;</div><div class="line">NSLog(@&quot;%s&quot;,__FUNCTION__);</div><div class="line">&#125;</div><div class="line">// 页面加载完成时调用(view的过渡动画的移除可在此方法中进行)</div><div class="line">#UIWebViewDelegate: - webViewDidFinishLoad:</div><div class="line">- (void)webView:(WKWebView *)webView didFinishNavigation:(WKNavigation *)navigation &#123;</div><div class="line">NSLog(@&quot;%s&quot;,__FUNCTION__);</div><div class="line">&#125;</div><div class="line">// 页面加载失败时调用</div><div class="line">#UIWebViewDelegate: - webView:didFailLoadWithError:</div><div class="line">#WKNavigationDelegate: - webView:didFailNavigation:withError:</div><div class="line">- (void)webView:(WKWebView *)webView didFailProvisionalNavigation:(WKNavigation *)navigation&#123;</div><div class="line">NSLog(@&quot;%s&quot;,__FUNCTION__);</div><div class="line">&#125;</div></pre></td></tr></table></figure>
+<ul>
+<li>三个页面跳转的代理方法：</li>
+</ul>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div></pre></td><td class="code"><pre><div class="line">#pragma mark WKNavigation 当web视图需要响应身份验证跳转时调用</div><div class="line">- (void)webView:(WKWebView *)webView didReceiveAuthenticationChallenge:(NSURLAuthenticationChallenge *)challenge completionHandler:(void (^)(NSURLSessionAuthChallengeDisposition disposition, NSURLCredential * credential))completionHandler&#123;</div><div class="line">&#125;</div><div class="line">#pragma mark 接收到服务器跳转请求之后调用</div><div class="line">- (void)webView:(WKWebView *)webView didReceiveServerRedirectForProvisionalNavigation:(WKNavigation *)navigation &#123;</div><div class="line">&#125;</div><div class="line">#pragma mark 在收到响应后，决定是否跳转</div><div class="line">- (void)webView:(WKWebView *)webView decidePolicyForNavigationResponse:(WKNavigationResponse *)navigationResponse decisionHandler:(void (^)(WKNavigationResponsePolicy))decisionHandler &#123;</div><div class="line">&#125;</div><div class="line">#pragma mark 在发送请求之前，决定是否跳转</div><div class="line">- (void)webView:(WKWebView *)webView decidePolicyForNavigationAction:(WKNavigationAction *)navigationAction decisionHandler:(void (^)(WKNavigationActionPolicy))decisionHandler &#123;</div><div class="line">//需执行decisionHandler的block。</div><div class="line">&#125;</div></pre></td></tr></table></figure>
+<ul>
+<li>Native调用JavaScript方法</li>
+</ul>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div></pre></td><td class="code"><pre><div class="line">原生调用JavaScript的代码需要在页面加载完成之后，就是在 - webView:didFinishNavigation:代理方法里面</div><div class="line">OC代码：</div><div class="line">[webView evaluateJavaScript:@&quot;showAlert(&apos;一个弹框&apos;)&quot; completionHandler:^(id item, NSError * _Nullable error) &#123;</div><div class="line">        // Block中处理是否通过了或者执行JS错误的代码</div><div class="line">    &#125;];</div></pre></td></tr></table></figure>
+<ul>
+<li>JavaScript调用Native方法</li>
+</ul>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div><div class="line">17</div><div class="line">18</div><div class="line">19</div><div class="line">20</div><div class="line">21</div><div class="line">22</div><div class="line">23</div><div class="line">24</div><div class="line">25</div><div class="line">26</div><div class="line">27</div><div class="line">28</div><div class="line">29</div><div class="line">30</div><div class="line">31</div><div class="line">32</div><div class="line">33</div><div class="line">34</div></pre></td><td class="code"><pre><div class="line">JavaScript的配置</div><div class="line">window.webkit.messageHandlers.NativeMethod.postMessage(&quot;一个消息&quot;);</div><div class="line">这个NativeMethod是和App中要统一的，配置方法将在下面的Native中书写。</div><div class="line"></div><div class="line">Native App的代码配置</div><div class="line">创建WKWebView除了有- initWithFrame:方法外，还有一个高端的方法：- initWithFrame:configuration:方法</div><div class="line"></div><div class="line">      // 创建配置</div><div class="line">      WKWebViewConfiguration *config = [[WKWebViewConfiguration alloc] init];</div><div class="line">      // 创建UserContentController（提供JavaScript向webView发送消息的方法）</div><div class="line">      WKUserContentController* userContent = [[WKUserContentController alloc] init];</div><div class="line">      // 添加消息处理，注意：self指代的对象需要遵守WKScriptMessageHandler协议，结束时需要移除</div><div class="line">      [userContent addScriptMessageHandler:self name:@&quot;NativeMethod&quot;];</div><div class="line">      // 将UserConttentController设置到配置文件</div><div class="line">      config.userContentController = userContent;</div><div class="line">      // 高端的自定义配置创建WKWebView</div><div class="line">      WKWebView *webView = [[WKWebView alloc] initWithFrame:[UIScreen mainScreen].bounds configuration:config];</div><div class="line">      // 设置访问的URL</div><div class="line">      NSURL *url = [NSURL URLWithString:@&quot;http://www.jianshu.com&quot;];</div><div class="line">      // 根据URL创建请求</div><div class="line">      NSURLRequest *request = [NSURLRequest requestWithURL:url];</div><div class="line">      // WKWebView加载请求</div><div class="line">      [webView loadRequest:request];</div><div class="line">      // 将WKWebView添加到视图</div><div class="line">      [self.view addSubview:webView];</div><div class="line"></div><div class="line">可以看到，添加消息处理的handler的name，就是JavaScript中调用时候的NativeMethod，这两个要保持一致。请把URL换成你自己的。</div><div class="line"></div><div class="line">请注意第6行的代码配置当前ViewController为MessageHandler，需要服从WKScriptMessageHandler协议，如果出现警告⚠️，请检查是否服从了这个协议。</div><div class="line"></div><div class="line">注意！注意！注意：上面将当前ViewController设置为MessageHandler之后需要在当前ViewController销毁前将其移除，否则会造成内存泄漏。</div><div class="line"></div><div class="line">移除的代码如下：</div><div class="line">[webView.configuration.userContentController removeScriptMessageHandlerForName:@&quot;NativeMethod&quot;];</div></pre></td></tr></table></figure>
+<h2 id="WKUIDelegate-网页监听"><a href="#WKUIDelegate-网页监听" class="headerlink" title="WKUIDelegate 网页监听"></a>WKUIDelegate 网页监听</h2><p><img src="http://upload-images.jianshu.io/upload_images/1636852-16880bd8e6e98fcc.png?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240" alt="WKUIDelegate"></p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div><div class="line">17</div><div class="line">18</div><div class="line">19</div></pre></td><td class="code"><pre><div class="line">  #pragma mark - WKUIDelegate</div><div class="line">/// 创建一个新的WebView</div><div class="line">- (WKWebView *)webView:(WKWebView *)webView createWebViewWithConfiguration:(WKWebViewConfiguration *)configuration forNavigationAction:(WKNavigationAction *)navigationAction windowFeatures:(WKWindowFeatures *)windowFeatures &#123;</div><div class="line">    return nil;</div><div class="line">&#125;</div><div class="line">- (void)webView:(WKWebView *)webView runJavaScriptAlertPanelWithMessage:(NSString *)message initiatedByFrame:(void (^)())completionHandler &#123;</div><div class="line"></div><div class="line">&#125;</div><div class="line">/// 输入框</div><div class="line">- (void)webView:(WKWebView *)webView runJavaScriptTextInputPanelWithPrompt:(NSString *)prompt defaultText:(nullable NSString *)defaultText initiatedByFrame:(WKFrameInfo *)frame completionHandler:(void (^)(NSString * __nullable result))completionHandler &#123;</div><div class="line">&#125;</div><div class="line">/// 确认框</div><div class="line">- (void)webView:(WKWebView *)webView runJavaScriptConfirmPanelWithMessage:(NSString *)message initiatedByFrame:(WKFrameInfo *)frame completionHandler:(void (^)(BOOL result))completionHandler &#123;</div><div class="line"></div><div class="line">&#125;</div><div class="line">/// 警告框</div><div class="line">- (void)webView:(WKWebView *)webView runJavaScriptAlertPanelWithMessage:(NSString *)message initiatedByFrame:(WKFrameInfo *)frame completionHandler:(void (^)(void))completionHandler &#123;</div><div class="line"></div><div class="line">&#125;</div></pre></td></tr></table></figure>
+<h3 id="加载顺序"><a href="#加载顺序" class="headerlink" title="加载顺序"></a>加载顺序</h3><p><img src="http://upload-images.jianshu.io/upload_images/1636852-dc3fe0cf364ec36a.png?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240" alt="百度测试"></p>
+<p>WKWebView增加的属性<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div></pre></td><td class="code"><pre><div class="line">1 WKWebViewConfiguration *configuration：初始化WKWebView的时候的配置，后面会用到</div><div class="line">2 WKBackForwardList *backForwardList：相当于访问历史的一个列表</div><div class="line">3 double estimatedProgress：进度，有这个之后就不用自己写假的进度条了</div></pre></td></tr></table></figure></p>
+<h1 id="解决WKWebView加载POST请求无法发送参数问题"><a href="#解决WKWebView加载POST请求无法发送参数问题" class="headerlink" title="解决WKWebView加载POST请求无法发送参数问题"></a>解决WKWebView加载POST请求无法发送参数问题</h1><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div></pre></td><td class="code"><pre><div class="line">使用JavaScript解决WKWebView无法发送POST参数问题</div><div class="line">1 将一个包含JavaScript的POST请求的HTML代码放到工程目录中</div><div class="line">2 加载这个包含JavaScript的POST请求的代码到WKWebView</div><div class="line">3 加载完成之后，用Native调用JavaScript的POST方法并传入参数来完成请求</div></pre></td></tr></table></figure>
+<ul>
+<li><p>创建包含JavaScript的POST请求的HTML代码</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div><div class="line">17</div><div class="line">18</div><div class="line">19</div><div class="line">20</div><div class="line">21</div><div class="line">22</div><div class="line">23</div><div class="line">24</div><div class="line">25</div><div class="line">26</div><div class="line">27</div><div class="line">28</div></pre></td><td class="code"><pre><div class="line"> &lt;html&gt;</div><div class="line"> &lt;head&gt;</div><div class="line">     &lt;script&gt;</div><div class="line">         //调用格式： post(&apos;URL&apos;, &#123;&quot;key&quot;: &quot;value&quot;&#125;);</div><div class="line">         function post(path, params) &#123;</div><div class="line">             var method = &quot;post&quot;;</div><div class="line">             var form = document.createElement(&quot;form&quot;);</div><div class="line">             form.setAttribute(&quot;method&quot;, method);</div><div class="line">             form.setAttribute(&quot;action&quot;, path);</div><div class="line"></div><div class="line">             for(var key in params) &#123;</div><div class="line">                 if(params.hasOwnProperty(key)) &#123;</div><div class="line">                     var hiddenField = document.createElement(&quot;input&quot;);</div><div class="line">                     hiddenField.setAttribute(&quot;type&quot;, &quot;hidden&quot;);</div><div class="line">                     hiddenField.setAttribute(&quot;name&quot;, key);</div><div class="line">                     hiddenField.setAttribute(&quot;value&quot;, params[key]);</div><div class="line"></div><div class="line">                     form.appendChild(hiddenField);</div><div class="line">                 &#125;</div><div class="line">             &#125;</div><div class="line">             document.body.appendChild(form);</div><div class="line">             form.submit();</div><div class="line">         &#125;</div><div class="line">     &lt;/script&gt;</div><div class="line"> &lt;/head&gt;</div><div class="line"> &lt;body&gt;</div><div class="line"> &lt;/body&gt;</div><div class="line">&lt;/html&gt;</div></pre></td></tr></table></figure>
+</li>
+<li><p>将对应的JavaScript代码通过加载本地网页的形式加载到WKWebView</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div></pre></td><td class="code"><pre><div class="line">// JS发送POST的Flag，为真的时候会调用JS的POST方法（仅当第一次的时候加载本地JS）</div><div class="line">self.needLoadJSPOST = YES;</div><div class="line">// 创建WKWebView</div><div class="line">self.webView = [[WKWebView alloc] initWithFrame:[UIScreen mainScreen].bounds];</div><div class="line">//设置代理</div><div class="line">self.webView.navigationDelegate = self;</div><div class="line">// 获取JS所在的路径</div><div class="line">NSString *path = [[NSBundle mainBundle] pathForResource:@&quot;JSPOST&quot; ofType:@&quot;html&quot;];</div><div class="line">// 获得html内容</div><div class="line">NSString *html = [[NSString alloc] initWithContentsOfFile:path encoding:NSUTF8StringEncoding error:nil];</div><div class="line">// 加载js</div><div class="line">[self.webView loadHTMLString:html baseURL:[[NSBundle mainBundle] bundleURL]];</div><div class="line">// 将WKWebView添加到当前View</div><div class="line">[self.view addSubview:self.webView];</div></pre></td></tr></table></figure>
+</li>
+<li><p>Native调用JavaScript脚本并传入参数来完成POST请求</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div><div class="line">17</div><div class="line">18</div><div class="line">19</div><div class="line">20</div><div class="line">21</div><div class="line">22</div><div class="line">23</div><div class="line">24</div><div class="line">25</div></pre></td><td class="code"><pre><div class="line">Native调用JavaScript</div><div class="line"> // 加载完成的代理方法</div><div class="line"> - (void)webView:(WKWebView *)webView didFinishNavigation:(WKNavigation *)navigation &#123;</div><div class="line">     // 判断是否需要加载（仅在第一次加载）</div><div class="line">     if (self.needLoadJSPOST) &#123;</div><div class="line">         // 调用使用JS发送POST请求的方法</div><div class="line">         [self postRequestWithJS];</div><div class="line">         // 将Flag置为NO（后面就不需要加载了）</div><div class="line">         self.needLoadJSPOST = NO;</div><div class="line">     &#125;</div><div class="line"> &#125;</div><div class="line"> // 调用JS发送POST请求</div><div class="line"> - (void)postRequestWithJS &#123;</div><div class="line">     // 发送POST的参数</div><div class="line">     NSString *postData = @&quot;\&quot;username\&quot;:\&quot;aaa\&quot;,\&quot;password\&quot;:\&quot;123\&quot;&quot;;</div><div class="line">     // 请求的页面地址</div><div class="line">     NSString *urlStr = @&quot;http://www.postexample.com&quot;;</div><div class="line">     // 拼装成调用JavaScript的字符串</div><div class="line">     NSString *jscript = [NSString stringWithFormat:@&quot;post(&apos;%@&apos;, &#123;%@&#125;);&quot;, urlStr, postData];</div><div class="line"></div><div class="line">     // NSLog(@&quot;Javascript: %@&quot;, jscript);</div><div class="line">     // 调用JS代码</div><div class="line">     [self.webView evaluateJavaScript:jscript completionHandler:^(id object, NSError * _Nullable error) &#123;</div><div class="line">     &#125;];</div><div class="line"> &#125;</div></pre></td></tr></table></figure></li>
+</ul>
+
+      
+    </div>
+    
+    
+    
+
+    
+
+    
+
+    
+
+    <footer class="post-footer">
+      
+
+      
+      
+      
+
+      
+        <div class="post-nav">
+          <div class="post-nav-next post-nav-item">
+            
+          </div>
+
+          <span class="post-nav-divider"></span>
+
+          <div class="post-nav-prev post-nav-item">
+            
+              <a href="/2016/09/15/对象消息运行时/" rel="prev" title="对象 消息 运行时">
+                对象 消息 运行时 <i class="fa fa-chevron-right"></i>
+              </a>
+            
+          </div>
+        </div>
+      
+
+      
+      
+    </footer>
+  </div>
+  
+  
+  
+  </article>
+
+
+
+    <div class="post-spread">
+      
+    </div>
+  </div>
+
+
+          </div>
+          
+
+
+          
+  <div class="comments" id="comments">
+    
+  </div>
+
+
+        </div>
+        
+          
+  
+  <div class="sidebar-toggle">
+    <div class="sidebar-toggle-line-wrap">
+      <span class="sidebar-toggle-line sidebar-toggle-line-first"></span>
+      <span class="sidebar-toggle-line sidebar-toggle-line-middle"></span>
+      <span class="sidebar-toggle-line sidebar-toggle-line-last"></span>
+    </div>
+  </div>
+
+  <aside id="sidebar" class="sidebar">
+    
+    <div class="sidebar-inner">
+
+      
+
+      
+        <ul class="sidebar-nav motion-element">
+          <li class="sidebar-nav-toc sidebar-nav-active" data-target="post-toc-wrap" >
+            文章目录
+          </li>
+          <li class="sidebar-nav-overview" data-target="site-overview">
+            站点概览
+          </li>
+        </ul>
+      
+
+      <section class="site-overview sidebar-panel">
+        <div class="site-author motion-element" itemprop="author" itemscope itemtype="http://schema.org/Person">
+          <img class="site-author-image" itemprop="image"
+               src="/images/avatar.gif"
+               alt="SongWei" />
+          <p class="site-author-name" itemprop="name">SongWei</p>
+           
+              <p class="site-description motion-element" itemprop="description">先拆轮子,在造轮子!</p>
+          
+        </div>
+        <nav class="site-state motion-element">
+
+          
+            <div class="site-state-item site-state-posts">
+            
+              <a href="/archives/">
+            
+                <span class="site-state-item-count">23</span>
+                <span class="site-state-item-name">日志</span>
+              </a>
+            </div>
+          
+
+          
+
+          
+            
+            
+            <div class="site-state-item site-state-tags">
+              <a href="/tags/index.html">
+                <span class="site-state-item-count">2</span>
+                <span class="site-state-item-name">标签</span>
+              </a>
+            </div>
+          
+
+        </nav>
+
+        
+
+        <div class="links-of-author motion-element">
+          
+            
+              <span class="links-of-author-item">
+                <a href="https://github.com/" target="_blank" title="GitHub">
+                  
+                    <i class="fa fa-fw fa-github"></i>
+                  
+                    
+                      GitHub
+                    
+                </a>
+              </span>
+            
+              <span class="links-of-author-item">
+                <a href="http://weibo.com/" target="_blank" title="Weibo">
+                  
+                    <i class="fa fa-fw fa-weibo"></i>
+                  
+                    
+                      Weibo
+                    
+                </a>
+              </span>
+            
+              <span class="links-of-author-item">
+                <a href="http://www.baidu.com" target="_blank" title="百度">
+                  
+                    <i class="fa fa-fw fa-globe"></i>
+                  
+                    
+                      百度
+                    
+                </a>
+              </span>
+            
+          
+        </div>
+
+        
+        
+
+        
+        
+
+        
+
+
+      </section>
+
+      
+      <!--noindex-->
+        <section class="post-toc-wrap motion-element sidebar-panel sidebar-panel-active">
+          <div class="post-toc">
+
+            
+              
+            
+
+            
+              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-1"><a class="nav-link" href="#WKWebView新特性"><span class="nav-number">1.</span> <span class="nav-text">WKWebView新特性</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#WKWebView使用"><span class="nav-number">2.</span> <span class="nav-text">WKWebView使用</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#WKWebView操作JS"><span class="nav-number">3.</span> <span class="nav-text">WKWebView操作JS</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#WKWebView执行JS方法"><span class="nav-number">3.0.1.</span> <span class="nav-text">WKWebView执行JS方法</span></a></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#WKWebView代理方法"><span class="nav-number">3.1.</span> <span class="nav-text">WKWebView代理方法</span></a><ol class="nav-child"><li class="nav-item nav-level-4"><a class="nav-link" href="#WKNavigationDelegate-导航监听"><span class="nav-number">3.1.0.1.</span> <span class="nav-text">WKNavigationDelegate 导航监听</span></a></li></ol></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#WKUIDelegate-网页监听"><span class="nav-number">3.2.</span> <span class="nav-text">WKUIDelegate 网页监听</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#加载顺序"><span class="nav-number">3.2.1.</span> <span class="nav-text">加载顺序</span></a></li></ol></li></ol></li><li class="nav-item nav-level-1"><a class="nav-link" href="#解决WKWebView加载POST请求无法发送参数问题"><span class="nav-number">4.</span> <span class="nav-text">解决WKWebView加载POST请求无法发送参数问题</span></a></li></ol></div>
+            
+
+          </div>
+        </section>
+      <!--/noindex-->
+      
+
+      
+
+    </div>
+  </aside>
+
+
+        
+      </div>
+    </main>
+
+    <footer id="footer" class="footer">
+      <div class="footer-inner">
+        <div class="copyright" >
+  
+  &copy; 
+  <span itemprop="copyrightYear">2017</span>
+  <span class="with-love">
+    <i class="fa fa-heart"></i>
+  </span>
+  <span class="author" itemprop="copyrightHolder">SongWei</span>
+
+  
+</div>
+
+
+  <div class="powered-by">由 <a class="theme-link" href="https://hexo.io">Hexo</a> 强力驱动</div>
+
+  <span class="post-meta-divider">|</span>
+
+  <div class="theme-info">主题 &mdash; <a class="theme-link" href="https://github.com/iissnan/hexo-theme-next">NexT.Gemini</a> v5.1.2</div>
+
+
+        
+<div class="busuanzi-count">
+  <script async src="https://dn-lbstatics.qbox.me/busuanzi/2.3/busuanzi.pure.mini.js"></script>
+
+  
+    <span class="site-uv">
+      本站访客数
+      <span class="busuanzi-value" id="busuanzi_value_site_uv"></span>
+      人次
+    </span>
+  
+
+  
+    <span class="site-pv">
+      本站总访问量
+      <span class="busuanzi-value" id="busuanzi_value_site_pv"></span>
+      次
+    </span>
+  
+</div>
+
+
+
+
+
+
+
+
+        
+      </div>
+    </footer>
+
+    
+      <div class="back-to-top">
+        <i class="fa fa-arrow-up"></i>
+        
+          <span id="scrollpercent"><span>0</span>%</span>
+        
+      </div>
+    
+
+  </div>
+
+  
+
+<script type="text/javascript">
+  if (Object.prototype.toString.call(window.Promise) !== '[object Function]') {
+    window.Promise = null;
+  }
+</script>
+
+
+
+
+
+
+
+
+
+  
+
+
+
+
+
+
+
+
+
+
+
+
+  
+  <script type="text/javascript" src="/lib/jquery/index.js?v=2.1.3"></script>
+
+  
+  <script type="text/javascript" src="/lib/fastclick/lib/fastclick.min.js?v=1.0.6"></script>
+
+  
+  <script type="text/javascript" src="/lib/jquery_lazyload/jquery.lazyload.js?v=1.9.7"></script>
+
+  
+  <script type="text/javascript" src="/lib/velocity/velocity.min.js?v=1.2.1"></script>
+
+  
+  <script type="text/javascript" src="/lib/velocity/velocity.ui.min.js?v=1.2.1"></script>
+
+  
+  <script type="text/javascript" src="/lib/fancybox/source/jquery.fancybox.pack.js?v=2.1.5"></script>
+
+
+  
+
+
+  <script type="text/javascript" src="/js/src/utils.js?v=5.1.2"></script>
+
+  <script type="text/javascript" src="/js/src/motion.js?v=5.1.2"></script>
+
+
+
+  
+  
+
+
+  <script type="text/javascript" src="/js/src/affix.js?v=5.1.2"></script>
+
+  <script type="text/javascript" src="/js/src/schemes/pisces.js?v=5.1.2"></script>
+
+
+
+  
+  <script type="text/javascript" src="/js/src/scrollspy.js?v=5.1.2"></script>
+<script type="text/javascript" src="/js/src/post-details.js?v=5.1.2"></script>
+
+
+
+  
+
+
+  <script type="text/javascript" src="/js/src/bootstrap.js?v=5.1.2"></script>
+
+
+
+  
+
+
+  
+
+
+
+
+	
+
+
+
+
+
+  
+
+
+
+
+
+  
+
+
+
+
+
+
+
+
+  
+
+
+
+
+
+  
+
+  
+
+  
+
+  
+
+  
+
+  
+
+</body>
+</html>
