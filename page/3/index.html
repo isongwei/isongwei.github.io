@@ -386,134 +386,6 @@
   
   
   <div class="post-block">
-    <link itemprop="mainEntityOfPage" href="http://yoursite.com/2016/09/15/对象消息运行时/">
-
-    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
-      <meta itemprop="name" content="SongWei">
-      <meta itemprop="description" content="">
-      <meta itemprop="image" content="/images/avatar.gif">
-    </span>
-
-    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
-      <meta itemprop="name" content="Song">
-    </span>
-
-    
-      <header class="post-header">
-
-        
-        
-          <h1 class="post-title" itemprop="name headline">
-                
-                <a class="post-title-link" href="/2016/09/15/对象消息运行时/" itemprop="url">对象 消息 运行时</a></h1>
-        
-
-        <div class="post-meta">
-          <span class="post-time">
-            
-              <span class="post-meta-item-icon">
-                <i class="fa fa-calendar-o"></i>
-              </span>
-              
-                <span class="post-meta-item-text">发表于</span>
-              
-              <time title="创建于" itemprop="dateCreated datePublished" datetime="2016-09-15T15:11:47+08:00">
-                2016-09-15
-              </time>
-            
-
-            
-
-            
-          </span>
-
-          
-
-          
-            
-          
-
-          
-          
-
-          
-
-          
-
-          
-
-        </div>
-      </header>
-    
-
-    
-    
-    
-    <div class="post-body" itemprop="articleBody">
-
-      
-      
-
-      
-        
-          
-            <p>OC在2.0 中引入点语法的概念</p>
-<p><img src="./Pic/002.png" title="" width="350"></p>
-<p><img src="./Pic/003.png" title="" width="350"></p>
-<p>两种写法是完全一样的</p>
-<p><img src="./Pic/004.png" title="" width="350"><br>两者的取出是等效的</p>
-<p>属性会自动编写访问属性的方法   “自动合成”   是在编译器执行的<br>除了生成方法代码  还自动向类中添加适当类型的实例变量  属性面前添加下划线<br>前面可以在实现文件中通过<code>@synthesize</code>语法指定实例变量的名字</p>
-<p><img src="./Pic/005.png" title="" width="350"></p>
-<p><code>@dynamic</code>关键字 告诉编译器不生成方法</p>
-<p><img src="./Pic/006.png" title="" width="350"></p>
-
-          
-        
-      
-    </div>
-    
-    
-    
-
-    
-
-    
-
-    
-
-    <footer class="post-footer">
-      
-
-      
-
-      
-
-      
-      
-        <div class="post-eof"></div>
-      
-    </footer>
-  </div>
-  
-  
-  
-  </article>
-
-
-    
-      
-
-  
-
-  
-  
-  
-
-  <article class="post post-type-normal" itemscope itemtype="http://schema.org/Article">
-  
-  
-  
-  <div class="post-block">
     <link itemprop="mainEntityOfPage" href="http://yoursite.com/2016/09/15/iOS-WKWebView(post请求的一个Bug)/">
 
     <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
@@ -618,6 +490,134 @@
 <li><p>Native调用JavaScript脚本并传入参数来完成POST请求</p>
 <figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div><div class="line">17</div><div class="line">18</div><div class="line">19</div><div class="line">20</div><div class="line">21</div><div class="line">22</div><div class="line">23</div><div class="line">24</div><div class="line">25</div></pre></td><td class="code"><pre><div class="line">Native调用JavaScript</div><div class="line"> // 加载完成的代理方法</div><div class="line"> - (void)webView:(WKWebView *)webView didFinishNavigation:(WKNavigation *)navigation &#123;</div><div class="line">     // 判断是否需要加载（仅在第一次加载）</div><div class="line">     if (self.needLoadJSPOST) &#123;</div><div class="line">         // 调用使用JS发送POST请求的方法</div><div class="line">         [self postRequestWithJS];</div><div class="line">         // 将Flag置为NO（后面就不需要加载了）</div><div class="line">         self.needLoadJSPOST = NO;</div><div class="line">     &#125;</div><div class="line"> &#125;</div><div class="line"> // 调用JS发送POST请求</div><div class="line"> - (void)postRequestWithJS &#123;</div><div class="line">     // 发送POST的参数</div><div class="line">     NSString *postData = @&quot;\&quot;username\&quot;:\&quot;aaa\&quot;,\&quot;password\&quot;:\&quot;123\&quot;&quot;;</div><div class="line">     // 请求的页面地址</div><div class="line">     NSString *urlStr = @&quot;http://www.postexample.com&quot;;</div><div class="line">     // 拼装成调用JavaScript的字符串</div><div class="line">     NSString *jscript = [NSString stringWithFormat:@&quot;post(&apos;%@&apos;, &#123;%@&#125;);&quot;, urlStr, postData];</div><div class="line"></div><div class="line">     // NSLog(@&quot;Javascript: %@&quot;, jscript);</div><div class="line">     // 调用JS代码</div><div class="line">     [self.webView evaluateJavaScript:jscript completionHandler:^(id object, NSError * _Nullable error) &#123;</div><div class="line">     &#125;];</div><div class="line"> &#125;</div></pre></td></tr></table></figure></li>
 </ul>
+
+          
+        
+      
+    </div>
+    
+    
+    
+
+    
+
+    
+
+    
+
+    <footer class="post-footer">
+      
+
+      
+
+      
+
+      
+      
+        <div class="post-eof"></div>
+      
+    </footer>
+  </div>
+  
+  
+  
+  </article>
+
+
+    
+      
+
+  
+
+  
+  
+  
+
+  <article class="post post-type-normal" itemscope itemtype="http://schema.org/Article">
+  
+  
+  
+  <div class="post-block">
+    <link itemprop="mainEntityOfPage" href="http://yoursite.com/2016/09/15/对象消息运行时/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="name" content="SongWei">
+      <meta itemprop="description" content="">
+      <meta itemprop="image" content="/images/avatar.gif">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="Song">
+    </span>
+
+    
+      <header class="post-header">
+
+        
+        
+          <h1 class="post-title" itemprop="name headline">
+                
+                <a class="post-title-link" href="/2016/09/15/对象消息运行时/" itemprop="url">对象 消息 运行时</a></h1>
+        
+
+        <div class="post-meta">
+          <span class="post-time">
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-calendar-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">发表于</span>
+              
+              <time title="创建于" itemprop="dateCreated datePublished" datetime="2016-09-15T15:11:47+08:00">
+                2016-09-15
+              </time>
+            
+
+            
+
+            
+          </span>
+
+          
+
+          
+            
+          
+
+          
+          
+
+          
+
+          
+
+          
+
+        </div>
+      </header>
+    
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+
+      
+      
+
+      
+        
+          
+            <p>OC在2.0 中引入点语法的概念</p>
+<p><img src="./Pic/002.png" title="" width="350"></p>
+<p><img src="./Pic/003.png" title="" width="350"></p>
+<p>两种写法是完全一样的</p>
+<p><img src="./Pic/004.png" title="" width="350"><br>两者的取出是等效的</p>
+<p>属性会自动编写访问属性的方法   “自动合成”   是在编译器执行的<br>除了生成方法代码  还自动向类中添加适当类型的实例变量  属性面前添加下划线<br>前面可以在实现文件中通过<code>@synthesize</code>语法指定实例变量的名字</p>
+<p><img src="./Pic/005.png" title="" width="350"></p>
+<p><code>@dynamic</code>关键字 告诉编译器不生成方法</p>
+<p><img src="./Pic/006.png" title="" width="350"></p>
 
           
         
